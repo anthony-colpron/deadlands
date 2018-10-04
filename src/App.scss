@@ -1,0 +1,11 @@
+.npcs-container {
+    display: flex;
+    flex-flow: row wrap;
+
+    .npc-card {
+        border: 1px solid black;
+        display: inline-block;
+        margin: 1em;
+        padding: 1em
+    }
+}
