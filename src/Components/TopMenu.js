@@ -7,7 +7,7 @@ class TopMenu extends PureComponent {
 
     render () {
 
-        return (<div>Cartes restantes : {this.props.deck.length}
+        return (<div className='top-menu'>Cartes restantes : {this.props.deck.length}&nbsp;
                 <button onClick={this.props.shuffleDeck}>Shuffle</button>
         </div>
         )

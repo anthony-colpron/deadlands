@@ -1,11 +1,130 @@
-.npcs-container {
-    display: flex;
-    flex-flow: row wrap;
+.app {
 
-    .npc-card {
+
+    .round-actions {
+        box-sizing: border-box;
+        position: fixed;
+        left: 0;
+        top: 50px;
+        height: 100%;
+        width: 250px;
+        padding: 0.5em;
         border: 1px solid black;
-        display: inline-block;
-        margin: 1em;
-        padding: 1em
+
+        overflow: auto;
+
+        font-family: "Rye";
+        background-color: #8D7764;
+
+        button {
+            font-family: "Rye";
+            background-color: rgb(92, 78, 67);
+            border: 2px ridge #462A16;
+            border-radius: 8px;
+        }
+
+        font-size: 12px;
+
+        button {
+            font-size: 12px;
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        strong.card {
+            font-size: 16px;
+        }
     }
+
+    .top-menu {
+        box-sizing: border-box;
+        position: fixed;
+        left: 0;
+        top:0;
+        width: 100%;
+        height: 50px;
+        border: 2px ridge #462A16;
+        font-weight: bold;
+        padding: 0.5em;
+
+        font-family: "Rye";
+        background-color: #8D7764;
+
+        button {
+            font-family: "Rye";
+            background-color: rgb(92, 78, 67);
+            border: 2px ridge #462A16;
+            border-radius: 8px;
+        }
+    }
+
+    .npcs-window {
+        margin-top: 50px;
+        margin-left: 250px;
+        padding: 1em;
+    }
+
+    .npcs-container {
+        
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+
+        .npc-card {
+            border: 1px solid black;
+            display: inline-block;
+            max-width: 25%;
+            margin: 0.5em;
+            padding: 1em;
+            flex: 20% auto auto;
+
+            .remove-npc-button {
+                float: right;
+            }
+
+            .wounds-location {
+        
+                button {
+                    font-size: 12px;
+                }
+            }
+
+            .traits {
+                button {
+                    font-size: 12px;
+                }
+
+            }
+            .aptitude {
+                display: inline-block;
+
+                font-size: 12px;
+        
+                
+            }
+
+            .numeric-input {
+                width: 2em;
+            }
+
+            .numeric-input-wind {
+                width: 3em;
+            }
+
+            .stun-button {
+                background-color: white;
+                font-weight: bold;
+                display: inline-block;
+                border: 1px solid black;
+                cursor: default;
+                padding: 1px;
+                margin-bottom: 1px;
+
+            }
+        }
+    }
+
 }

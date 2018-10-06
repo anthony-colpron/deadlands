@@ -1,197 +1,197 @@
-const DEFTNESS = 'deftness', NIMBLENESS = 'nimbleness', STRENGTH = 'strength', QUICKNESS = 'quickness', VIGOR = 'vigor',
-COGNITION = 'cognition', KNOWLEDGE = 'knowledge', SMARTS = 'smarts', MIEN = 'mien', SPIRIT = 'spirit', SPECIAL = 'special';
+const DEFTNESS = `deftness`, NIMBLENESS = `nimbleness`, STRENGTH = `strength`, QUICKNESS = `quickness`, VIGOR = `vigor`,
+COGNITION = `cognition`, KNOWLEDGE = `knowledge`, SMARTS = `smarts`, MIEN = `mien`, SPIRIT = `spirit`, SPECIAL = `special`;
 
 const aptitudes = {
     academia: {
-        name: 'Academia',
+        name: `Academia`,
         associatedTrait: KNOWLEDGE
     },
     animalWranglin: {
-        name: 'Animal Wranglin',
+        name: `Animal Wranglin'`,
         associatedTrait: MIEN
     },
     areaKnowledge: {
-        name: 'Area Knowledge',
+        name: `Area Knowledge`,
         associatedTrait: KNOWLEDGE
     },
     artillery: {
-        name: 'Artillery',
+        name: `Artillery`,
         associatedTrait: COGNITION
     },
     arts: {
-        name: 'Arts',
+        name: `Arts`,
         associatedTrait: COGNITION
     },
     bluff: {
-        name: 'Bluff',
+        name: `Bluff`,
         associatedTrait: SMARTS
     },
     bow: {
-        name: 'Bow',
+        name: `Bow`,
         associatedTrait: DEFTNESS
     },
     climbin: {
-        name: 'Climbin',
+        name: `Climbin'`,
         associatedTrait: NIMBLENESS
     },
     demolition: {
-        name: 'Demolition',
+        name: `Demolition`,
         associatedTrait: KNOWLEDGE
     },
     disguise: {
-        name: 'Disguise',
+        name: `Disguise`,
         associatedTrait: KNOWLEDGE
     },
     dodge: {
-        name: 'Dodge',
+        name: `Dodge`,
         associatedTrait: NIMBLENESS
     },
     drivin: {
-        name: 'Drivin',
+        name: `Drivin'`,
         associatedTrait: NIMBLENESS
     },
     faith: {
-        name: 'Faith',
+        name: `Faith`,
         associatedTrait: SPIRIT
     },
     fightin: {
-        name: 'Fightin',
+        name: `Fightin'`,
         associatedTrait: NIMBLENESS
     },
     filchin: {
-        name: 'Filchin',
+        name: `Filchin'`,
         associatedTrait: DEFTNESS
     },
     gamblin: {
-        name: 'Gamblin',
+        name: `Gamblin'`,
         associatedTrait: SMARTS
     },
     guts: {
-        name: 'Guts',
+        name: `Guts`,
         associatedTrait: SPIRIT
     },
     hexslingin: {
-        name: 'Hexslingin',
+        name: `Hexslingin'`,
         associatedTrait: SPECIAL
     },
     horseRidin: {
-        name: 'Horse Ridin',
+        name: `Horse Ridin'`,
         associatedTrait: NIMBLENESS
     },
     languages: {
-        name: 'Languages',
+        name: `Languages`,
         associatedTrait: KNOWLEDGE
     },
     leadership: {
-        name: 'Leadership',
+        name: `Leadership`,
         associatedTrait: MIEN
     },
     lockpickin: {
-        name: 'Lockpickin',
+        name: `Lockpickin'`,
         associatedTrait: DEFTNESS
     },
     madScience: {
-        name: 'Mad Science',
+        name: `Mad Science`,
         associatedTrait: KNOWLEDGE
     },
     medicine: {
-        name: 'Medicine',
+        name: `Medicine`,
         associatedTrait: KNOWLEDGE
     },
     overawe: {
-        name: 'Overawe',
+        name: `Overawe`,
         associatedTrait: MIEN
     },
     performin: {
-        name: 'Performin',
+        name: `Performin'`,
         associatedTrait: MIEN
     },
     persuasion: {
-        name: 'Persuasion',
+        name: `Persuasion`,
         associatedTrait: MIEN
     },
     professional: {
-        name: 'Professional',
+        name: `Professional`,
         associatedTrait: KNOWLEDGE
     },
     quickDraw: {
-        name: 'Quick Draw',
+        name: `Quick Draw`,
         associatedTrait: QUICKNESS
     },
     ridicule: {
-        name: 'Ridicule',
+        name: `Ridicule`,
         associatedTrait: SMARTS
     },
     ritual: {
-        name: 'Ritual',
+        name: `Ritual`,
         associatedTrait: SPECIAL
     },
     science: {
-        name: 'Science',
+        name: `Science`,
         associatedTrait: KNOWLEDGE
     },
     scrutinize: {
-        name: 'Scrutinize',
+        name: `Scrutinize`,
         associatedTrait: COGNITION
     },
     search: {
-        name: 'Search',
+        name: `Search`,
         associatedTrait: COGNITION
     },
     scroungin: {
-        name: 'Scroungin',
+        name: `Scroungin'`,
         associatedTrait: SMARTS
     },
     shootin: {
-        name: 'Shootin',
+        name: `Shootin'`,
         associatedTrait: DEFTNESS
     },
     sleightOfHand: {
-        name: 'Sleight of Hand',
+        name: `Sleight of Hand`,
         associatedTrait: DEFTNESS
     },
     sneak: {
-        name: 'Sneak',
+        name: `Sneak`,
         associatedTrait: NIMBLENESS
     },
     speedLoad: {
-        name: 'Speed-Load',
+        name: `Speed-Load`,
         associatedTrait: DEFTNESS
     },
     streetwise: {
-        name: 'Streetwise',
+        name: `Streetwise`,
         associatedTrait: SMARTS
     },
     survival: {
-        name: 'Survival',
+        name: `Survival`,
         associatedTrait: SMARTS
     },
     swimmin: {
-        name: 'Swimmin',
+        name: `Swimmin'`,
         associatedTrait: NIMBLENESS
     },
     taleTellin: {
-        name: 'Tale-Tellin',
+        name: `Tale-Tellin'`,
         associatedTrait: MIEN
     },
     teamster: {
-        name: 'Teamster',
+        name: `Teamster`,
         associatedTrait: NIMBLENESS
     },
     throwin: {
-        name: 'Throwin',
+        name: `Throwin'`,
         associatedTrait: DEFTNESS
     },
     tinkerin: {
-        name: 'Tinkerin',
+        name: `Tinkerin'`,
         associatedTrait: SMARTS
     },
     trackin: {
-        name: 'Trackin',
+        name: `Trackin'`,
         associatedTrait: COGNITION
     },
     trade: {
-        name: 'Trade',
+        name: `Trade`,
         associatedTrait: KNOWLEDGE
     }
 }

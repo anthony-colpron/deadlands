@@ -1,4 +1,4 @@
-import { SHUFFLE, DEAL_ACTION, LOAD_NPC, UPDATE_NPC_STATUS, RESOLVE_STUN } from "./ACTIONS";
+import { SHUFFLE, DEAL_ACTION, LOAD_NPC, UPDATE_NPC_STATUS, RESOLVE_STUN, REMOVE_NPC } from "./ACTIONS";
 import { shuffleDeck } from '../Tools/functions'
 import deck from '../Tools/deck';
 
@@ -22,8 +22,9 @@ export default function reducer (state, action) {
 
         let newNPC = JSON.parse(JSON.stringify(state.NPCs[action.index]))
 
-        newNPC.index = state.loadedNPCs.length;
+        //newNPC.index = state.loadedNPCs.length;
         newNPC.woundPenalties = 0;
+        newNPC.otherModifiers = 0;
         newNPC.stun = 0;
         newNPC.status = 'Ok';
 
@@ -34,14 +35,25 @@ export default function reducer (state, action) {
 
         let newLoadedNPCs = JSON.parse(JSON.stringify(state.loadedNPCs));
 
-        let {woundPenalties, stun, status, index} = action;
+        let {woundPenalties, otherModifiers, stun, status, index} = action;
 
         newLoadedNPCs[index].woundPenalties = woundPenalties;
         newLoadedNPCs[index].stun = stun;
         newLoadedNPCs[index].status = status;
+        newLoadedNPCs[index].otherModifiers = otherModifiers;
 
         return {...state, loadedNPCs: newLoadedNPCs}
 
+    }
+
+    if (action.type === REMOVE_NPC) {
+        
+        let newLoadedNPCs = JSON.parse(JSON.stringify(state.loadedNPCs));
+        let {index} = action;
+
+        newLoadedNPCs.splice(index, 1);
+
+        return {...state, loadedNPCs: newLoadedNPCs}
     }
 
     if (action.type === RESOLVE_STUN) {

@@ -27,12 +27,12 @@ class RoundActions extends PureComponent {
         let deck = this.props.deck.slice();
 
 
-        this.props.loadedNPCs.forEach(NPC => {
+        this.props.loadedNPCs.forEach((NPC, index) => {
 
             if (NPC.status !== 'Winded' && NPC.status !== 'Dead') {
                 let { traits: { quickness: { level, diceType, dicePlus = 0 } } } = NPC
 
-                let modifiers = 0 - NPC.woundPenalties;
+                let modifiers = 0 - NPC.woundPenalties + NPC.otherModifiers;
                 let quicknessRoll = rollSkillCheck(level, diceType, target, dicePlus, modifiers)
 
 
@@ -49,7 +49,7 @@ class RoundActions extends PureComponent {
                 if (actionsNumber > 5) { actionsNumber = 5 }
 
                 for (let i = 0; i < actionsNumber; i++) {
-                    unsortedActions = unsortedActions.concat({ name: NPC.name + ' ( ' + (parseInt(NPC.index, 10) + 1) + ' )', card: deck[i], status: NPC.status, NPCindex: NPC.index })
+                    unsortedActions = unsortedActions.concat({ name: NPC.name + ' ( ' + (parseInt(index, 10) + 1) + ' )', card: deck[i], status: NPC.status, NPCindex: index })
                 }
 
                 deck = deck.slice(actionsNumber);
@@ -96,9 +96,9 @@ class RoundActions extends PureComponent {
                 NPCindex={item.NPCindex}/>)
         })
 
-        return (<div>
+        return (<div className='round-actions'>
             <button onClick={this.rollInitiative}>INITIATIVE!</button>
-            <ol>{mappedActions}</ol>
+            <ul>{mappedActions}</ul>
         </div>
         )
     }

@@ -11,6 +11,7 @@ class Action extends PureComponent {
             this.props.removeSelf(this.props.index, this.props.NPCindex, NPC.status === 'Stunned');
         }
 
+        if (NPC) {
         let status = '';
 
         if (NPC.status === 'Dead') {
@@ -22,9 +23,14 @@ class Action extends PureComponent {
         }
 
         return <li>
-            {this.props.card + ' ' + this.props.name + ' ' + status + ' '}
-            {this.props.index === 0 ? <button onClick={resolve}>Resolve</button> : ''}
+            <strong className='card'>{this.props.card}</strong>{' ' + this.props.name + ' ' + status + ' '}
+            {this.props.index === 0 ? <button onClick={resolve}>Ok</button> : ''}
         </li>
+
+        } else {
+            return ''
+        }
+
     }
 
 }
