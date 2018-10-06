@@ -65,7 +65,9 @@ class NPCcard extends PureComponent {
     }
 
     removeSelf = () => {
-        this.props.removeSelf(this.props.index);
+        if (window.confirm('Are you sure you want to remove this NPC?')) {
+            this.props.removeSelf(this.props.index);
+        }
     }
 
     removeStun = () => {
@@ -91,7 +93,8 @@ class NPCcard extends PureComponent {
 
     addWounds(event, wind = true, stun = true) {
 
-        if (this.props.stats.cannotBeWinded) {wind = false}
+        if (this.props.stats.cannotBeWinded) { wind = false }
+        if (this.props.stats.cannotBeStunned) { stun = false }
 
         let newWind = this.state.wind;
         let newStun = this.props.stats.stun;
@@ -100,8 +103,9 @@ class NPCcard extends PureComponent {
 
         newWounds[event.target.value] += this.state.woundsToAdd
 
+        if (newWounds[event.target.value] < 0) {newWounds[event.target.value] = 0}
 
-        if (wind) {
+        if (wind && this.state.woundsToAdd > -1) {
             if (this.state.woundsToAdd === 0) {
                 newWind -= Math.ceil(Math.random() * 3)
             } else {
@@ -112,7 +116,7 @@ class NPCcard extends PureComponent {
             alert('Wind lost :' + (this.state.wind - newWind))
         }
 
-        if (stun) {
+        if (stun && this.state.woundsToAdd > -1) {
             let target;
 
             switch (this.state.woundsToAdd) {
@@ -153,6 +157,8 @@ class NPCcard extends PureComponent {
         let status = this.props.stats.status;
         let highestWound = 0;
 
+        let woundsToKill = this.props.stats.woundsToKill || 5
+
         if (wounds) {
             let woundKeys = Object.keys(wounds);
 
@@ -160,8 +166,16 @@ class NPCcard extends PureComponent {
                 if (wounds[woundKeys[i]] > highestWound) { highestWound = wounds[woundKeys[i]] }
             }
 
-            if (wounds.head >= 5 || wounds.guts >= 5) {
-                status = 'Dead'
+            if (woundsToKill !== 'special') {
+                if (wounds.head >= woundsToKill || (wounds.guts >= woundsToKill && !this.props.stats.undead)) {
+                    status = 'Dead'
+                }
+            }
+
+            if (this.props.stats.undead) {
+                highestWound = highestWound - 2
+                if (highestWound < 0) { highestWound = 0 }
+                if (highestWound > 3) { highestWound = 3 }
             }
 
         } else {
@@ -313,7 +327,7 @@ class NPCcard extends PureComponent {
         return (<div className='npc-card'>
             {!this.state.collapsed ? <strong>
                 {this.props.stats.name + ' ( ' + (parseInt(this.props.index, 10) + 1) + ' )'}
-                <button onClick={this.removeSelf}className='remove-npc-button'>X</button></strong>
+                <button onClick={this.removeSelf} className='remove-npc-button'>X</button></strong>
                 :
                 <strong>{' ( ' + (parseInt(this.props.index, 10) + 1) + ' )'}</strong>}
 
@@ -346,7 +360,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         updateNPCStatus: (woundPenalties, otherModifiers, status, stun, index) => dispatch({ type: UPDATE_NPC_STATUS, woundPenalties: woundPenalties, otherModifiers: otherModifiers, status: status, stun: stun, index: index }),
-        removeSelf: (index) => dispatch({type: REMOVE_NPC, index: index})
+        removeSelf: (index) => dispatch({ type: REMOVE_NPC, index: index })
     }
 }
 

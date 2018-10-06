@@ -4,9 +4,9 @@
   left: 0;
   top: 50px;
   height: 100%;
-  width: 250px;
+  width: 200px;
   padding: 0.5em;
-  border: 1px solid black;
+  border: 2px ridge #462A16;
   overflow: auto;
   font-family: "Rye";
   background-color: #8D7764;
@@ -48,22 +48,23 @@
   border-radius: 8px;
 }
 .app .npcs-window {
+  box-sizing: border-box;
   margin-top: 50px;
-  margin-left: 250px;
-  padding: 1em;
+  margin-left: 200px;
+  padding: 1em 0 1em 0.5em;
 }
 .app .npcs-container {
+  box-sizing: border-box;
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
 }
 .app .npcs-container .npc-card {
+  box-sizing: border-box;
   border: 1px solid black;
-  display: inline-block;
-  max-width: 25%;
-  margin: 0.5em;
   padding: 1em;
-  flex: 20% auto auto;
+  max-width: 32%;
+  margin: 0.4em;
 }
 .app .npcs-container .npc-card .remove-npc-button {
   float: right;

@@ -172,7 +172,7 @@ const NPCs = [
         cannotBeWinded: true,
         traits: {
             deftness: { level: 1, diceType: 4 },
-            nimbleness: { level: 2, diceType: 10},
+            nimbleness: { level: 2, diceType: 10 },
             strength: { level: 5, diceType: 12, dicePlus: 4 },
             quickness: { level: 1, diceType: 10 },
             vigor: { level: 2, diceType: 12, dicePlus: 4 },
@@ -452,8 +452,107 @@ const NPCs = [
 
         },
         attacks: ['No weapon', 'Pistol: 3d6', 'Rifle: 4d8']
+    },
+    {
+        name: 'Cerberus',
+        pace: 8,
+        size: 6,
+        wind: 99,
+        cannotBeWinded: true,
+        cannotBeStunned: true,
+        undead: true,
+        woundsToKill: 'special',
+        traits: {
+            deftness: { level: 1, diceType: 4 },
+            nimbleness: { level: 3, diceType: 8 },
+            strength: { level: 3, diceType: 10 },
+            quickness: { level: 3, diceType: 10 },
+            vigor: { level: 2, diceType: 12 },
+            cognition: { level: 3, diceType: 4 },
+            knowledge: { level: 2, diceType: 6 },
+            mien: { level: 2, diceType: 10 },
+            smarts: { level: 3, diceType: 6 },
+            spirit: { level: 2, diceType: 6 }
+        },
+        aptitudes: {
+            corporeal: {
+                fightin: {
+                    level: 4,
+                    concentrations: [`brawlin'`]
+                },
+                sneak: {
+                    level: 3
+                }
+            },
+            mental: {
+                overawe: {
+                    level: 4
+                },
+                search: {
+                    level: 3
+                },
+                scrutinize: {
+                    level: 3
+                },
+                trackin: {
+                    level: 6
+                },
+                guts: {
+                    level: 4
+                }
+            }
+
+        },
+        attacks: [
+            'Bite: STR+1d8 x3 attacks',
+            'Knockdown: in addition to bites. See book.'
+        ]
+    },
+    {
+        name: 'Pit Glom',
+        pace: 8,
+        size: 10,
+        wind: 99,
+        cannotBeWinded: true,
+        cannotBeStunned: true,
+        undead: true,
+        woundsToKill: 'special',
+        traits: {
+            deftness: { level: 2, diceType: 6 },
+            nimbleness: { level: 2, diceType: 8 },
+            strength: { level: 2, diceType: 12, dicePlus: 2},
+            quickness: { level: 2, diceType: 10 },
+            vigor: { level: 2, diceType: 12, dicePlus: 2 },
+            cognition: { level: 2, diceType: 10 },
+            knowledge: { level: 1, diceType: 6 },
+            mien: { level: 1, diceType: 12 },
+            smarts: { level: 1, diceType: 6 },
+            spirit: { level: 1, diceType: 8 }
+        },
+        aptitudes: {
+            corporeal: {
+                fightin: {
+                    level: 6,
+                    concentrations: [`brawlin'`, 'club']
+                },
+                sneak: {
+                    level: 4
+                }
+            },
+            mental: {
+                overawe: {
+                    level: 5
+                }
+            }
+
+        },
+        attacks: [
+            'Claw: STR+1d6 x3 attacks',
+            '**Max 2 attacks on 1 opponent'
+        ],
+        note: '10 wounds to guts to kill'
     }
-    
+
 ]
 
 export default NPCs

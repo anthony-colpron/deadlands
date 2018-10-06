@@ -7,6 +7,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './Redux/STORE';
 
+
+
+
+
 ReactDOM.render(<Provider store={store}>
     <App />
 </Provider>, document.getElementById('root'));
@@ -15,3 +19,7 @@ ReactDOM.render(<Provider store={store}>
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+window.onbeforeunload = function() {
+    return "Êtes-vous certain?"
+}
