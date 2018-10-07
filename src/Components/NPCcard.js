@@ -174,9 +174,10 @@ class NPCcard extends PureComponent {
 
             if (this.props.stats.undead) {
                 highestWound = highestWound - 2
-                if (highestWound < 0) { highestWound = 0 }
                 if (highestWound > 3) { highestWound = 3 }
             }
+
+            if (highestWound < 0) { highestWound = 0 }
 
         } else {
             highestWound = this.props.stats.woundPenalties;
