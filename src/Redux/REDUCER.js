@@ -20,7 +20,7 @@ export default function reducer (state, action) {
 
     if (action.type === LOAD_NPC) {
 
-        let newNPC = JSON.parse(JSON.stringify(state.NPCs[action.index]))
+        let newNPC = JSON.parse(JSON.stringify(state.NPCs[action.listIndex].list[action.npcIndex]))
 
         //newNPC.index = state.loadedNPCs.length;
         newNPC.woundPenalties = 0;

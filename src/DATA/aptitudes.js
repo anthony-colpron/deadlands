@@ -30,6 +30,10 @@ const aptitudes = {
         name: `Bow`,
         associatedTrait: DEFTNESS
     },
+    chi: {
+        name: `Ch'i`,
+        associatedTrait: SPIRIT
+    },
     climbin: {
         name: `Climbin'`,
         associatedTrait: NIMBLENESS
@@ -72,7 +76,7 @@ const aptitudes = {
     },
     hexslingin: {
         name: `Hexslingin'`,
-        associatedTrait: SPECIAL
+        associatedTrait: SPIRIT //TODO: change at some point
     },
     horseRidin: {
         name: `Horse Ridin'`,

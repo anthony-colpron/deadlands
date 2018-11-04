@@ -10,11 +10,16 @@ class NPCsWindow extends PureComponent {
     constructor() {
         super()
 
-        this.state = {selectedNPCIndex: 0}
+        this.state = {selectedNPCIndex: 0, selectedNPCListIndex: 0}
+
     }
 
     loadNPC = () => {
-        this.props.loadNPC(parseInt(this.state.selectedNPCIndex, 10))
+        this.props.loadNPC(parseInt(this.state.selectedNPCListIndex, 10), parseInt(this.state.selectedNPCIndex, 10))
+    }
+
+    handleNPCListChange = (event) => {
+        this.setState({selectedNPCListIndex: event.target.value, selectedNPCIndex: 0})
     }
 
     handleNPCChange = (event) => {
@@ -23,7 +28,13 @@ class NPCsWindow extends PureComponent {
 
     render() {
 
-        let mappedNPCList = this.props.NPCs.map((npc, index) => {
+        
+
+        let mappedNPCListList = this.props.NPCs.map((list, index) => {
+            return <option value={index}>{list.name}</option>
+        })
+
+        let mappedNPCList = this.props.NPCs[this.state.selectedNPCListIndex].list.map((npc, index) => {
             return <option value={index}>{npc.name}</option>
         })
 
@@ -32,6 +43,7 @@ class NPCsWindow extends PureComponent {
         })
 
         return (<div className='npcs-window'>
+            <select value={this.state.selectedNPCListIndex} onChange={this.handleNPCListChange}>{mappedNPCListList}</select>&nbsp;
             <select value={this.state.selectedNPCIndex} onChange={this.handleNPCChange}>{mappedNPCList}</select>
             <button onClick={this.loadNPC}>Add NPC</button>
             <div className='npcs-container'>
@@ -47,7 +59,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        loadNPC: (index) => dispatch({ type: LOAD_NPC, index: index })
+        loadNPC: (listIndex, npcIndex) => dispatch({ type: LOAD_NPC, listIndex: listIndex, npcIndex: npcIndex })
     }
 }
 
