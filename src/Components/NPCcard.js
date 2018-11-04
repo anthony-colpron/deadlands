@@ -172,9 +172,14 @@ class NPCcard extends PureComponent {
                 }
             }
 
+            // TODO: refaire les checks de undead et thick skinned mieux.
             if (this.props.stats.undead) {
                 highestWound = highestWound - 2
                 if (highestWound > 3) { highestWound = 3 }
+            }
+            if (this.props.stats.thickSkinned) {
+                highestWound = highestWound - 1
+                if (highestWound > 4) { highestWound = 4 }
             }
 
             if (highestWound < 0) { highestWound = 0 }
