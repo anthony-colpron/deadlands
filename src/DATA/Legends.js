@@ -137,14 +137,14 @@ const legends = {
             attacks: [
                 'Winchester 76: 4d8+2',
                 'Tomahawk: STR+2d6',
-                `Cloak o' evil 3 (-6 to hit)`,
-                `Dark protection 2 (2 Armor)`,
+                `Cloak o' evil 3 (-6 to hit) 10 rounds`,
+                `Dark protection 2 (2 Armor) 10 rounds`,
                 `Stun 2 (poisoned knife)`,
                 `Forewarnin' 2`,
                 `Scrye 3`,
                 `Stormcall 2 (sandstorm)`
             ],
-            note: 'Armor: -2 (Light armor). Level headed.'
+            note: 'Armor: -2 (Light armor). +2 jet stun. Level headed.'
         },
     ]
 };
