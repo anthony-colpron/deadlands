@@ -130,7 +130,145 @@ const typicalNPCs = {
 
             },
             attacks: ['No weapon', 'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8']
-        }
+        },
+        {
+            name: 'Typical Pirate',
+            pace: 8,
+            size: 6,
+            wind: 12,
+            traits: {
+                deftness: { level: 3, diceType: 6 },
+                nimbleness: { level: 3, diceType: 6 },
+                strength: { level: 2, diceType: 6 },
+                quickness: { level: 3, diceType: 6 },
+                vigor: { level: 3, diceType: 6 },
+                cognition: { level: 2, diceType: 6 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 3, diceType: 6 },
+                smarts: { level: 2, diceType: 6 },
+                spirit: { level: 1, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 1
+                    },
+                    fightin: {
+                        level: 4,
+                        concentrations: ['knife', 'sword', 'brawlin']
+                    },
+                    dodge: {
+                        level: 2
+                    },
+                    swimmin: {
+                        level: 3
+                    },
+                    drivin: {
+                        level: 2,
+                        concentrations: ['boat']
+                    },
+                    shootin: {
+                        level: 3,
+                        concentrations: ['pistol', 'shotgun', 'rifle']
+                    },
+                    sneak: {
+                        level: 3
+                    }
+                },
+                mental: {
+                    gamblin: {
+                        level: 3
+                    },
+                    guts: {
+                        level: 3
+                    },
+                    overawe: {
+                        level: 2
+                    },
+                    scroungin: {
+                        level: 3
+                    },
+                    search: {
+                        level: 3
+                    },
+                    survival: {
+                        level: 4,
+                        concentrations: ['great maze']
+                    }
+                }
+
+            },
+            attacks: ['No weapon', 'Sword: STR + 2d8', 'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8']
+        },
+        {
+            name: `Kang's Pirate`,
+            pace: 8,
+            size: 6,
+            wind: 12,
+            traits: {
+                deftness: { level: 2, diceType: 6 },
+                nimbleness: { level: 2, diceType: 8 },
+                strength: { level: 2, diceType: 8 },
+                quickness: { level: 3, diceType: 6 },
+                vigor: { level: 3, diceType: 6 },
+                cognition: { level: 1, diceType: 8 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 3, diceType: 6 },
+                smarts: { level: 2, diceType: 6 },
+                spirit: { level: 2, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 1
+                    },
+                    fightin: {
+                        level: 4,
+                        concentrations: ['sword', 'martial arts: eagle claw']
+                    },
+                    dodge: {
+                        level: 2
+                    },
+                    swimmin: {
+                        level: 3
+                    },
+                    drivin: {
+                        level: 2,
+                        concentrations: ['boat']
+                    },
+                    shootin: {
+                        level: 3,
+                        concentrations: ['pistol', 'rifle']
+                    },
+                    sneak: {
+                        level: 3
+                    }
+                },
+                mental: {
+                    gamblin: {
+                        level: 2
+                    },
+                    guts: {
+                        level: 3
+                    },
+                    ridicule: {
+                        level: 2
+                    },
+                    streetwise: {
+                        level: 3
+                    },
+                    search: {
+                        level: 3
+                    },
+                    survival: {
+                        level: 4,
+                        concentrations: ['great maze']
+                    }
+                }
+
+            },
+            attacks: ['No weapon: STR + 1d6', 'Sword: STR + 2d8', 'Pistol: 3d6', 'Rifle: 4d8']
+        },
     ]
 };
 

@@ -27,6 +27,9 @@ const allies = {
                         level: 6,
                         concentrations: ['wing chun']
                     },
+                    swimmin: {
+                        level: 1,
+                    }
                 },
                 mental: {
                     chi: {
@@ -50,6 +53,76 @@ const allies = {
             'Closing the gate 4',
             'Step back to ward off monkey 4',
             'Weapon of opportunity 5'
+            ]
+        },
+        {
+            name: `Seymour 'Spicy' Farnham`,
+            pace: 12,
+            size: 6,
+            wind: 24,
+            traits: {
+                deftness: { level: 2, diceType: 10 },
+                nimbleness: { level: 2, diceType: 12 },
+                strength: { level: 4, diceType: 6 },
+                quickness: { level: 4, diceType: 10 },
+                vigor: { level: 3, diceType: 6 },
+                cognition: { level: 3, diceType: 8 },
+                knowledge: { level: 2, diceType: 8 },
+                mien: { level: 2, diceType: 6 },
+                smarts: { level: 2, diceType: 8 },
+                spirit: { level: 1, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 3,
+                    },
+                    drivin: {
+                        level: 3,
+                        concentrations: ['boat']
+                    },
+                    fightin: {
+                        level: 4,
+                        concentrations: ['Sword']
+                    },
+                    shootin: {
+                        level: 3,
+                        concentrations: ['Shotgun, Automatics']
+                    },
+                    sneak: {
+                        level: 3
+                    },
+                    swimmin: {
+                        level: 3,
+                    },
+                },
+                mental: {
+                    areaKnowledge: {
+                        level: 3,
+                        concentrations: ['Great Maze']
+                    },
+                    gamblin: {
+                        level: 2,
+                    },
+                    guts: {
+                        level: 3
+                    },
+                    overawe: {
+                        level: 2,
+                    },
+                    search: {
+                        level: 2,
+                    },
+                    tinkerin: {
+                        level: 3,
+                    }
+                }
+            },
+            attacks: [
+            'No weapon',
+            'Sword: STR + 2d8',
+            'Shotgun: *d6',
+            'Boat Gatling Gun: X * 3d8',
             ]
         },
         {
