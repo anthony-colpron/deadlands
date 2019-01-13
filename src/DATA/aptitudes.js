@@ -102,6 +102,10 @@ const aptitudes = {
         name: `Medicine`,
         associatedTrait: KNOWLEDGE
     },
+    meditation: {
+        name: `Meditation`,
+        associatedTrait: SPIRIT
+    },
     overawe: {
         name: `Overawe`,
         associatedTrait: MIEN
