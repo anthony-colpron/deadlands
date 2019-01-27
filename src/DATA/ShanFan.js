@@ -454,6 +454,189 @@ const ShanFan = {
             'Smoke Parts for Iron', 'Tiger Shakes its Mane', 'The Slittering Eel', 'Get up', 'Flying kick', 'Spinning kick'],
             notes: 'Strain: 20 | Weapon Def: 3',
         },
+        {
+            name: 'Ying-Ssi Chieh Tang',
+            pace: 10,
+            size: 6,
+            wind: 18,
+            traits: {
+                deftness: { level: 3, diceType: 10 },
+                nimbleness: { level: 2, diceType: 10 },
+                strength: { level: 4, diceType: 18 },
+                quickness: { level: 4, diceType: 10 },
+                vigor: { level: 2, diceType: 10 },
+                cognition: { level: 3, diceType: 8 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 2, diceType: 6 },
+                smarts: { level: 3, diceType: 6 },
+                spirit: { level: 1, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 4,
+                        concentrations: ['Tan Tui']
+                    },
+                    sneak: {
+                        level: 2
+                    },
+                    bow: {
+                        level: 3,
+                    },
+                    throwin: {
+                        level: 3,
+                        concentrations: ['Unbalanced', 'Bullets']
+                    }
+                },
+                mental: {
+                    areaKnowledge: {
+                        level: 2,
+                        concentrations: ['Shan Fan'],
+                    },
+                    guts: {
+                        level: 4
+                    },
+                    languages: {
+                        level: 2,
+                        concentrations: ['english', 'cantonese'],
+                    },
+                    overawe: {
+                        level: 2,
+                    },
+                    chi: {
+                        level: 5,
+                    },
+                    meditation: {
+                        level: 3,
+                    },
+                }
+
+            },
+            attacks: ['Flying Claw: STR + 2d6', 'Monkey goes to the mountain', 'Abundance of pecking birds',
+            'Blood of gold', 'Crane guides the arrows', 'Seize the pearl of death', 'Sweep', 'Get up', 'Flying kick', 'Spinning kick'],
+            notes: 'Strain: 10',
+        },
+        {
+            name: 'Lu Fa Wong',
+            pace: 8,
+            size: 6,
+            wind: 12,
+            traits: {
+                deftness: { level: 2, diceType: 6 },
+                nimbleness: { level: 2, diceType: 8 },
+                strength: { level: 2, diceType: 8 },
+                quickness: { level: 2, diceType: 8 },
+                vigor: { level: 2, diceType: 6 },
+                cognition: { level: 2, diceType: 8 },
+                knowledge: { level: 3, diceType: 10 },
+                mien: { level: 1, diceType: 6 },
+                smarts: { level: 3, diceType: 10 },
+                spirit: { level: 1, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 3,
+                        concentrations: ['wing chun']
+                    },
+                },
+                mental: {
+                    areaKnowledge: {
+                        level: 3,
+                        concentrations: ['Shan Fan'],
+                    },
+                    bluff: {
+                        level: 5,
+                    },
+                    guts: {
+                        level: 2
+                    },
+                    languages: {
+                        level: 2,
+                        concentrations: ['english', 'cantonese'],
+                    },
+                    alchemy: {
+                        level: 4,
+                    },
+                    science: {
+                        level: 4,
+                        concentrations: ['Physics', 'Chemistry'],
+                    }
+                }
+
+            },
+            attacks: ['No weapon: STR + 1d6'],
+        },
+        {
+            name: '108 rider',
+            pace: 8,
+            size: 6,
+            wind: 14,
+            traits: {
+                deftness: { level: 2, diceType: 8 },
+                nimbleness: { level: 2, diceType: 8 },
+                strength: { level: 2, diceType: 8 },
+                quickness: { level: 2, diceType: 8 },
+                vigor: { level: 2, diceType: 8 },
+                cognition: { level: 2, diceType: 6 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 1, diceType: 8 },
+                smarts: { level: 1, diceType: 8 },
+                spirit: { level: 1, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 3,
+                        concentrations: ['wing chun']
+                    },
+                    sneak: {
+                        level: 2
+                    },
+                    shootin: {
+                        level: 3,
+                        concentrations: ['pistol', 'rifle']
+                    },
+                    bow: {
+                        level: 4,
+                    },
+                    horseRidin: {
+                        level: 4
+                    },
+                    teamster: {
+                        level: 4
+                    }
+                },
+                mental: {
+                    areaKnowledge: {
+                        level: 3,
+                        concentrations: ['Shan Fan'],
+                    },
+                    bluff: {
+                        level: 2,
+                    },
+                    gamblin: {
+                        level: 3,
+                    },
+                    guts: {
+                        level: 2
+                    },
+                    languages: {
+                        level: 2,
+                        concentrations: ['english', 'cantonese'],
+                    },
+                    ridicule: {
+                        level: 2,
+                    },
+                    streetwise: {
+                        level: 4,
+                        concentrations: ['Chinese triads'],
+                    }
+                }
+
+            },
+            attacks: ['No weapon: STR + 1d6', 'Pistol: 3d6', 'Bow: STR + 1d6'],
+        },
     ],
 };
 

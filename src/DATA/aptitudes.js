@@ -6,6 +6,10 @@ const aptitudes = {
         name: `Academia`,
         associatedTrait: KNOWLEDGE
     },
+    alchemy: {
+        name: `Alchemy`,
+        associatedTrait: KNOWLEDGE,
+    },
     animalWranglin: {
         name: `Animal Wranglin'`,
         associatedTrait: MIEN
