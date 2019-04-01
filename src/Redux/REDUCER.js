@@ -1,4 +1,4 @@
-import { SHUFFLE, DEAL_ACTION, LOAD_NPC, UPDATE_NPC_STATUS, RESOLVE_STUN, REMOVE_NPC } from "./ACTIONS";
+import { SHUFFLE, DEAL_ACTION, LOAD_NPC, UPDATE_NPC_STATUS, RESOLVE_STUN, REMOVE_NPC, LOAD_FILE } from "./ACTIONS";
 import { shuffleDeck } from '../Tools/functions'
 import deck from '../Tools/deck';
 
@@ -16,6 +16,11 @@ export default function reducer (state, action) {
         let newDeck = state.deck.slice(action.number)
 
         return {...state, deck: newDeck}
+    }
+
+    if (action.type === LOAD_FILE) {
+
+        return { ...state, NPCs: action.NPCs }
     }
 
     if (action.type === LOAD_NPC) {
