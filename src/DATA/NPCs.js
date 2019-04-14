@@ -5,6 +5,7 @@ import typicalNPCs from './TypicalNPCs';
 import heartOfTheMatter from './HeartOfTheMatter';
 import allies from './Allies';
 import shanFan from './ShanFan';
+import judgeEscort from './JudgeEscort';
 
 const NPCs = [
     typicalNPCs,
@@ -13,7 +14,8 @@ const NPCs = [
     animals,
     shanFan,
     legends,
-    heartOfTheMatter
+    heartOfTheMatter,
+    judgeEscort,
 ]
 
 export default NPCs;

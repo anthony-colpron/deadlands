@@ -35,7 +35,109 @@ const abominations = {
                 'Tentacles: STR, may attack with each of its 8 tentacles'
             ],
             note: 'Armor: Body 2, Tentacles 1. 8 feet diameter core.'
-        }
+        },
+        {
+            name: 'Walking dead',
+            pace: 8,
+            size: 6,
+            wind: 99,
+            cannotBeWinded: true,
+            cannotBeStunned: true,
+            undead: true,
+            woundsToKill: 'special',
+            traits: {
+                deftness: { level: 2, diceType: 6 },
+                nimbleness: { level: 2, diceType: 8 },
+                strength: { level: 3, diceType: 8 },
+                quickness: { level: 2, diceType: 10 },
+                vigor: { level: 2, diceType: 8 },
+                cognition: { level: 2, diceType: 10 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 1, diceType: 12 },
+                smarts: { level: 1, diceType: 6 },
+                spirit: { level: 1, diceType: 4 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 3,
+                        concentrations: [`brawlin'`]
+                    },
+                    shootin: {
+                        level: 2,
+                        concentrations: ['pistol', 'rifle', 'shotgun'],
+                    },
+                    sneak: {
+                        level: 3,
+                    },
+                    swimmin: {
+                        level: 1,
+                    },
+                },
+                mental: {
+                    overawe: {
+                        level: 5
+                    }
+                }
+
+            },
+            attacks: [
+                'Bite: STR',
+                'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8',
+            ],
+            note: 'Maim head to kill',
+        },
+        {
+            name: 'Slow Walking dead',
+            pace: 8,
+            size: 6,
+            wind: 99,
+            cannotBeWinded: true,
+            cannotBeStunned: true,
+            undead: true,
+            woundsToKill: 'special',
+            traits: {
+                deftness: { level: 2, diceType: 6 },
+                nimbleness: { level: 2, diceType: 8 },
+                strength: { level: 3, diceType: 8 },
+                quickness: { level: 2, diceType: 6 },
+                vigor: { level: 2, diceType: 8 },
+                cognition: { level: 2, diceType: 10 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 1, diceType: 12 },
+                smarts: { level: 1, diceType: 6 },
+                spirit: { level: 1, diceType: 4 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 3,
+                        concentrations: [`brawlin'`]
+                    },
+                    shootin: {
+                        level: 2,
+                        concentrations: ['pistol', 'rifle', 'shotgun'],
+                    },
+                    sneak: {
+                        level: 3,
+                    },
+                    swimmin: {
+                        level: 1,
+                    },
+                },
+                mental: {
+                    overawe: {
+                        level: 5
+                    }
+                }
+
+            },
+            attacks: [
+                'Bite: STR',
+                'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8',
+            ],
+            note: 'Maim head to kill',
+        },
     ]
 };
 
