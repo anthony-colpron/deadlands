@@ -19,14 +19,16 @@ const styles = {
 
 class Trait extends PureComponent {
 	static propTypes = {
-		level: PropTypes.number.isRequired,
-		diceType: PropTypes.number.isRequired,
+		level: PropTypes.number,
+		diceType: PropTypes.number,
 		dicePlus: PropTypes.number,
 		onUpdateTrait: PropTypes.func.isRequired,
 		title: PropTypes.string.isRequired,
 	}
 
 	static defaultProps = {
+		level: 2,
+		diceType: 6,
 		dicePlus: 0,
 	}
 
