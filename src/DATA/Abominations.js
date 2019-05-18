@@ -138,6 +138,49 @@ const abominations = {
             ],
             note: 'Maim head to kill',
         },
+        {
+            name: 'Werewolf',
+            pace: 24,
+            size: 6,
+            wind: 16,
+            traits: {
+                deftness: { level: 2, diceType: 8 },
+                nimbleness: { level: 2, diceType: 12, dicePlus: 4 },
+                strength: { level: 2, diceType: 12 },
+                quickness: { level: 4, diceType: 12, dicePlus: 4 },
+                vigor: { level: 2, diceType: 10 },
+                cognition: { level: 2, diceType: 12 },
+                knowledge: { level: 1, diceType: 4 },
+                mien: { level: 3, diceType: 10 },
+                smarts: { level: 1, diceType: 6 },
+                spirit: { level: 1, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 6,
+                        concentrations: [`brawlin'`]
+                    },
+                    dodge: {
+                        level: 4,
+                    },
+                    sneak: {
+                        level: 3,
+                    },
+                },
+                mental: {
+                    overawe: {
+                        level: 5
+                    }
+                }
+
+            },
+            attacks: [
+                'Bite: STR, Claws: STR + 1d6',
+                'Infection',
+            ],
+            note: 'Weakness: silver',
+        },
     ]
 };
 
