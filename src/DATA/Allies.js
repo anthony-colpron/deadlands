@@ -215,7 +215,85 @@ const allies = {
             'Geyser', 'Ghost rider',
             'Dead shot', 'Ghost bullets', `Hail o' lead`, 'Liberated Ammo', 'Long shot', `Smokewagon Lightin'`, 'Two-Gun Mojo'
             ]
-        }
+        },
+        {
+            name: `Big Nose Kate`,
+            pace: 6,
+            size: 6,
+            wind: 14,
+            traits: {
+                deftness: { level: 3, diceType: 8 },
+                nimbleness: { level: 4, diceType: 6 },
+                strength: { level: 1, diceType: 6 },
+                quickness: { level: 3, diceType: 6 },
+                vigor: { level: 2, diceType: 6 },
+                cognition: { level: 4, diceType: 10 },
+                knowledge: { level: 1, diceType: 8 },
+                mien: { level: 2, diceType: 10 },
+                smarts: { level: 4, diceType: 10 },
+                spirit: { level: 3, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    lockpickin: {
+                        level: 2,
+                    },
+                    fightin: {
+                        level: 2,
+                        concentrations: ['knife']
+                    },
+                    shootin: {
+                        level: 3,
+                        concentrations: ['pistol']
+                    },
+                    sneak: {
+                        level: 4,
+                    },
+                },
+                mental: {
+                    areaKnowledge: {
+                        level: 2,
+                        concentrations: ['Arizona', 'Kansas']
+                    },
+                    bluff: {
+                        level: 3,
+                    },
+                    gamblin: {
+                        level: 2,
+                    },
+                    guts: {
+                        level: 2
+                    },
+                    medicine: {
+                        level: 3,
+                        concentrations: ['general'],
+                    },
+                    overawe: {
+                        level: 3,
+                    },
+                    ridicule: {
+                        level: 2,
+                    },
+                    scroungin: {
+                        level: 3,
+                    },
+                    search: {
+                        level: 3,
+                    },
+                    scrutinize: {
+                        level: 3,
+                    },
+                    streetwise: {
+                        level: 3,
+                    },
+                },
+            },
+            attacks: [
+            'No weapon',
+            'Pistol: 3d6',
+            'Derringer: 3d6',
+            ]
+        },
     ]
 };
 
