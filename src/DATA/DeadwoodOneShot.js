@@ -29,7 +29,7 @@ const deadwoodOneShot = {
                     },
                     shootin: {
                         level: 3,
-                        concentrations: ['pistol', 'rifle', 'shotgun']
+                        concentrations: ['pistol']
                     },
                 },
                 mental: {
@@ -60,7 +60,7 @@ const deadwoodOneShot = {
                 }
 
             },
-            attacks: ['No weapon: STR + 1d6', 'Pistol: 3d6', 'Shotgun: *d6'],
+            attacks: ['No weapon: STR + 1d6', 'Sword: STR + 2d8'],
         },
         {
             name: 'Cho Wa Shu',
@@ -83,7 +83,7 @@ const deadwoodOneShot = {
                 corporeal: {
                     fightin: {
                         level: 4,
-                        concentrations: ['wing chun']
+                        concentrations: ['wing chun', 'sword']
                     },
                     sneak: {
                         level: 2
