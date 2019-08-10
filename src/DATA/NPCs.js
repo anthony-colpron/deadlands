@@ -6,6 +6,7 @@ import heartOfTheMatter from './HeartOfTheMatter';
 import allies from './Allies';
 import shanFan from './ShanFan';
 import judgeEscort from './JudgeEscort';
+import deadwoodOneShot from './DeadwoodOneShot';
 
 const NPCs = [
     typicalNPCs,
@@ -16,6 +17,7 @@ const NPCs = [
     legends,
     heartOfTheMatter,
     judgeEscort,
+    deadwoodOneShot,
 ]
 
 export default NPCs;

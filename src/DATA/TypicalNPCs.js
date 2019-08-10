@@ -349,6 +349,74 @@ const typicalNPCs = {
             },
             attacks: ['No weapon', 'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8']
         },
+        {
+            name: 'Typical Indian Brave',
+            pace: 10,
+            size: 6,
+            wind: 16,
+            traits: {
+                deftness: { level: 3, diceType: 8 },
+                nimbleness: { level: 2, diceType: 10 },
+                strength: { level: 3, diceType: 8 },
+                quickness: { level: 4, diceType: 6 },
+                vigor: { level: 3, diceType: 8 },
+                cognition: { level: 2, diceType: 6 },
+                knowledge: { level: 2, diceType: 6 },
+                mien: { level: 2, diceType: 8 },
+                smarts: { level: 3, diceType: 6 },
+                spirit: { level: 2, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 1
+                    },
+                    bow: {
+                        level: 3,
+                    },
+                    fightin: {
+                        level: 3,
+                        concentrations: [`brawlin'`, 'war club']
+                    },
+                    dodge: {
+                        level: 2
+                    },
+                    horseRidin: {
+                        level: 2
+                    },
+                    shootin: {
+                        level: 3,
+                        concentrations: ['rifle']
+                    },
+                    sneak: {
+                        level: 2
+                    },
+                },
+                mental: {
+                    guts: {
+                        level: 2,
+                    },
+                    overawe: {
+                        level: 2
+                    },
+                    search: {
+                        level: 2
+                    },
+                    survival: {
+                        level: 4,
+                        concentrations: ['home environment'],
+                    },
+                    trackin: {
+                        level: 2,
+                    },
+                    faith: {
+                        level: 2,
+                    },
+                },
+            },
+            attacks: ['No weapon', 'War club: STR + 1d6, +1 DB', 'Bow: STR + 1d6', 'Rifle: 4d8'],
+            notes: ['Fleet footed, Stubborn']
+        },
     ]
 };
 
