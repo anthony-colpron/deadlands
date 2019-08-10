@@ -624,7 +624,7 @@ const deadwoodOneShot = {
                 },
             },
             attacks: ['No weapon', 'Pistol: 3d6', 'Rifle: 4d8'],
-            notes: ['2 chips rouges, 1 chip blanche, Purty, Luck of the irish'],
+            notes: ['2 chips rouges, 1 chip blanche, Purty, Luck of the irish, Nerves of steel'],
         },
     ]
 };
