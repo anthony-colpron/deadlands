@@ -181,6 +181,127 @@ const abominations = {
             ],
             note: 'Weakness: silver',
         },
+        {
+            name: 'Small Terrantula',
+            pace: 6,
+            size: 1,
+            wind: 8,
+            traits: {
+                deftness: { level: 1, diceType: 4 },
+                nimbleness: { level: 2, diceType: 10 },
+                strength: { level: 1, diceType: 4, dicePlus: -2 },
+                quickness: { level: 2, diceType: 8 },
+                vigor: { level: 1, diceType: 4 },
+                cognition: { level: 1, diceType: 4 },
+                knowledge: { level: 1, diceType: 4 },
+                mien: { level: 1, diceType: 4 },
+                smarts: { level: 1, diceType: 4 },
+                spirit: { level: 1, diceType: 4 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 1,
+                        concentrations: [`brawlin'`]
+                    },
+                    sneak: {
+                        level: 3,
+                    },
+                    climbin: {
+                        level: 2,
+                    },
+                },
+                mental: {
+                }
+            },
+            attacks: [
+                'Bite: 1d4 + Poison',
+                'Poison: Vigor TN 5 : Paralyze 1d6 hours',
+            ],
+            note: '',
+        },
+        {
+            name: 'Large Terrantula',
+            pace: 10,
+            size: 6,
+            wind: 12,
+            traits: {
+                deftness: { level: 1, diceType: 4 },
+                nimbleness: { level: 2, diceType: 12 },
+                strength: { level: 3, diceType: 8 },
+                quickness: { level: 2, diceType: 10 },
+                vigor: { level: 3, diceType: 6 },
+                cognition: { level: 1, diceType: 6 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 2, diceType: 6 },
+                smarts: { level: 2, diceType: 4 },
+                spirit: { level: 2, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 4,
+                        concentrations: [`brawlin'`]
+                    },
+                    sneak: {
+                        level: 4,
+                    },
+                    climbin: {
+                        level: 2,
+                    },
+                },
+                mental: {
+                }
+            },
+            attacks: [
+                'Bite: STR + Poison (Vigor TN9)',
+                'Poison: 1d6. Fail: 2d6 to guts and location per round',
+            ],
+            note: '',
+        },
+        {
+            name: 'Mutated Rat',
+            pace: 16,
+            size: 3,
+            wind: 10,
+            traits: {
+                deftness: { level: 1, diceType: 4 },
+                nimbleness: { level: 2, diceType: 6 },
+                strength: { level: 1, diceType: 6 },
+                quickness: { level: 3, diceType: 8 },
+                vigor: { level: 3, diceType: 6 },
+                cognition: { level: 2, diceType: 8 },
+                knowledge: { level: 2, diceType: 4 },
+                mien: { level: 2, diceType: 6 },
+                smarts: { level: 2, diceType: 4 },
+                spirit: { level: 1, diceType: 4 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 4,
+                        concentrations: [`brawlin'`]
+                    },
+                    sneak: {
+                        level: 5,
+                    },
+                    climbin: {
+                        level: 2,
+                    },
+                },
+                mental: {
+                    overawe: {
+                        level: 5,
+                    },
+                }
+            },
+            attacks: [
+                'Bite: STR + disease',
+                'Disease: Vigor TN9: Ghost Rock Fever',
+                'Terror 9 on first sight',
+            ],
+            note: '',
+        },
     ]
 };
 
