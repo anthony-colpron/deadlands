@@ -223,7 +223,7 @@ const gomorra = {
                 }
 
             },
-            attacks: ['No weapon', 'DA PEacemaker: 3d6'],
+            attacks: ['No weapon', 'DA PEacemaker: 3d6', 'Spook 2', 'Jinx 2', 'Ghost 3'],
             note: 'Grit: 1, Sand 2, Thick skinned',
         },
         {

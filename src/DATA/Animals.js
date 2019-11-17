@@ -73,8 +73,8 @@ const animals = {
                     },
                 },
             },
-            attacks: ['Jaws: STR + 1d8'],
-            note: 'Armor: 1'
+            attacks: ['Bite: STR + 1d6', 'Claws: STR'],
+            note: ''
         },
     ]
 };
