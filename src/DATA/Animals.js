@@ -34,6 +34,48 @@ const animals = {
             attacks: ['Jaws: STR + 1d8'],
             note: 'Armor: 1'
         },
+        {
+            name: 'Wolf',
+            pace: 20,
+            size: 6,
+            wind: 18,
+            traits: {
+                deftness: { level: 1, diceType: 4 },
+                nimbleness: { level: 3, diceType: 10 },
+                strength: { level: 2, diceType: 8 },
+                quickness: { level: 2, diceType: 8 },
+                vigor: { level: 3, diceType: 10 },
+                cognition: { level: 2, diceType: 6 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 3, diceType: 6 },
+                smarts: { level: 1, diceType: 6 },
+                spirit: { level: 3, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 4,
+                        concentrations: ['brawlin']
+                    },
+                    sneak: {
+                        level: 2
+                    }
+                },
+                mental: {
+                    overawe: {
+                        level: 2,
+                    },
+                    search: {
+                        level: 3,
+                    },
+                    trackin: {
+                        level: 5,
+                    },
+                },
+            },
+            attacks: ['Jaws: STR + 1d8'],
+            note: 'Armor: 1'
+        },
     ]
 };
 
