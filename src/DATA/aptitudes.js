@@ -78,9 +78,25 @@ const aptitudes = {
         name: `Guts`,
         associatedTrait: SPIRIT
     },
-    hexslingin: {
-        name: `Hexslingin'`,
-        associatedTrait: SPIRIT //TODO: change at some point
+    hexslinginSpirit: {
+        name: `Hex Spirit`,
+        associatedTrait: SPIRIT
+    },
+    hexslinginMien: {
+        name: `Hex Mien`,
+        associatedTrait: MIEN
+    },
+    hexslinginCognition: {
+        name: `Hex Cog`,
+        associatedTrait: COGNITION
+    },
+    hexslinginSmarts: {
+        name: `Hex Smarts`,
+        associatedTrait: SMARTS
+    },
+    hexslinginKnowledge: {
+        name: `Hex Know`,
+        associatedTrait: KNOWLEDGE
     },
     horseRidin: {
         name: `Horse Ridin'`,

@@ -7,6 +7,7 @@ import allies from './Allies';
 import shanFan from './ShanFan';
 import judgeEscort from './JudgeEscort';
 import deadwoodOneShot from './DeadwoodOneShot';
+import gomorra from './Gomorra';
 
 const NPCs = [
     typicalNPCs,
@@ -18,6 +19,7 @@ const NPCs = [
     heartOfTheMatter,
     judgeEscort,
     deadwoodOneShot,
+    gomorra,
 ]
 
 export default NPCs;
