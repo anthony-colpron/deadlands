@@ -899,6 +899,136 @@ const gomorra = {
             },
             attacks: ['No weapon', 'DB Shotgun: *d6', 'Spencer Carbine: 4d8']
         },
+        {
+            name: 'Big Jake',
+            pace: 8,
+            size: 5,
+            wind: 12,
+            traits: {
+                deftness: { level: 2, diceType: 10 },
+                nimbleness: { level: 3, diceType: 8 },
+                strength: { level: 2, diceType: 6 },
+                quickness: { level: 2, diceType: 8 },
+                vigor: { level: 3, diceType: 6 },
+                cognition: { level: 3, diceType: 10 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 3, diceType: 6 },
+                smarts: { level: 2, diceType: 8 },
+                spirit: { level: 1, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 1
+                    },
+                    drivin: {
+                        level: 4,
+                        concentrations: ['boat'],
+                    },
+                    filchin: {
+                        level: 4,
+                    },
+                    lockpickin: {
+                        level: 2
+                    },
+                    shootin: {
+                        level: 4,
+                        concentrations: ['pistol']
+                    },
+                    sneak: {
+                        level: 2,
+                    },
+                    swimmin: {
+                        level: 4,
+                    },
+                },
+                mental: {
+                    ridicule: {
+                        level: 2
+                    },
+                    scroungin: {
+                        level: 2
+                    },
+                    scrutinize: {
+                        level: 4
+                    },
+                    trade: {
+                        level: 4,
+                        concentrations: ['dock worker']
+                    },
+                }
+
+            },
+            attacks: ['No weapon', 'Pistol: 3d6', 'Spencer Carbine: 4d8'],
+            note: 'Scrawny (Size 5), Big ears'
+        },
+        {
+            name: 'Scooter',
+            pace: 10,
+            size: 7,
+            wind: 28,
+            traits: {
+                deftness: { level: 3, diceType: 10 },
+                nimbleness: { level: 3, diceType: 10 },
+                strength: { level: 4, diceType: 12 },
+                quickness: { level: 2, diceType: 8 },
+                vigor: { level: 4, diceType: 12 },
+                cognition: { level: 2, diceType: 10 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 1, diceType: 6 },
+                smarts: { level: 2, diceType: 8 },
+                spirit: { level: 2, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 4,
+                        concentrations: [`knife`]
+                    },
+                    shootin: {
+                        level: 5,
+                        concentrations: ['rifle']
+                    },
+                    speedLoad: {
+                        level: 3,
+                        concentrations: ['rifle']
+                    },
+                    swimmin: {
+                        level: 3,
+                    }
+                },
+                mental: {
+                    bluff: {
+                        level: 2
+                    },
+                    guts: {
+                        level: 2
+                    },
+                    overawe: {
+                        level: 3
+                    },
+                    persuasion: {
+                        level: 2
+                    },
+                    survival: {
+                        level: 2
+                    },
+                    search: {
+                        level: 3
+                    },
+                    trackin: {
+                        level: 2
+                    },
+                    trade: {
+                        level: 3,
+                        concentrations: ['dock worker']
+                    },
+                }
+
+            },
+            attacks: ['No weapon', 'Modified Remington 1871: 6d10', 'Bowie Knife: STR + 1d6'],
+            note: 'Brawny (Size 7), Nevers of steel, Tough as nail 5'
+        },
     ]
 };
 
