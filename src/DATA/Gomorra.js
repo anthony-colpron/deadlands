@@ -631,10 +631,14 @@ const gomorra = {
                         concentrations: ['pistol']
                     },
                     sneak: {
-                        level: 2,
+                        level: 4,
                     },
                 },
                 mental: {
+                    academia: {
+                        level: 2,
+                        concentrations: ['history']
+                    },
                     gamblin: {
                         level: 2,
                     },
@@ -694,7 +698,7 @@ const gomorra = {
                         concentrations: ['balanced', 'unbalanced'],
                     },
                     sneak: {
-                        level: 2,
+                        level: 4,
                     },
                 },
                 mental: {
@@ -722,7 +726,7 @@ const gomorra = {
             'No weapon',
             'Knife: STR + 1d4',
             'Pistol: 3d6',
-            'Dynamite x 3',
+            'Dynamite x 6',
             ]
         },
         {
@@ -760,6 +764,9 @@ const gomorra = {
                     shootin: {
                         level: 4,
                         concentrations: ['shotgun', 'rifle']
+                    },
+                    sneak: {
+                        level: 1,
                     },
                 },
                 mental: {
@@ -819,6 +826,9 @@ const gomorra = {
                         level: 4,
                         concentrations: ['shotgun', 'rifle']
                     },
+                    sneak: {
+                        level: 1,
+                    },
                 },
                 mental: {
                     bluff: {
@@ -876,6 +886,9 @@ const gomorra = {
                     shootin: {
                         level: 4,
                         concentrations: ['shotgun', 'rifle']
+                    },
+                    sneak: {
+                        level: 1,
                     },
                 },
                 mental: {
