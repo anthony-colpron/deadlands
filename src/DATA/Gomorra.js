@@ -998,18 +998,6 @@ const gomorra = {
                     }
                 },
                 mental: {
-                    bluff: {
-                        level: 2
-                    },
-                    guts: {
-                        level: 2
-                    },
-                    overawe: {
-                        level: 3
-                    },
-                    persuasion: {
-                        level: 2
-                    },
                     survival: {
                         level: 2
                     },
@@ -1028,6 +1016,90 @@ const gomorra = {
             },
             attacks: ['No weapon', 'Modified Remington 1871: 6d10', 'Bowie Knife: STR + 1d6'],
             note: 'Brawny (Size 7), Nevers of steel, Tough as nail 5'
+        },
+        {
+            name: 'Little Running Bear',
+            pace: 10,
+            size: 7,
+            wind: 20,
+            traits: {
+                deftness: { level: 4, diceType: 10 },
+                nimbleness: { level: 4, diceType: 10 },
+                strength: { level: 3, diceType: 12 },
+                quickness: { level: 2, diceType: 10 },
+                vigor: { level: 4, diceType: 12 },
+                cognition: { level: 5, diceType: 8 },
+                knowledge: { level: 2, diceType: 6 },
+                mien: { level: 2, diceType: 6 },
+                smarts: { level: 2, diceType: 8 },
+                spirit: { level: 3, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    bow: {
+                        level: 3,
+                    },
+                    climbin: {
+                        level: 2,
+                    },
+                    dodge: {
+                        level: 2,
+                    },
+                    drivin: {
+                        level: 4,
+                        concentrations: ['boat'],
+                    },
+                    fightin: {
+                        level: 4,
+                        concentrations: [`knife`, 'war club']
+                    },
+                    horseRidin: {
+                        level: 2,
+                    },
+                    shootin: {
+                        level: 2,
+                        concentrations: ['rifle', 'pistol']
+                    },
+                    sneak: {
+                        level: 4,
+                    },
+                    swimmin: {
+                        level: 3,
+                    }
+                },
+                mental: {
+                    bluff: {
+                        level: 2
+                    },
+                    guts: {
+                        level: 2
+                    },
+                    overawe: {
+                        level: 4
+                    },
+                    survival: {
+                        level: 3,
+                        concentrations: ['forests']
+                    },
+                    search: {
+                        level: 3
+                    },
+                    trackin: {
+                        level: 3
+                    },
+                    trade: {
+                        level: 3,
+                        concentrations: ['fishing']
+                    },
+                    faith: {
+                        level: 4,
+                    },
+                }
+
+            },
+            attacks: ['No weapon', 'War club: STR + 1d6 (1 DB)', 'Warcry: 4d6',
+            'Paint: 4d8', 'Strength of the bear', 'Wilderness walk'],
+            note: 'Brawny (Size 7), Brave, Shaman'
         },
     ]
 };
