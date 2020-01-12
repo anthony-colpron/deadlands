@@ -37,7 +37,7 @@ const abominations = {
             note: 'Armor: Body 2, Tentacles 1. 8 feet diameter core.'
         },
         {
-            name: 'Walking dead',
+            name: 'Walking Dead',
             pace: 8,
             size: 6,
             wind: 99,
@@ -53,12 +53,18 @@ const abominations = {
                 vigor: { level: 2, diceType: 8 },
                 cognition: { level: 2, diceType: 10 },
                 knowledge: { level: 1, diceType: 6 },
-                mien: { level: 1, diceType: 12 },
+                mien: { level: 1, diceType: 6 },
                 smarts: { level: 1, diceType: 6 },
                 spirit: { level: 1, diceType: 4 }
             },
             aptitudes: {
                 corporeal: {
+                    climbin: {
+                        level: 1,
+                    },
+                    dodge: {
+                        level: 2,
+                    },
                     fightin: {
                         level: 3,
                         concentrations: [`brawlin'`]
@@ -78,6 +84,69 @@ const abominations = {
                     overawe: {
                         level: 5
                     }
+                }
+
+            },
+            attacks: [
+                'Bite: STR',
+                'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8',
+            ],
+            note: 'Maim head to kill',
+        },
+        {
+            name: 'Veteran Walking Dead',
+            pace: 8,
+            size: 6,
+            wind: 99,
+            cannotBeWinded: true,
+            cannotBeStunned: true,
+            undead: true,
+            woundsToKill: 'special',
+            traits: {
+                deftness: { level: 2, diceType: 8 },
+                nimbleness: { level: 2, diceType: 8 },
+                strength: { level: 2, diceType: 10 },
+                quickness: { level: 3, diceType: 10 },
+                vigor: { level: 2, diceType: 8 },
+                cognition: { level: 2, diceType: 10 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 1, diceType: 12 },
+                smarts: { level: 1, diceType: 6 },
+                spirit: { level: 1, diceType: 4 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 2,
+                    },
+                    dodge: {
+                        level: 3,
+                    },
+                    fightin: {
+                        level: 4,
+                        concentrations: [`brawlin'`]
+                    },
+                    shootin: {
+                        level: 4,
+                        concentrations: ['pistol', 'rifle', 'shotgun'],
+                    },
+                    sneak: {
+                        level: 3,
+                    },
+                    swimmin: {
+                        level: 2,
+                    },
+                },
+                mental: {
+                    overawe: {
+                        level: 5
+                    },
+                    ridicule: {
+                        level: 1,
+                    },
+                    search: {
+                        level: 3,
+                    },
                 }
 
             },
