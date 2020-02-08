@@ -543,7 +543,81 @@ const gomorra = {
 
             },
             attacks: ['No weapon', 'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8'],
-            note: '1 chip de chaque',
+            note: '3 chips blanches',
+        },
+        {
+            name: 'Joe Everett',
+            pace: 10,
+            size: 6,
+            wind: 12,
+            traits: {
+                deftness: { level: 2, diceType: 12 },
+                nimbleness: { level: 2, diceType: 10 },
+                strength: { level: 3, diceType: 8 },
+                quickness: { level: 4, diceType: 10 },
+                vigor: { level: 4, diceType: 6 },
+                cognition: { level: 1, diceType: 8 },
+                knowledge: { level: 1, diceType: 6 },
+                mien: { level: 3, diceType: 6 },
+                smarts: { level: 2, diceType: 6 },
+                spirit: { level: 3, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 1
+                    },
+                    fightin: {
+                        level: 3,
+                        concentrations: [`brawlin'`, 'knife']
+                    },
+                    dodge: {
+                        level: 2
+                    },
+                    horseRidin: {
+                        level: 2
+                    },
+                    quickDraw: {
+                        level: 2,
+                        concentrations: ['pistol'],
+                    },
+                    shootin: {
+                        level: 4,
+                        concentrations: ['pistol', 'automatics']
+                    },
+                    sneak: {
+                        level: 2
+                    },
+                },
+                mental: {
+                    areaKnowledge: {
+                        level: 4,
+                        concentrations: ['Texas']
+                    },
+                    bluff: {
+                        level: 2
+                    },
+                    guts: {
+                        level: 2,
+                    },
+                    overawe: {
+                        level: 4
+                    },
+                    leadership: {
+                        level: 3
+                    },
+                    search: {
+                        level: 2
+                    },
+                    survival: {
+                        level: 3,
+                        concentrations: ['desert'],
+                    },
+                }
+
+            },
+            attacks: ['No weapon', 'Pistol: 3d6', 'Gatling Gun 3d8 *'],
+            note: '3 chips blanches',
         },
         {
             name: 'Ryan Leonard',
@@ -852,7 +926,7 @@ const gomorra = {
             attacks: ['No weapon', 'DB Shotgun: *d6', 'Spencer Carbine: 4d8']
         },
         {
-            name: 'Cynthia Hart',
+            name: 'Sweetrock Guard',
             pace: 8,
             size: 6,
             wind: 14,
