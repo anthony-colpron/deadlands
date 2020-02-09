@@ -203,9 +203,21 @@ const allies = {
                     search: {
                         level: 2
                     },
-                    hexslingin: {
+                    hexslinginSpirit: {
                         level: 7
-                    }
+                    },
+                    hexslinginMien: {
+                        level: 7
+                    },
+                    hexslinginCognition: {
+                        level: 7
+                    },
+                    hexslinginSmarts: {
+                        level: 7
+                    },
+                    hexslinginKnowledge: {
+                        level: 7
+                    },
                 }
 
             },
