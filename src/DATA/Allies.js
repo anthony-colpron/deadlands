@@ -224,7 +224,7 @@ const allies = {
             attacks: [
             'No weapon', 'Double-Action Peacemakers x2',
             `Helpin' hand`, 'Hunch', 'Missed me!', 'Phantom fingers', 'Private eye', 'Soul blast', 'Trinkets',
-            'Geyser', 'Ghost rider',
+            'Geyser', 'Ghost rider', 'Shadow Walk',
             'Dead shot', 'Ghost bullets', `Hail o' lead`, 'Liberated Ammo', 'Long shot', `Smokewagon Lightin'`, 'Two-Gun Mojo'
             ]
         },
