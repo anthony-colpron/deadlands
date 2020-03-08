@@ -495,13 +495,13 @@ const gomorra = {
                     },
                     fightin: {
                         level: 3,
-                        concentrations: [`brawlin'`, 'knife']
+                        concentrations: [`brawlin'`, 'knife', 'bayonet']
                     },
                     dodge: {
                         level: 2
                     },
                     horseRidin: {
-                        level: 2
+                        level: 3
                     },
                     quickDraw: {
                         level: 2,
@@ -542,7 +542,7 @@ const gomorra = {
                 }
 
             },
-            attacks: ['No weapon', 'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8'],
+            attacks: ['No weapon', 'DA Peacemaker: 3d6', 'DB Shotgun: *d6', 'Winchester 76: 4d8', 'Bayonet: STR + 2d6'],
             note: '3 chips blanches',
         },
         {
@@ -575,7 +575,7 @@ const gomorra = {
                         level: 2
                     },
                     horseRidin: {
-                        level: 2
+                        level: 3
                     },
                     quickDraw: {
                         level: 2,
@@ -666,7 +666,7 @@ const gomorra = {
                 }
 
             },
-            attacks: ['No weapon', 'SA Peacemaker: 3d6'],
+            attacks: ['No weapon', 'DA Peacemaker: 3d6'],
         },
         {
             name: `Jack Picky Moore`,
@@ -699,6 +699,9 @@ const gomorra = {
                     fightin: {
                         level: 2,
                         concentrations: ['knife']
+                    },
+                    horseRidin: {
+                        level: 2,
                     },
                     shootin: {
                         level: 2,
@@ -742,7 +745,7 @@ const gomorra = {
         },
         {
             name: `Boomie Williams`,
-            pace: 6,
+            pace: 10,
             size: 6,
             wind: 14,
             traits: {
@@ -762,6 +765,9 @@ const gomorra = {
                     fightin: {
                         level: 2,
                         concentrations: ['knife']
+                    },
+                    horseRidin: {
+                        level: 3,
                     },
                     shootin: {
                         level: 2,
@@ -787,9 +793,6 @@ const gomorra = {
                     },
                     search: {
                         level: 3,
-                    },
-                    sneak: {
-                        level: 4,
                     },
                     streetwise: {
                         level: 1,
@@ -862,7 +865,8 @@ const gomorra = {
                 }
 
             },
-            attacks: ['No weapon', 'DB Shotgun: *d6', 'Spencer Carbine: 4d8']
+            attacks: ['No weapon', 'DB Shotgun: *d6', 'Spencer Carbine: 4d8'],
+            notes: 'Fat, mais pas Big Un'
         },
         {
             name: 'Brian Hart',
@@ -968,6 +972,9 @@ const gomorra = {
                 mental: {
                     bluff: {
                         level: 2
+                    },
+                    horseRidin: {
+                        level: 2,
                     },
                     guts: {
                         level: 2

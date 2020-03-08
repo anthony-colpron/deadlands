@@ -340,7 +340,9 @@ class NPCcard extends PureComponent {
             &nbsp;<button onClick={this.toggleCollapsed}>{this.state.collapsed ? '□' : '_'}</button> <br />
 
             {!this.state.collapsed ? (<div>
-                <button onClick={this.toggleView}>{this.state.display === 'wounds' ? 'Display Stats' : 'Display Wounds'}</button> <br />
+                <button onClick={this.toggleView}>{this.state.display === 'wounds' ? 'Display Stats' : 'Display Wounds'}</button>&nbsp;&nbsp;
+                <span style={{ fontWeight: 'bold' }}>Sleeve</span> <input type="checkbox" />
+                <br />
                 {display}
 
                 Wound penalties: {this.props.stats.woundPenalties}&nbsp;
