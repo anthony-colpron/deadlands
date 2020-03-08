@@ -323,7 +323,7 @@ class NPCcard extends PureComponent {
                 Size: {this.props.stats.size} Pace: {this.props.stats.pace}  <br />
                 Single roll modifiers: {this.state.singleRollModifiers > -1 ? '+' : ''}
                 <input className='numeric-input' type='number' value={this.state.singleRollModifiers} onChange={this.handleSingleRollModifiersChange} /><br />
-                Damage: <select>{this.props.stats.attacks.map(item => <option value={item}>{item}</option>)}</select>
+                Damage: <select>{this.props.stats.attacks.map(item => <option value={item}>{item}</option>)}</select> In gun: <input type="number" className='numeric-input-wind' /> Bullets: <input type="number" className='numeric-input-wind' />
             </div>)
         }
 
