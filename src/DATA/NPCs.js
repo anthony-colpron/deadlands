@@ -8,6 +8,7 @@ import shanFan from './ShanFan';
 import judgeEscort from './JudgeEscort';
 import deadwoodOneShot from './DeadwoodOneShot';
 import gomorra from './Gomorra';
+import huntingGrounds from './HuntingGrounds';
 
 const NPCs = [
     typicalNPCs,
@@ -20,6 +21,7 @@ const NPCs = [
     judgeEscort,
     deadwoodOneShot,
     gomorra,
+    huntingGrounds,
 ]
 
 export default NPCs;

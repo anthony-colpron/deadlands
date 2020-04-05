@@ -8,9 +8,9 @@ const gomorra = {
             wind: 16,
             traits: {
                 deftness: { level: 2, diceType: 12 },
-                nimbleness: { level: 3, diceType: 6 },
-                strength: { level: 2, diceType: 6 },
-                quickness: { level: 4, diceType: 6 },
+                nimbleness: { level: 3, diceType: 8 },
+                strength: { level: 3, diceType: 6 },
+                quickness: { level: 4, diceType: 10 },
                 vigor: { level: 2, diceType: 8 },
                 cognition: { level: 4, diceType: 12 },
                 knowledge: { level: 2, diceType: 10 },
@@ -95,7 +95,7 @@ const gomorra = {
             wind: 16,
             thickSkinned: true,
             traits: {
-                deftness: { level: 2, diceType: 8 },
+                deftness: { level: 2, diceType: 10 },
                 nimbleness: { level: 3, diceType: 8 },
                 strength: { level: 4, diceType: 10 },
                 quickness: { level: 2, diceType: 6 },
@@ -169,6 +169,7 @@ const gomorra = {
             cannotBeStunned: true,
             undead: true,
             thickSkinned: true,
+            sand: 2,
             traits: {
                 deftness: { level: 2, diceType: 10 },
                 nimbleness: { level: 2, diceType: 8 },
@@ -232,10 +233,10 @@ const gomorra = {
             size: 6,
             wind: 14,
             traits: {
-                deftness: { level: 2, diceType: 10 },
-                nimbleness: { level: 4, diceType: 8 },
+                deftness: { level: 2, diceType: 12 },
+                nimbleness: { level: 2, diceType: 10 },
                 strength: { level: 3, diceType: 8 },
-                quickness: { level: 4, diceType: 8 },
+                quickness: { level: 4, diceType: 10 },
                 vigor: { level: 4, diceType: 6 },
                 cognition: { level: 2, diceType: 8 },
                 knowledge: { level: 1, diceType: 6 },
@@ -250,7 +251,7 @@ const gomorra = {
                     },
                     fightin: {
                         level: 3,
-                        concentrations: [`brawlin'`]
+                        concentrations: [`brawlin'`, 'bayonnet']
                     },
                     dodge: {
                         level: 4
@@ -259,7 +260,7 @@ const gomorra = {
                         level: 3
                     },
                     shootin: {
-                        level: 3,
+                        level: 4,
                         concentrations: ['pistol', 'shotgun']
                     },
                     speedLoad: {
@@ -267,6 +268,10 @@ const gomorra = {
                     },
                     sneak: {
                         level: 2
+                    },
+                    throwin: {
+                        level: 2,
+                        concentrations: ['balanced'],
                     },
                 },
                 mental: {
@@ -290,14 +295,19 @@ const gomorra = {
                     streetwise: {
                         level: 3,
                     },
+                    survival: {
+                        level: 2,
+                        concentrations: ['desert'],
+                    },
                     trackin: {
                         level: 2,
                     },
                 }
 
             },
-            attacks: ['No weapon', 'DA Peacemaker: 3d6', 'Winchester 76: 4d8 +2'],
-            note: 'Brave, Keen'
+            attacks: ['No weapon', 'DA Peacemaker: 3d6', 'Winchester 76: 4d8 +2',
+                'Rifle Butt: STR + 1d6, DR: 1', 'Bayonet: STR + 2d6, DR: 2', 'MKII grenades: 3d12', 'Groin Shot', 'Unarm'],
+            note: 'Grit: 1, Brave, Keen',
         },
         {
             name: 'Bobo Leveux',
@@ -1131,10 +1141,10 @@ const gomorra = {
             aptitudes: {
                 corporeal: {
                     bow: {
-                        level: 3,
+                        level: 5,
                     },
                     climbin: {
-                        level: 2,
+                        level: 3,
                     },
                     dodge: {
                         level: 2,
@@ -1145,10 +1155,10 @@ const gomorra = {
                     },
                     fightin: {
                         level: 4,
-                        concentrations: [`knife`, 'war club']
+                        concentrations: [`knife`, 'war club', 'brawlin', 'tomahawk']
                     },
                     horseRidin: {
-                        level: 2,
+                        level: 4,
                     },
                     shootin: {
                         level: 2,
@@ -1193,7 +1203,211 @@ const gomorra = {
             },
             attacks: ['No weapon', 'War club: STR + 1d6 (1 DB)', 'Warcry: 4d6',
             'Paint: 4d8', 'Strength of the bear', 'Wilderness walk'],
-            note: 'Brawny (Size 7), Brave, Shaman'
+            note: 'Brawny (Size 7), Brave, Shaman',
+        },
+        {
+            name: 'John Bloody Knife',
+            pace: 10,
+            size: 6,
+            wind: 30,
+            traits: {
+                deftness: { level: 4, diceType: 10 },
+                nimbleness: { level: 3, diceType: 10 },
+                strength: { level: 4, diceType: 10 },
+                quickness: { level: 5, diceType: 8 },
+                vigor: { level: 2, diceType: 12 },
+                cognition: { level: 2, diceType: 8 },
+                knowledge: { level: 2, diceType: 6 },
+                mien: { level: 1, diceType: 6 },
+                smarts: { level: 2, diceType: 8 },
+                spirit: { level: 3, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    bow: {
+                        level: 3,
+                    },
+                    climbin: {
+                        level: 2,
+                    },
+                    dodge: {
+                        level: 2,
+                    },
+                    fightin: {
+                        level: 4,
+                        concentrations: [`knife`, 'war club']
+                    },
+                    horseRidin: {
+                        level: 2,
+                    },
+                    shootin: {
+                        level: 4,
+                        concentrations: ['rifle']
+                    },
+                    sneak: {
+                        level: 4,
+                    },
+                },
+                mental: {
+                    guts: {
+                        level: 4
+                    },
+                    languages: {
+                        level: 2,
+                        concentrations: ['english'],
+                    },
+                    overawe: {
+                        level: 2
+                    },
+                    survival: {
+                        level: 5,
+                        concentrations: ['great plains']
+                    },
+                    search: {
+                        level: 1
+                    },
+                    trackin: {
+                        level: 4
+                    },
+                },
+            },
+            attacks: ['No weapon', 'Tomahawk: STR + 2d6', 'Bowie Knife: STR + 1d6',
+            'Winchester 73: 4d8', 'Bow: STR + 1d6'],
+            note: 'Brave, Nerves of Steel, Tough as nail 5'
+        },
+        {
+            name: 'Reverend Simon McPherson',
+            pace: 6,
+            size: 6,
+            wind: 16,
+            traits: {
+                deftness: { level: 2, diceType: 8 },
+                nimbleness: { level: 3, diceType: 6 },
+                strength: { level: 1, diceType: 6 },
+                quickness: { level: 2, diceType: 6 },
+                vigor: { level: 2, diceType: 6 },
+                cognition: { level: 3, diceType: 10 },
+                knowledge: { level: 4, diceType: 8 },
+                mien: { level: 3, diceType: 8 },
+                smarts: { level: 2, diceType: 8 },
+                spirit: { level: 5, diceType: 10 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 1,
+                    },
+                    dodge: {
+                        level: 1,
+                    },
+                    shootin: {
+                        level: 2,
+                        concentrations: ['shotgun']
+                    },
+                    sneak: {
+                        level: 2,
+                    },
+                },
+                mental: {
+                    academia: {
+                        level: 4,
+                        concentrations: ['theology'],
+                    },
+                    guts: {
+                        level: 2
+                    },
+                    performin: {
+                        level: 4,
+                        concentrations: ['sermons'],
+                    },
+                    professional: {
+                        level: 4,
+                        concentrations: ['minister'],
+                    },
+                    search: {
+                        level: 2
+                    },
+                    scrutinize: {
+                        level: 2
+                    },
+                    faith: {
+                        level: 5,
+                        concentrations: ['Baptist'],
+                    },
+                },
+            },
+            attacks: ['No weapon', 'Shotgun: *d6 (+2 to hit)', 'Chastise',
+            'Consecrate armament', 'Inspiration', 'Smite', 'Wrath'],
+            note: 'The Voice: Grating'
+        },
+        {
+            name: 'Erik Zarkov',
+            pace: 10,
+            size: 8,
+            wind: 12,
+            traits: {
+                deftness: { level: 3, diceType: 10 },
+                nimbleness: { level: 2, diceType: 8 },
+                strength: { level: 2, diceType: 6 },
+                quickness: { level: 3, diceType: 8 },
+                vigor: { level: 2, diceType: 6 },
+                cognition: { level: 2, diceType: 10 },
+                knowledge: { level: 3, diceType: 10 },
+                mien: { level: 4, diceType: 6 },
+                smarts: { level: 3, diceType: 12 },
+                spirit: { level: 4, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 1,
+                    },
+                    dodge: {
+                        level: 3,
+                    },
+                    fightin: {
+                        level: 2,
+                        concentrations: ['gun butt'],
+                    },
+                    shootin: {
+                        level: 4,
+                        concentrations: ['Ray gun, flamethrower, pistol, dynamite launcher']
+                    },
+                    sneak: {
+                        level: 2,
+                    },
+                    speedLoad: {
+                        level: 2,
+                        concentrations: ['dynamite launcher'],
+                    },
+                },
+                mental: {
+                    artillery: {
+                        level: 2,
+                    },
+                    guts: {
+                        level: 2
+                    },
+                    science: {
+                        level: 5,
+                        concentrations: ['general', 'physics', 'engineering', 'physics'],
+                    },
+                    overawe: {
+                        level: 4,
+                    },
+                    ridicule: {
+                        level: 2,
+                    },
+                    search: {
+                        level: 1
+                    },
+                    tinkerin: {
+                        level: 4,
+                    },
+                },
+            },
+            attacks: ['No weapon', 'Detomizer: 4d12', 'Electrostatic gun: 1d4 wind/pump'],
+            note: 'Armor 2, Rocket Pack, Fleet footed, Luck of the irish (4 chips)'
         },
     ]
 };

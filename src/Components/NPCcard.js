@@ -138,7 +138,9 @@ class NPCcard extends PureComponent {
 
             let { level, diceType, dicePlus = 0 } = this.props.stats.traits.vigor;
 
-            let modifiers = - this.props.stats.woundPenalties + this.props.stats.otherModifiers;
+            let sandTraitBonus = this.props.stats.sand ? this.props.stats.sand : 0;
+
+            let modifiers = - this.props.stats.woundPenalties + this.props.stats.otherModifiers + sandTraitBonus;
 
             let vigorRoll = rollSkillCheck(level, diceType, target, dicePlus, modifiers)
 
