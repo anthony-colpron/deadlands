@@ -40,9 +40,7 @@ const abominations = {
             name: 'Walking Dead',
             pace: 8,
             size: 6,
-            wind: 99,
-            cannotBeWinded: true,
-            cannotBeStunned: true,
+            wind: 12,
             undead: true,
             woundsToKill: 'special',
             traits: {
@@ -97,9 +95,7 @@ const abominations = {
             name: 'Veteran Walking Dead',
             pace: 8,
             size: 6,
-            wind: 99,
-            cannotBeWinded: true,
-            cannotBeStunned: true,
+            wind: 12,
             undead: true,
             woundsToKill: 'special',
             traits: {
@@ -160,9 +156,7 @@ const abominations = {
             name: 'Slow Walking dead',
             pace: 8,
             size: 6,
-            wind: 99,
-            cannotBeWinded: true,
-            cannotBeStunned: true,
+            wind: 12,
             undead: true,
             woundsToKill: 'special',
             traits: {

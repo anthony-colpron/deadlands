@@ -165,8 +165,6 @@ const gomorra = {
             pace: 8,
             size: 6,
             wind: 12,
-            cannotBeWinded: true,
-            cannotBeStunned: true,
             undead: true,
             thickSkinned: true,
             sand: 2,

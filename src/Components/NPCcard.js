@@ -19,6 +19,7 @@ class NPCcard extends PureComponent {
         this.state = {
             display: 'stats',
             collapsed: false,
+            magicAttack: false,
             wounds:
             {
                 head: 0,
@@ -36,6 +37,12 @@ class NPCcard extends PureComponent {
             //PROPS: stun: 0,
             note: this.props.stats.note ? this.props.stats.note : ''
         }
+    }
+
+    handleMagicAttack = (event) => {
+        this.setState(({ magicAttack }) => {
+            return { magicAttack: !magicAttack };
+        });
     }
 
     handleWoundsToAddChange = (event) => {
@@ -93,8 +100,8 @@ class NPCcard extends PureComponent {
 
     addWounds(event, wind = true, stun = true) {
 
-        if (this.props.stats.cannotBeWinded) { wind = false }
-        if (this.props.stats.cannotBeStunned) { stun = false }
+        if (this.props.stats.cannotBeWinded || (this.props.stats.undead && !this.state.magicAttack)) { wind = false }
+        if (this.props.stats.cannotBeStunned || (this.props.stats.undead && !this.state.magicAttack)) { stun = false }
 
         let newWind = this.state.wind;
         let newStun = this.props.stats.stun;
@@ -256,7 +263,8 @@ class NPCcard extends PureComponent {
             display = (<div>
                 <strong>Wind:</strong> <input className='numeric-input-wind' type='number' onChange={this.handleWindChange} value={this.state.wind} /> <br />
                 <strong>Wounds:</strong> <br />
-                Add Wounds: <input className='numeric-input' type='number' onChange={this.handleWoundsToAddChange} value={this.state.woundsToAdd} /><br />
+                Add Wounds: <input className='numeric-input' type='number' onChange={this.handleWoundsToAddChange} value={this.state.woundsToAdd} />&nbsp;
+                <input type='checkbox' value={this.state.magicAttack} onChange={this.handleMagicAttack} />Magic <br />
 
                 <div className='wounds-location'>
                     Head: {head} <button onClick={this.addWounds} value='head'>Add</button><br />

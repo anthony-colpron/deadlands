@@ -9,6 +9,7 @@ import judgeEscort from './JudgeEscort';
 import deadwoodOneShot from './DeadwoodOneShot';
 import gomorra from './Gomorra';
 import huntingGrounds from './HuntingGrounds';
+import forbiddenGod from './ForbiddenGod';
 
 const NPCs = [
     typicalNPCs,
@@ -22,6 +23,7 @@ const NPCs = [
     deadwoodOneShot,
     gomorra,
     huntingGrounds,
+    forbiddenGod,
 ]
 
 export default NPCs;
