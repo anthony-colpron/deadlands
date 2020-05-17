@@ -365,6 +365,85 @@ const abominations = {
             ],
             note: '',
         },
+        {
+            name: 'Baby Rattler',
+            pace: 20,
+            size: 4,
+            wind: 12,
+            traits: {
+                deftness: { level: 1, diceType: 4 },
+                nimbleness: { level: 3, diceType: 6 },
+                strength: { level: 3, diceType: 6 },
+                quickness: { level: 3, diceType: 6 },
+                vigor: { level: 3, diceType: 6 },
+                cognition: { level: 2, diceType: 8 },
+                knowledge: { level: 1, diceType: 4 },
+                mien: { level: 2, diceType: 8 },
+                smarts: { level: 2, diceType: 6 },
+                spirit: { level: 1, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 3,
+                        concentrations: [`brawlin'`]
+                    },
+                    sneak: {
+                        level: 7,
+                    },
+                },
+                mental: {
+                    overawe: {
+                        level: 5,
+                    },
+                }
+            },
+            attacks: [
+                'Bite: STR',
+            ],
+            note: '',
+        },
+        {
+            name: 'Mojave Rattler',
+            pace: 6,
+            size: 16,
+            cannnotBeWinded: true,
+            cannotBeStunned: true,
+            wind: 99,
+            traits: {
+                deftness: { level: 1, diceType: 4 },
+                nimbleness: { level: 3, diceType: 6 },
+                strength: { level: 6, diceType: 12, dicePlus: 16 },
+                quickness: { level: 2, diceType: 6 },
+                vigor: { level: 4, diceType: 12, dicePlus: 16 },
+                cognition: { level: 2, diceType: 10 },
+                knowledge: { level: 1, diceType: 4 },
+                mien: { level: 2, diceType: 10 },
+                smarts: { level: 2, diceType: 8 },
+                spirit: { level: 1, diceType: 8 }
+            },
+            aptitudes: {
+                corporeal: {
+                    fightin: {
+                        level: 3,
+                        concentrations: [`brawlin'`]
+                    },
+                    sneak: {
+                        level: 2,
+                    },
+                },
+                mental: {
+                    overawe: {
+                        level: 2,
+                    },
+                }
+            },
+            attacks: [
+                'Bite: STR + 2d20',
+                'Surprise',
+            ],
+            note: 'Armor 1',
+        },
     ]
 };
 

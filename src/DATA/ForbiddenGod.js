@@ -8,7 +8,7 @@ const forbiddenGod = {
             wind: 5,
             traits: {
                 deftness: { level: 1, diceType: 4 },
-                nimbleness: { level: 1, diceType: 4 },
+                nimbleness: { level: 1, diceType: 6 },
                 strength: { level: 1, diceType: 4 },
                 quickness: { level: 1, diceType: 12 },
                 vigor: { level: 1, diceType: 4 },
