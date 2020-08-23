@@ -198,6 +198,10 @@ const aptitudes = {
         name: `Swimmin'`,
         associatedTrait: NIMBLENESS
     },
+    swing: {
+        name: 'Swing',
+        associatedTrait: NIMBLENESS
+    },
     taleTellin: {
         name: `Tale-Tellin'`,
         associatedTrait: MIEN

@@ -28,25 +28,26 @@ class RoundActions extends PureComponent {
 
 
         this.props.loadedNPCs.forEach((NPC, index) => {
-
+            console.log(NPC);
             if (NPC.status !== 'Winded' && NPC.status !== 'Dead') {
                 let { traits: { quickness: { level, diceType, dicePlus = 0 } } } = NPC
 
-                let modifiers = 0 - NPC.woundPenalties + NPC.otherModifiers;
-                let quicknessRoll = rollSkillCheck(level, diceType, target, dicePlus, modifiers)
-
-
                 let actionsNumber = 1;
 
-                if (quicknessRoll.botch) {
-                    actionsNumber = 0;
-                } else {
-                    if (quicknessRoll.success) {
-                        actionsNumber = actionsNumber + 1 + quicknessRoll.raises;
-                    }
-                }
+                if (!NPC.singleAction) {
+                    let modifiers = 0 - NPC.woundPenalties + NPC.otherModifiers;
+                    let quicknessRoll = rollSkillCheck(level, diceType, target, dicePlus, modifiers)
 
-                if (actionsNumber > 5) { actionsNumber = 5 }
+                    if (quicknessRoll.botch) {
+                        actionsNumber = 0;
+                    } else {
+                        if (quicknessRoll.success) {
+                            actionsNumber = actionsNumber + 1 + quicknessRoll.raises;
+                        }
+                    }
+
+                    if (actionsNumber > 5) { actionsNumber = 5 }
+                }
 
                 for (let i = 0; i < actionsNumber; i++) {
                     unsortedActions = unsortedActions.concat({ name: NPC.name + ' ( ' + (parseInt(index, 10) + 1) + ' )', card: deck[i], status: NPC.status, NPCindex: index })
@@ -92,8 +93,8 @@ class RoundActions extends PureComponent {
                 key={item.name + item.card.text}
                 name={item.name}
                 card={item.card.text}
-                removeSelf={this.resolveAction} 
-                NPCindex={item.NPCindex}/>)
+                removeSelf={this.resolveAction}
+                NPCindex={item.NPCindex} />)
         })
 
         return (<div className='round-actions'>
@@ -111,7 +112,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         dealAction: (number) => dispatch({ type: DEAL_ACTION, number: number }),
-        resolveStun: (index) => dispatch({type: RESOLVE_STUN, index: index})
+        resolveStun: (index) => dispatch({ type: RESOLVE_STUN, index: index })
     }
 }
 

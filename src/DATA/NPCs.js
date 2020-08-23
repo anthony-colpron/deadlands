@@ -10,6 +10,7 @@ import deadwoodOneShot from './DeadwoodOneShot';
 import gomorra from './Gomorra';
 import huntingGrounds from './HuntingGrounds';
 import forbiddenGod from './ForbiddenGod';
+import saltLakeCity from './SaltLakeCity';
 
 const NPCs = [
     typicalNPCs,
@@ -24,6 +25,7 @@ const NPCs = [
     gomorra,
     huntingGrounds,
     forbiddenGod,
+    saltLakeCity,
 ]
 
 export default NPCs;
