@@ -611,10 +611,57 @@ const saltLakeCity = {
             attacks: ['Bite: STR + Disease']
         },
         {
+            name: 'Young Lurker',
+            pace: 8,
+            size: 3,
+            singleAction: true,
+            wind: 12,
+            traits: {
+                deftness: { level: 1, diceType: 4 },
+                nimbleness: { level: 3, diceType: 8 },
+                strength: { level: 1, diceType: 6 },
+                quickness: { level: 3, diceType: 8 },
+                vigor: { level: 3, diceType: 6 },
+                cognition: { level: 2, diceType: 8 },
+                knowledge: { level: 2, diceType: 4 },
+                mien: { level: 2, diceType: 6 },
+                smarts: { level: 2, diceType: 4 },
+                spirit: { level: 1, diceType: 6 }
+            },
+            aptitudes: {
+                corporeal: {
+                    climbin: {
+                        level: 5
+                    },
+                    fightin: {
+                        level: 3,
+                        concentrations: ['brawlin']
+                    },
+                    sneak: {
+                        level: 5
+                    }
+                },
+                mental: {
+                    areaKnowledge: {
+                        level: 2,
+                        concentrations: ['Steel Sky']
+                    },
+                    overawe: {
+                        level: 2
+                    },
+                    trackin: {
+                        level: 2,
+                    }
+                }
+
+            },
+            attacks: ['Bite: STR + 1d6', 'Claw: STR + 1d4']
+        },
+        {
             name: 'Lurker',
             pace: 10,
             size: 6,
-            wind: 14,
+            wind: 16,
             singleAction: true,
             cannotBeStunned: true,
             traits: {
@@ -622,7 +669,7 @@ const saltLakeCity = {
                 nimbleness: { level: 3, diceType: 12 },
                 strength: { level: 2, diceType: 6 },
                 quickness: { level: 3, diceType: 10 },
-                vigor: { level: 3, diceType: 8 },
+                vigor: { level: 3, diceType: 10 },
                 cognition: { level: 2, diceType: 8 },
                 knowledge: { level: 1, diceType: 4 },
                 mien: { level: 2, diceType: 6 },
