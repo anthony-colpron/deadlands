@@ -541,36 +541,7 @@ const abominations = {
                 'Caterwaul',
                 'Leaping',
             ],
-        },
-        {
-            name: 'Specter',
-            pace: 8,
-            size: 6,
-            traits: {
-                deftness: { level: 3, diceType: 6 },
-                nimbleness: { level: 2, diceType: 8 },
-                strength: { level: 2, diceType: 8 },
-                quickness: { level: 3, diceType: 10 },
-                vigor: { level: 3, diceType: 10 },
-                cognition: { level: 2, diceType: 6 },
-                knowledge: { level: 3, diceType: 6 },
-                mien: { level: 2, diceType: 8 },
-                smarts: { level: 2, diceType: 6 },
-                spirit: { level: 2, diceType: 10 }
-            },
-            aptitudes: {
-                corporeal: {
-                },
-                mental: {
-                    overawe: {
-                        level: 3,
-                    },
-                }
-            },
-            attacks: [
-                'Fear Attack',
-                'Incorporeal Attack',
-            ],
+            note: 'Armor 1',
         },
     ]
 };

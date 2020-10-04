@@ -404,7 +404,7 @@ const abominations = {
             note: '',
         },
         {
-            name: 'Small Salt Rattler',
+            name: 'Small Rattler',
             pace: 6,
             size: 10,
             cannnotBeWinded: true,
@@ -484,93 +484,6 @@ const abominations = {
                 'Surprise',
             ],
             note: 'Armor 1',
-        },
-        {
-            name: 'Catamount',
-            pace: 18,
-            size: 9,
-            wind: 18,
-            traits: {
-                deftness: { level: 2, diceType: 6 },
-                nimbleness: { level: 3, diceType: 12 },
-                strength: { level: 4, diceType: 12 },
-                quickness: { level: 2, diceType: 12, dicePlus: 2 },
-                vigor: { level: 2, diceType: 10 },
-                cognition: { level: 3, diceType: 10 },
-                knowledge: { level: 2, diceType: 6 },
-                mien: { level: 2, diceType: 10 },
-                smarts: { level: 3, diceType: 6 },
-                spirit: { level: 3, diceType: 8 }
-            },
-            aptitudes: {
-                corporeal: {
-                    climbin: {
-                        level: 5,
-                    },
-                    fightin: {
-                        level: 4,
-                        concentrations: [`brawlin'`]
-                    },
-                    sneak: {
-                        level: 6,
-                    },
-                    swimmin: {
-                        level: 1,
-                    },
-                },
-                mental: {
-                    bluff: {
-                        level: 3,
-                    },
-                    guts: {
-                        level: 3,
-                    },
-                    overawe: {
-                        level: 4,
-                    },
-                    search: {
-                        level: 4,
-                    },
-                    trackin: {
-                        level: 3,
-                    },
-                }
-            },
-            attacks: [
-                'Bite: STR + 1d4, Claw: STR + 1d6',
-                'Caterwaul',
-                'Leaping',
-            ],
-        },
-        {
-            name: 'Specter',
-            pace: 8,
-            size: 6,
-            traits: {
-                deftness: { level: 3, diceType: 6 },
-                nimbleness: { level: 2, diceType: 8 },
-                strength: { level: 2, diceType: 8 },
-                quickness: { level: 3, diceType: 10 },
-                vigor: { level: 3, diceType: 10 },
-                cognition: { level: 2, diceType: 6 },
-                knowledge: { level: 3, diceType: 6 },
-                mien: { level: 2, diceType: 8 },
-                smarts: { level: 2, diceType: 6 },
-                spirit: { level: 2, diceType: 10 }
-            },
-            aptitudes: {
-                corporeal: {
-                },
-                mental: {
-                    overawe: {
-                        level: 3,
-                    },
-                }
-            },
-            attacks: [
-                'Fear Attack',
-                'Incorporeal Attack',
-            ],
         },
     ]
 };
