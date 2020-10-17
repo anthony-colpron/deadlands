@@ -311,7 +311,6 @@ const allies = {
             pace: 10,
             size: 7,
             wind: 20,
-            thickSkinned: true,
             traits: {
                 deftness: { level: 3, diceType: 8 },
                 nimbleness: { level: 3, diceType: 10 },
@@ -368,85 +367,6 @@ const allies = {
             'Axe x 2: 2d6 + STR, DB: 1',
             'Cavalry Sabers x 2: 2d8 + STR, DB: 2',
             'Spear: 2d6 + STR, DB: 3'
-            ]
-        },
-        {
-            name: `Larry Lawson`,
-            pace: 10,
-            size: 6,
-            wind: 22,
-            undead: true,
-            woundsToKill: 'special',
-            traits: {
-                deftness: { level: 2, diceType: 6 },
-                nimbleness: { level: 2, diceType: 8 },
-                strength: { level: 2, diceType: 8 },
-                quickness: { level: 3, diceType: 8 },
-                vigor: { level: 4, diceType: 12, dicePlus: 2 },
-                cognition: { level: 3, diceType: 10 },
-                knowledge: { level: 3, diceType: 8 },
-                mien: { level: 2, diceType: 8 },
-                smarts: { level: 2, diceType: 10 },
-                spirit: { level: 3, diceType: 8 }
-            },
-            aptitudes: {
-                corporeal: {
-                    climbin: {
-                        level: 1,
-                    },
-                    fightin: {
-                        level: 2,
-                        concentrations: ['brawlin']
-                    },
-                    horseRidin: {
-                        level: 3,
-                    },
-                    sneak: {
-                        level: 4,
-                    },
-                },
-                mental: {
-                    areaKnowledge: {
-                        level: 2,
-                        concentrations: ['Tombstone', 'Salt Lake City']
-                    },
-                    arts: {
-                        level: 3,
-                        concentrations: ['drawing']
-                    },
-                    bluff: {
-                        level: 4,
-                    },
-                    gamblin: {
-                        level: 3,
-                    },
-                    guts: {
-                        level: 4,
-                    },
-                    persuasion: {
-                        level: 2,
-                    },
-                    professional: {
-                        level: 4,
-                        concentrations: ['journalism']
-                    },
-                    search: {
-                        level: 3,
-                    },
-                    scrutinize: {
-                        level: 3,
-                    },
-                    streetwise: {
-                        level: 2,
-                    },
-                    trackin: {
-                        level: 2
-                    },
-                },
-            },
-            attacks: [
-            'No weapon',
-            'Ghost',
             ]
         },
     ]
