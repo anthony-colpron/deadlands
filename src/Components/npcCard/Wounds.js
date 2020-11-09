@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import WoundLocation from './WoundLocation';
 
 class Wounds extends PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       woundsToAdd: 0,
     };
   }
+
+  onUpdateWind = (event) => {
+    this.props.onUpdateWind(+event.target.value);
+  };
 
   onWoundsToAddChange = (event) => {
     this.setState({ woundsToAdd: +event.target.value });
@@ -19,6 +23,15 @@ class Wounds extends PureComponent {
     this.props.onAddWound(locationKey, this.state.woundsToAdd);
     this.setState({ woundsToAdd: 0 });
   };
+
+  renderWind() {
+    return (
+      <div>
+        <span>Wind:</span>
+        <input type="number" onChange={this.onUpdateWind} value={this.props.wind} />
+      </div>
+    );
+  }
 
   renderWoundsToAdd() {
     return (
@@ -42,6 +55,7 @@ class Wounds extends PureComponent {
   render() {
     return (
       <div>
+        {this.renderWind()}
         <span>Wounds:</span>
         {this.renderWoundsToAdd()}
         {this.renderWoundLocations()}
@@ -53,6 +67,8 @@ class Wounds extends PureComponent {
 Wounds.propTypes = {
   wounds: PropTypes.shape({}).isRequired,
   onAddWound: PropTypes.func.isRequired,
+  wind: PropTypes.number.isRequired,
+  onUpdateWind: PropTypes.func.isRequired,
 };
 
 export default Wounds;

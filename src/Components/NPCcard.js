@@ -46,17 +46,22 @@ class NPCcard extends PureComponent {
     });
   }
 
-  handleWoundsToAddChange = (event) => {
+  // handleWoundsToAddChange = (event) => {
 
-    this.setState({ woundsToAdd: parseInt(event.target.value, 10) });
+  //   this.setState({ woundsToAdd: parseInt(event.target.value, 10) });
 
+  // }
+
+  onUpdateWind = (wind) => {
+    this.updateStatus(undefined, undefined, wind)
+    this.setState({ wind });
   }
 
-  handleWindChange = (event) => {
-    this.updateStatus(undefined, undefined, parseInt(event.target.value, 10));
+  // handleWindChange = (event) => {
+  //   this.updateStatus(undefined, undefined, parseInt(event.target.value, 10));
 
-    this.setState({ wind: parseInt(event.target.value, 10) });
-  }
+  //   this.setState({ wind: parseInt(event.target.value, 10) });
+  // }
 
   handleNoteChange = (event) => {
 
@@ -99,12 +104,12 @@ class NPCcard extends PureComponent {
   }
 
 
-  addWounds(location, woundsToAdd, wind = true, stun = true) {
+  addWounds(location, woundsToAdd, canBeWinded = true, canBeStunned = true) {
 
-    if (this.props.stats.cannotBeWinded || (this.props.stats.undead && !this.state.magicAttack)) { wind = false }
-    if (this.props.stats.cannotBeStunned || (this.props.stats.undead && !this.state.magicAttack)) { stun = false }
+    if (this.props.stats.cannotBeWinded || (this.props.stats.undead && !this.state.magicAttack)) { canBeWinded = false }
+    if (this.props.stats.cannotBeStunned || (this.props.stats.undead && !this.state.magicAttack)) { canBeStunned = false }
 
-    let newWind = this.state.wind;
+    let newWind = this.props.stats.wind;
     let newStun = this.props.stats.stun;
 
     let newWounds = JSON.parse(JSON.stringify(this.state.wounds))
@@ -113,7 +118,7 @@ class NPCcard extends PureComponent {
 
     if (newWounds[location] < 0) { newWounds[location] = 0 }
 
-    if (wind && woundsToAdd > -1) {
+    if (canBeWinded && woundsToAdd > -1) {
       if (woundsToAdd === 0) {
         newWind -= Math.ceil(Math.random() * 3)
       } else {
@@ -121,10 +126,10 @@ class NPCcard extends PureComponent {
           newWind -= Math.ceil(Math.random() * 6)
         }
       }
-      alert('Wind lost :' + (this.state.wind - newWind))
+      alert('Wind lost :' + (this.props.stats.wind - newWind))
     }
 
-    if (stun && woundsToAdd > -1) {
+    if (canBeStunned && woundsToAdd > -1) {
       let target;
 
       switch (woundsToAdd) {
@@ -262,8 +267,8 @@ class NPCcard extends PureComponent {
 
     if (this.state.display === 'wounds') {
       display = (<div>
-        <strong>Wind:</strong> <input className='numeric-input-wind' type='number' onChange={this.handleWindChange} value={this.state.wind} /> <br />
-        <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} />
+        {/* <strong>Wind:</strong> <input className='numeric-input-wind' type='number' onChange={this.handleWindChange} value={this.state.wind} /> <br /> */}
+        <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} wind={this.state.wind} onUpdateWind={this.onUpdateWind} />
         {/* <strong>Wounds:</strong> <br />
                 Add Wounds: <input className='numeric-input' type='number' onChange={this.handleWoundsToAddChange} value={this.state.woundsToAdd} />&nbsp;
         <input type='checkbox' value={this.state.magicAttack} onChange={this.handleMagicAttack} />Magic <br />
