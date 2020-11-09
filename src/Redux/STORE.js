@@ -6,18 +6,18 @@ import deck from '../Tools/deck';
 
 import NPCs from '../DATA/NPCs';
 
-let initialDeck = shuffleDeck(deck);
+const initialDeck = shuffleDeck(deck);
 
-
-
-
-const store = createStore(reducer,
-    {
-        log: [],
-        NPCs: NPCs,
-        loadedNPCs: [],
-        deck: initialDeck
-    },
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(
+  reducer,
+  {
+    log: [],
+    NPCs,
+    loadedNPCs: [],
+    deck: initialDeck,
+  },
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
 
 export default store;

@@ -13,19 +13,19 @@ import forbiddenGod from './ForbiddenGod';
 import saltLakeCity from './SaltLakeCity';
 
 const NPCs = [
-    typicalNPCs,
-    allies,
-    abominations,
-    animals,
-    shanFan,
-    legends,
-    heartOfTheMatter,
-    judgeEscort,
-    deadwoodOneShot,
-    gomorra,
-    huntingGrounds,
-    forbiddenGod,
-    saltLakeCity,
-]
+  typicalNPCs,
+  allies,
+  abominations,
+  animals,
+  shanFan,
+  legends,
+  heartOfTheMatter,
+  judgeEscort,
+  deadwoodOneShot,
+  gomorra,
+  huntingGrounds,
+  forbiddenGod,
+  saltLakeCity,
+];
 
 export default NPCs;

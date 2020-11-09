@@ -1,28 +1,34 @@
-import React, {PureComponent} from 'react';
-import {connect} from 'react-redux';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { SHUFFLE } from '../Redux/ACTIONS';
 
 class TopMenu extends PureComponent {
-
-
-    render () {
-
-        return (<div className='top-menu'>Cartes restantes : {this.props.deck.length}&nbsp;
-                <button onClick={this.props.shuffleDeck}>Shuffle</button>
-        </div>
-        )
-    }
+  render() {
+    return (
+      <div className="top-menu">
+        {`Cartes restantes : ${this.props.deck.length} `}
+        <button type="button" onClick={this.props.shuffleDeck}>
+          Shuffle
+        </button>
+      </div>
+    );
+  }
 }
 
-let mapStateToProps = (state) => {
-    return {deck: state.deck}
-  }
+TopMenu.propTypes = {
+  deck: PropTypes.arrayOf({}).isRequired,
+  shuffleDeck: PropTypes.func.isRequired,
+};
 
-  let mapDispatchToProps = (dispatch) => {
-    return {shuffleDeck: () => dispatch({type: SHUFFLE})
-    }
-  }
-  
-  let ConnectedTopMenu = connect(mapStateToProps,mapDispatchToProps)(TopMenu)
-  
-  export default ConnectedTopMenu;
+const mapStateToProps = (state) => {
+  return { deck: state.deck };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return { shuffleDeck: () => dispatch({ type: SHUFFLE }) };
+};
+
+const ConnectedTopMenu = connect(mapStateToProps, mapDispatchToProps)(TopMenu);
+
+export default ConnectedTopMenu;

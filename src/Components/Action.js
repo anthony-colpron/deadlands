@@ -1,45 +1,55 @@
-import React, { PureComponent } from 'react'
-import {connect} from 'react-redux'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class Action extends PureComponent {
+  render() {
+    const NPC = this.props.loadedNPCs[this.props.NPCindex];
 
-    render() {
+    const resolve = () => {
+      this.props.removeSelf(this.props.index, this.props.NPCindex, NPC.status === 'Stunned');
+    };
 
-        let NPC = this.props.loadedNPCs[this.props.NPCindex];
+    if (NPC) {
+      let status = '';
 
-        let resolve = () => {
-            this.props.removeSelf(this.props.index, this.props.NPCindex, NPC.status === 'Stunned');
-        }
+      if (NPC.status === 'Dead') {
+        status = 'DEAD';
+      } else if (NPC.status === 'Winded') {
+        status = 'WINDED';
+      } else if (NPC.status === 'Stunned') {
+        status = `STUNNED x${NPC.stun}`;
+      }
 
-        if (NPC) {
-        let status = '';
-
-        if (NPC.status === 'Dead') {
-            status = 'DEAD'
-        } else if (NPC.status === 'Winded') {
-            status = 'WINDED'
-        } else if (NPC.status === 'Stunned') {
-            status = 'STUNNED x' + NPC.stun
-        }
-
-        return <li>
-            <strong className='card'>{this.props.card}</strong>{' ' + this.props.name + ' ' + status + ' '}
-            {this.props.index === 0 ? <button onClick={resolve}>Ok</button> : ''}
+      return (
+        <li>
+          <strong className="card">{this.props.card}</strong>
+          {` ${this.props.name} ${status} `}
+          {this.props.index === 0 && (
+            <button type="button" onClick={resolve}>
+              Ok
+            </button>
+          )}
         </li>
-
-        } else {
-            return ''
-        }
-
+      );
     }
-
+    return '';
+  }
 }
 
-let mapStateToProps = (state) => {
-    return { loadedNPCs: state.loadedNPCs }
-}
+Action.propTypes = {
+  name: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  loadedNPCs: PropTypes.arrayOf({}).isRequired,
+  NPCindex: PropTypes.number.isRequired,
+  card: PropTypes.string.isRequired,
+  removeSelf: PropTypes.func.isRequired,
+};
 
+const mapStateToProps = (state) => {
+  return { loadedNPCs: state.loadedNPCs };
+};
 
-let ConnectedAction = connect(mapStateToProps)(Action)
+const ConnectedAction = connect(mapStateToProps)(Action);
 
 export default ConnectedAction;
