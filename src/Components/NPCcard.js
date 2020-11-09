@@ -6,6 +6,7 @@ import { UPDATE_NPC_STATUS, REMOVE_NPC } from '../Redux/ACTIONS';
 
 import aptitudesList from '../DATA/aptitudes'
 import Wounds from './npcCard/Wounds';
+import TraitsAndAptitudes from './npcCard/TraitsAndAptitudes';
 
 class NPCcard extends PureComponent {
 
@@ -38,6 +39,10 @@ class NPCcard extends PureComponent {
       //PROPS: stun: 0,
       note: this.props.stats.note ? this.props.stats.note : ''
     }
+  }
+
+  get globalModifiers() {
+    return - this.props.stats.woundPenalties + this.props.stats.otherModifiers;
   }
 
   handleMagicAttack = (event) => {
@@ -265,45 +270,46 @@ class NPCcard extends PureComponent {
       display = <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} wind={this.state.wind} onUpdateWind={this.onUpdateWind} />;
     } else {
 
-      let { stats } = this.props
+      // let { stats } = this.props
 
-      let corpAptitudes = Object.keys(this.props.stats.aptitudes.corporeal)
-      let mentAptitudes = Object.keys(this.props.stats.aptitudes.mental)
-
-
-      let corporeal = corpAptitudes.map(item => {
-
-        let trait = aptitudesList[item].associatedTrait
-        let level = stats.aptitudes.corporeal[item].level
-        let { diceType, dicePlus = 0 } = stats.traits[trait]
+      // let corpAptitudes = Object.keys(this.props.stats.aptitudes.corporeal)
+      // let mentAptitudes = Object.keys(this.props.stats.aptitudes.mental)
 
 
-        return (<div className='aptitude'>{aptitudesList[item].name}:&nbsp;
-          <button onClick={this.rollAptitude} level={level} dicetype={diceType} diceplus={dicePlus}>
-            {level}d{diceType}{dicePlus > 0 ? '+' + dicePlus : ''}
-          </button>&nbsp;
-        </div>)
-      })
+      // let corporeal = corpAptitudes.map(item => {
 
-      let mental = mentAptitudes.map(item => {
-
-        let trait = aptitudesList[item].associatedTrait
-        let level = stats.aptitudes.mental[item].level
-        let { diceType, dicePlus = 0 } = stats.traits[trait]
-
-        return (<div className='aptitude'>{aptitudesList[item].name}:&nbsp;
-          <button onClick={this.rollAptitude} level={level} dicetype={diceType} diceplus={dicePlus}>
-            {level}d{diceType}{dicePlus > 0 ? '+' + dicePlus : ''}
-          </button>&nbsp;
-        </div>)
-
-      })
+      //   let trait = aptitudesList[item].associatedTrait
+      //   let level = stats.aptitudes.corporeal[item].level
+      //   let { diceType, dicePlus = 0 } = stats.traits[trait]
 
 
+      //   return (<div className='aptitude'>{aptitudesList[item].name}:&nbsp;
+      //     <button onClick={this.rollAptitude} level={level} dicetype={diceType} diceplus={dicePlus}>
+      //       {level}d{diceType}{dicePlus > 0 ? '+' + dicePlus : ''}
+      //     </button>&nbsp;
+      //   </div>)
+      // })
+
+      // let mental = mentAptitudes.map(item => {
+
+      //   let trait = aptitudesList[item].associatedTrait
+      //   let level = stats.aptitudes.mental[item].level
+      //   let { diceType, dicePlus = 0 } = stats.traits[trait]
+
+      //   return (<div className='aptitude'>{aptitudesList[item].name}:&nbsp;
+      //     <button onClick={this.rollAptitude} level={level} dicetype={diceType} diceplus={dicePlus}>
+      //       {level}d{diceType}{dicePlus > 0 ? '+' + dicePlus : ''}
+      //     </button>&nbsp;
+      //   </div>)
+
+      // })
 
 
-      display = (<div className='traits'>
-        Corporeal: <br />
+
+      display = (
+        <div className='traits'>
+          <TraitsAndAptitudes traits={this.props.stats.traits} aptitudes={this.props.stats.aptitudes} globalModifiers={this.globalModifiers} />
+          {/* Corporeal: <br />
                 D:<button onClick={this.rollTrait} value='deftness'>{deftness.level}d{deftness.diceType}{deftness.dicePlus ? '+' + deftness.dicePlus : ''}</button>&nbsp;
                 N:<button onClick={this.rollTrait} value='nimbleness'>{nimbleness.level}d{nimbleness.diceType}{nimbleness.dicePlus ? '+' + nimbleness.dicePlus : ''}</button>&nbsp;
                 S:<button onClick={this.rollTrait} value='strength'>{strength.level}d{strength.diceType}{strength.dicePlus ? '+' + strength.dicePlus : ''}</button>&nbsp;
@@ -319,12 +325,12 @@ class NPCcard extends PureComponent {
                 M:<button onClick={this.rollTrait} value='mien'>{mien.level}d{mien.diceType}{mien.dicePlus ? '+' + mien.dicePlus : ''}</button>&nbsp;
                 Sp:<button onClick={this.rollTrait} value='spirit'>{spirit.level}d{spirit.diceType}{spirit.dicePlus ? '+' + spirit.dicePlus : ''}</button> <br />
         {mental}
-        <br />
+        <br /> */}
                 Size: {this.props.stats.size} Pace: {this.props.stats.pace}  <br />
-                Single roll modifiers: {this.state.singleRollModifiers > -1 ? '+' : ''}
-        <input className='numeric-input' type='number' value={this.state.singleRollModifiers} onChange={this.handleSingleRollModifiersChange} /> Bullets: <input type="number" className='numeric-input-wind' /><br />
+          {/* Single roll modifiers: {this.state.singleRollModifiers > -1 ? '+' : ''}
+          <input className='numeric-input' type='number' value={this.state.singleRollModifiers} onChange={this.handleSingleRollModifiersChange} /> Bullets: <input type="number" className='numeric-input-wind' /><br /> */}
                 Damage: <select>{this.props.stats.attacks.map(item => <option value={item}>{item}</option>)}</select> Curr: <input type="number" className='numeric-input-wind' />
-      </div>)
+        </div>)
     }
 
 
