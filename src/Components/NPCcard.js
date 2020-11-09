@@ -5,6 +5,7 @@ import { rollSkillCheck } from '../Tools/functions'
 import { UPDATE_NPC_STATUS, REMOVE_NPC } from '../Redux/ACTIONS';
 
 import aptitudesList from '../DATA/aptitudes'
+import Wounds from './npcCard/Wounds';
 
 class NPCcard extends PureComponent {
 
@@ -30,7 +31,7 @@ class NPCcard extends PureComponent {
         rightLeg: 0
       },
       singleRollModifiers: 0,
-      woundsToAdd: 0,
+      // woundsToAdd: 0,
       //PROPS: woundPenalties: 0,
       wind: this.props.stats.wind,
       attacks: this.props.stats.attacks[0],
@@ -98,7 +99,7 @@ class NPCcard extends PureComponent {
   }
 
 
-  addWounds(event, wind = true, stun = true) {
+  addWounds(location, woundsToAdd, wind = true, stun = true) {
 
     if (this.props.stats.cannotBeWinded || (this.props.stats.undead && !this.state.magicAttack)) { wind = false }
     if (this.props.stats.cannotBeStunned || (this.props.stats.undead && !this.state.magicAttack)) { stun = false }
@@ -108,25 +109,25 @@ class NPCcard extends PureComponent {
 
     let newWounds = JSON.parse(JSON.stringify(this.state.wounds))
 
-    newWounds[event.target.value] += this.state.woundsToAdd
+    newWounds[location] += woundsToAdd
 
-    if (newWounds[event.target.value] < 0) { newWounds[event.target.value] = 0 }
+    if (newWounds[location] < 0) { newWounds[location] = 0 }
 
-    if (wind && this.state.woundsToAdd > -1) {
-      if (this.state.woundsToAdd === 0) {
+    if (wind && woundsToAdd > -1) {
+      if (woundsToAdd === 0) {
         newWind -= Math.ceil(Math.random() * 3)
       } else {
-        for (let i = 0; i < this.state.woundsToAdd; i++) {
+        for (let i = 0; i < woundsToAdd; i++) {
           newWind -= Math.ceil(Math.random() * 6)
         }
       }
       alert('Wind lost :' + (this.state.wind - newWind))
     }
 
-    if (stun && this.state.woundsToAdd > -1) {
+    if (stun && woundsToAdd > -1) {
       let target;
 
-      switch (this.state.woundsToAdd) {
+      switch (woundsToAdd) {
         case 0: target = 3;
           break;
         case 1: target = 5;
@@ -158,7 +159,7 @@ class NPCcard extends PureComponent {
 
     this.updateStatus(newWounds, undefined, newWind, newStun);
 
-    this.setState({ wounds: newWounds, woundsToAdd: 0, wind: newWind })
+    this.setState({ wounds: newWounds, wind: newWind })
   }
 
   updateStatus(wounds, otherModifiers = this.props.stats.otherModifiers, wind = this.state.wind, stun = this.props.stats.stun) {
@@ -262,7 +263,8 @@ class NPCcard extends PureComponent {
     if (this.state.display === 'wounds') {
       display = (<div>
         <strong>Wind:</strong> <input className='numeric-input-wind' type='number' onChange={this.handleWindChange} value={this.state.wind} /> <br />
-        <strong>Wounds:</strong> <br />
+        <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} />
+        {/* <strong>Wounds:</strong> <br />
                 Add Wounds: <input className='numeric-input' type='number' onChange={this.handleWoundsToAddChange} value={this.state.woundsToAdd} />&nbsp;
         <input type='checkbox' value={this.state.magicAttack} onChange={this.handleMagicAttack} />Magic <br />
 
@@ -271,7 +273,7 @@ class NPCcard extends PureComponent {
                     Left Arm: {leftArm} <button onClick={this.addWounds} value='leftArm'>Add</button> Right Arm: {rightArm} <button onClick={this.addWounds} value='rightArm'>Add</button> <br />
                     Guts: {guts} <button onClick={this.addWounds} value='guts'>Add</button> <br />
                     Left Leg: {leftLeg} <button onClick={this.addWounds} value='leftLeg'>Add</button> Right Leg: {rightLeg} <button onClick={this.addWounds} value='rightLeg'>Add</button> <br />
-        </div>
+        </div> */}
       </div>)
     } else {
 
