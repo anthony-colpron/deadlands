@@ -490,6 +490,7 @@ const abominations = {
             pace: 18,
             size: 9,
             wind: 18,
+            cannotBeStunned: true,
             traits: {
                 deftness: { level: 2, diceType: 6 },
                 nimbleness: { level: 3, diceType: 12 },
