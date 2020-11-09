@@ -257,29 +257,12 @@ class NPCcard extends PureComponent {
 
     let display = '';
 
-
-
-
     let { deftness, nimbleness, strength, quickness, vigor, cognition, knowledge, smarts, mien, spirit } = this.props.stats.traits
-    let { head, leftArm, rightArm, guts, leftLeg, rightLeg } = this.state.wounds
 
 
 
     if (this.state.display === 'wounds') {
-      display = (<div>
-        {/* <strong>Wind:</strong> <input className='numeric-input-wind' type='number' onChange={this.handleWindChange} value={this.state.wind} /> <br /> */}
-        <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} wind={this.state.wind} onUpdateWind={this.onUpdateWind} />
-        {/* <strong>Wounds:</strong> <br />
-                Add Wounds: <input className='numeric-input' type='number' onChange={this.handleWoundsToAddChange} value={this.state.woundsToAdd} />&nbsp;
-        <input type='checkbox' value={this.state.magicAttack} onChange={this.handleMagicAttack} />Magic <br />
-
-        <div className='wounds-location'>
-          Head: {head} <button onClick={this.addWounds} value='head'>Add</button><br />
-                    Left Arm: {leftArm} <button onClick={this.addWounds} value='leftArm'>Add</button> Right Arm: {rightArm} <button onClick={this.addWounds} value='rightArm'>Add</button> <br />
-                    Guts: {guts} <button onClick={this.addWounds} value='guts'>Add</button> <br />
-                    Left Leg: {leftLeg} <button onClick={this.addWounds} value='leftLeg'>Add</button> Right Leg: {rightLeg} <button onClick={this.addWounds} value='rightLeg'>Add</button> <br />
-        </div> */}
-      </div>)
+      display = <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} wind={this.state.wind} onUpdateWind={this.onUpdateWind} />;
     } else {
 
       let { stats } = this.props

@@ -39,7 +39,7 @@ function quickSortActions(arr) {
   return [].concat(quickSortActions(left), pivot, quickSortActions(right));
 }
 
-function rollSkillCheck(level, diceType, target, dicePlus = 0, totalPlus = 0) {
+function rollSkillCheck(level, diceType, target = 5, dicePlus = 0, totalPlus = 0) {
   const results = [];
   let highest;
   let note = '';
