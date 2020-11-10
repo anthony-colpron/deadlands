@@ -31,7 +31,8 @@ const TraitsAndAptitudes = (props) => {
       {mapRollCollection(props.traits)}
       {mapRollCollection(props.aptitudes.corporeal, true)}
       {mapRollCollection(props.aptitudes.mental, true)}
-      <span>{`Single roll modifier: ${singleRollModifier > -1 ? '+' : ''}`}</span>
+      <span>Single roll modifier:</span>
+      {singleRollModifier > -1 && <span>+</span>}
       <input type="number" value={singleRollModifier} onChange={(event) => setSingleRollModifer(+event.target.value)} />
     </div>
   );

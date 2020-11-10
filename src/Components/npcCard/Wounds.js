@@ -46,7 +46,14 @@ class Wounds extends PureComponent {
     return (
       <div>
         {Object.keys(this.props.wounds).map((key) => {
-          return <WoundLocation locationKey={key} woundLevel={this.props.wounds[key]} onAddWound={this.onAddWound} />;
+          return (
+            <WoundLocation
+              key={key}
+              locationKey={key}
+              woundLevel={this.props.wounds[key]}
+              onAddWound={this.onAddWound}
+            />
+          );
         })}
       </div>
     );

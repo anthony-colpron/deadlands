@@ -7,6 +7,7 @@ import { UPDATE_NPC_STATUS, REMOVE_NPC } from '../Redux/ACTIONS';
 import aptitudesList from '../DATA/aptitudes'
 import Wounds from './npcCard/Wounds';
 import TraitsAndAptitudes from './npcCard/TraitsAndAptitudes';
+import DerivedStats from './npcCard/DerivedStats';
 
 class NPCcard extends PureComponent {
 
@@ -14,8 +15,6 @@ class NPCcard extends PureComponent {
     super(props)
 
     this.addWounds = this.addWounds.bind(this);
-    this.rollTrait = this.rollTrait.bind(this);
-    this.rollAptitude = this.rollAptitude.bind(this);
     this.updateStatus = this.updateStatus.bind(this);
 
     this.state = {
@@ -31,7 +30,6 @@ class NPCcard extends PureComponent {
         leftLeg: 0,
         rightLeg: 0
       },
-      singleRollModifiers: 0,
       // woundsToAdd: 0,
       //PROPS: woundPenalties: 0,
       wind: this.props.stats.wind,
@@ -51,45 +49,15 @@ class NPCcard extends PureComponent {
     });
   }
 
-  // handleWoundsToAddChange = (event) => {
-
-  //   this.setState({ woundsToAdd: parseInt(event.target.value, 10) });
-
-  // }
-
   onUpdateWind = (wind) => {
     this.updateStatus(undefined, undefined, wind)
     this.setState({ wind });
-  }
-
-  // handleWindChange = (event) => {
-  //   this.updateStatus(undefined, undefined, parseInt(event.target.value, 10));
-
-  //   this.setState({ wind: parseInt(event.target.value, 10) });
-  // }
-
-  handleNoteChange = (event) => {
-
-    this.setState({ note: event.target.value });
-
-  }
-
-  handleOtherModifiersChange = (event) => {
-    this.updateStatus(undefined, parseInt(event.target.value, 10));
-  }
-
-  handleSingleRollModifiersChange = (event) => {
-    this.setState({ singleRollModifiers: parseInt(event.target.value, 10) });
   }
 
   removeSelf = () => {
     if (window.confirm('Are you sure you want to remove this NPC?')) {
       this.props.removeSelf(this.props.index);
     }
-  }
-
-  removeStun = () => {
-    this.updateStatus(undefined, undefined, undefined, this.props.stats.stun - 1)
   }
 
   toggleCollapsed = () => {
@@ -225,111 +193,18 @@ class NPCcard extends PureComponent {
     this.props.updateNPCStatus(highestWound, otherModifiers, status, stun, this.props.index)
   }
 
-  rollTrait(event) {
-    let { level, diceType, dicePlus = 0 } = this.props.stats.traits[event.target.value];
-    let target = 5;
-    let modifiers = - this.props.stats.woundPenalties + this.props.stats.otherModifiers + this.state.singleRollModifiers;
-
-    let roll = rollSkillCheck(level, diceType, target, dicePlus, modifiers);
-
-    alert('Result: ' + roll.result + ' (Modifiers: ' + modifiers + ')\nDices: ' + roll.diceRolls + ' ' + (roll.botch ? roll.note : ''));
-
-    this.setState({ singleRollModifiers: 0 });
-  }
-
-  rollAptitude(event) {
-    //let {level, dicetype: diceType, diceplus: dicePlus = 0} = event.target.attributes
-
-    let level = event.target.attributes.level.value;
-    let diceType = event.target.attributes.dicetype.value;
-    let dicePlus = event.target.attributes.diceplus.value;
-
-    let target = 5;
-    let modifiers = - this.props.stats.woundPenalties + this.props.stats.otherModifiers + this.state.singleRollModifiers;
-
-    let roll = rollSkillCheck(parseInt(level, 10), parseInt(diceType, 10), target, parseInt(dicePlus, 10), modifiers);
-
-    alert('Result: ' + roll.result + ' (Modifiers: ' + modifiers + ')\nDices: ' + roll.diceRolls + ' ' + (roll.botch ? roll.note : ''))
-
-    this.setState({ singleRollModifiers: 0 });
-  }
-
-
-
-
   render() {
 
-
     let display = '';
-
-    let { deftness, nimbleness, strength, quickness, vigor, cognition, knowledge, smarts, mien, spirit } = this.props.stats.traits
-
-
 
     if (this.state.display === 'wounds') {
       display = <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} wind={this.state.wind} onUpdateWind={this.onUpdateWind} />;
     } else {
 
-      // let { stats } = this.props
-
-      // let corpAptitudes = Object.keys(this.props.stats.aptitudes.corporeal)
-      // let mentAptitudes = Object.keys(this.props.stats.aptitudes.mental)
-
-
-      // let corporeal = corpAptitudes.map(item => {
-
-      //   let trait = aptitudesList[item].associatedTrait
-      //   let level = stats.aptitudes.corporeal[item].level
-      //   let { diceType, dicePlus = 0 } = stats.traits[trait]
-
-
-      //   return (<div className='aptitude'>{aptitudesList[item].name}:&nbsp;
-      //     <button onClick={this.rollAptitude} level={level} dicetype={diceType} diceplus={dicePlus}>
-      //       {level}d{diceType}{dicePlus > 0 ? '+' + dicePlus : ''}
-      //     </button>&nbsp;
-      //   </div>)
-      // })
-
-      // let mental = mentAptitudes.map(item => {
-
-      //   let trait = aptitudesList[item].associatedTrait
-      //   let level = stats.aptitudes.mental[item].level
-      //   let { diceType, dicePlus = 0 } = stats.traits[trait]
-
-      //   return (<div className='aptitude'>{aptitudesList[item].name}:&nbsp;
-      //     <button onClick={this.rollAptitude} level={level} dicetype={diceType} diceplus={dicePlus}>
-      //       {level}d{diceType}{dicePlus > 0 ? '+' + dicePlus : ''}
-      //     </button>&nbsp;
-      //   </div>)
-
-      // })
-
-
-
       display = (
         <div className='traits'>
           <TraitsAndAptitudes traits={this.props.stats.traits} aptitudes={this.props.stats.aptitudes} globalModifiers={this.globalModifiers} />
-          {/* Corporeal: <br />
-                D:<button onClick={this.rollTrait} value='deftness'>{deftness.level}d{deftness.diceType}{deftness.dicePlus ? '+' + deftness.dicePlus : ''}</button>&nbsp;
-                N:<button onClick={this.rollTrait} value='nimbleness'>{nimbleness.level}d{nimbleness.diceType}{nimbleness.dicePlus ? '+' + nimbleness.dicePlus : ''}</button>&nbsp;
-                S:<button onClick={this.rollTrait} value='strength'>{strength.level}d{strength.diceType}{strength.dicePlus ? '+' + strength.dicePlus : ''}</button>&nbsp;
-                Q:<button onClick={this.rollTrait} value='quickness'>{quickness.level}d{quickness.diceType}{quickness.dicePlus ? '+' + quickness.dicePlus : ''}</button>&nbsp;
-                V:<button onClick={this.rollTrait} value='vigor'>{vigor.level}d{vigor.diceType}{vigor.dicePlus ? '+' + vigor.dicePlus : ''}</button> <br />
-        {corporeal}
-        <br />
-
-                Mental: <br />
-                C:<button onClick={this.rollTrait} value='cognition'>{cognition.level}d{cognition.diceType}{cognition.dicePlus ? '+' + cognition.dicePlus : ''}</button>&nbsp;
-                K:<button onClick={this.rollTrait} value='knowledge'>{knowledge.level}d{knowledge.diceType}{knowledge.dicePlus ? '+' + knowledge.dicePlus : ''}</button>&nbsp;
-                Sm:<button onClick={this.rollTrait} value='smarts'>{smarts.level}d{smarts.diceType}{smarts.dicePlus ? '+' + smarts.dicePlus : ''}</button>&nbsp;
-                M:<button onClick={this.rollTrait} value='mien'>{mien.level}d{mien.diceType}{mien.dicePlus ? '+' + mien.dicePlus : ''}</button>&nbsp;
-                Sp:<button onClick={this.rollTrait} value='spirit'>{spirit.level}d{spirit.diceType}{spirit.dicePlus ? '+' + spirit.dicePlus : ''}</button> <br />
-        {mental}
-        <br /> */}
-                Size: {this.props.stats.size} Pace: {this.props.stats.pace}  <br />
-          {/* Single roll modifiers: {this.state.singleRollModifiers > -1 ? '+' : ''}
-          <input className='numeric-input' type='number' value={this.state.singleRollModifiers} onChange={this.handleSingleRollModifiersChange} /> Bullets: <input type="number" className='numeric-input-wind' /><br /> */}
-                Damage: <select>{this.props.stats.attacks.map(item => <option value={item}>{item}</option>)}</select> Curr: <input type="number" className='numeric-input-wind' />
+          Damage: <select>{this.props.stats.attacks.map(item => <option value={item}>{item}</option>)}</select>
         </div>)
     }
 
@@ -350,13 +225,8 @@ class NPCcard extends PureComponent {
         <span style={{ fontWeight: 'bold' }}>Sleeve</span> <input type="checkbox" />
         <br />
         {display}
-
-                Wound penalties: {this.props.stats.woundPenalties}&nbsp;
-                Other modifiers: {this.props.stats.otherModifiers > -1 ? '+' : ''}
-        <input className='numeric-input' type='number' value={this.props.stats.otherModifiers} onChange={this.handleOtherModifiersChange} /><br />
-                Status: <strong>{this.props.stats.status} {this.props.stats.status === 'Stunned' ?
-          <div onClick={this.removeStun} className='stun-button'>{'x' + this.props.stats.stun}</div> : null}</strong> <br />
-                Note: <input type='text' onChange={this.handleNoteChange} value={this.state.note} /></div>)
+        <DerivedStats stats={this.props.stats} index={this.props.index} />
+      </div>)
         :
         <strong>{this.props.stats.status} {this.props.stats.status === 'Stunned' ? 'x' + this.props.stats.stun : null}</strong>}
     </div>)
