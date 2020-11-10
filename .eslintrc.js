@@ -7,13 +7,12 @@ module.exports = {
   },
   extends: [
     'airbnb',
-    // 'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended',
     'prettier',
-    // 'prettier/@typescript-eslint',
+    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
-  // parser: '@typescript-eslint/parser',
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 11,
     sourceType: 'module',
@@ -21,8 +20,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['import', 'prettier', 'react'],
-  // plugins: ['import', 'prettier', '@typescript-eslint', 'react', 'react-hooks'],
+  plugins: ['import', 'prettier', '@typescript-eslint', 'react', 'react-hooks'],
   rules: {
     // prettier
     'prettier/prettier': ['error'],
@@ -43,12 +41,12 @@ module.exports = {
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-alert': 'off',
 
-    // '@typescript-eslint/explicit-function-return-type': 'off',
-    // '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
-    // '@typescript-eslint/explicit-module-boundary-types': 'off',
-    // '@typescript-eslint/no-explicit-any': 'off',
-    // '@typescript-eslint/no-var-requires': 'off',
-    // '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
 
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', 'tsx'] }],
@@ -58,7 +56,7 @@ module.exports = {
       // enable the rule specifically for TypeScript files
       files: ['*.ts'],
       rules: {
-        // '@typescript-eslint/explicit-function-return-type': ['error'],
+        '@typescript-eslint/explicit-function-return-type': ['error'],
       },
     },
   ],
