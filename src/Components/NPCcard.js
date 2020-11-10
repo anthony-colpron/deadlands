@@ -187,50 +187,53 @@ class NPCcard extends PureComponent {
 
     }
 
-
-
-
     this.props.updateNPCStatus(highestWound, otherModifiers, status, stun, this.props.index)
   }
 
-  render() {
+  renderTopBar() {
+    return (
+      <div>
+        <button onClick={this.removeSelf} className='remove-npc-button'>X</button>
 
-    let display = '';
+        {!this.state.collapsed && <span>{this.props.stats.name}</span>}
+        <span>{` ( ${+this.props.index + 1} ) `}</span>
 
-    if (this.state.display === 'wounds') {
-      display = <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} wind={this.state.wind} onUpdateWind={this.onUpdateWind} />;
-    } else {
+        <button onClick={this.toggleCollapsed}>{this.state.collapsed ? '□' : '_'}</button> <br />
+      </div>
+    );
+  }
 
-      display = (
+  renderStatus() {
+    return <span>{this.props.stats.status} {this.props.stats.status === 'Stunned' ? 'x' + this.props.stats.stun : null}</span>
+  }
+
+  renderFullInfo() {
+    const display = this.state.display === 'wounds'
+      ? <Wounds wounds={this.state.wounds} onAddWound={this.addWounds} wind={this.state.wind} onUpdateWind={this.onUpdateWind} />
+      : (
         <div className='traits'>
           <TraitsAndAptitudes traits={this.props.stats.traits} aptitudes={this.props.stats.aptitudes} globalModifiers={this.globalModifiers} />
           Damage: <select>{this.props.stats.attacks.map(item => <option value={item}>{item}</option>)}</select>
-        </div>)
-    }
+        </div>
+      );
 
-
-
-
-    return (<div className='npc-card'>
-      {!this.state.collapsed ? <strong>
-        {this.props.stats.name + ' ( ' + (parseInt(this.props.index, 10) + 1) + ' )'}
-        <button onClick={this.removeSelf} className='remove-npc-button'>X</button></strong>
-        :
-        <strong>{' ( ' + (parseInt(this.props.index, 10) + 1) + ' )'}</strong>}
-
-            &nbsp;<button onClick={this.toggleCollapsed}>{this.state.collapsed ? '□' : '_'}</button> <br />
-
-      {!this.state.collapsed ? (<div>
+    return (
+      <div>
         <button onClick={this.toggleView}>{this.state.display === 'wounds' ? 'Display Stats' : 'Display Wounds'}</button>&nbsp;&nbsp;
         <span style={{ fontWeight: 'bold' }}>Sleeve</span> <input type="checkbox" />
-        <br />
         {display}
         <DerivedStats stats={this.props.stats} index={this.props.index} />
-      </div>)
-        :
-        <strong>{this.props.stats.status} {this.props.stats.status === 'Stunned' ? 'x' + this.props.stats.stun : null}</strong>}
-    </div>)
+      </div>
+    );
+  }
 
+  render() {
+    return (
+      <div className='npc-card'>
+        {this.renderTopBar()}
+        {this.state.collapsed ? this.renderStatus() : this.renderFullInfo()}
+      </div>
+    );
   }
 
 }
