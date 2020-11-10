@@ -1,31 +1,5 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { UPDATE_NPC_STATUS } from '../../Redux/ACTIONS';
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const { woundPenalties, stun, status, otherModifiers } = ownProps.stats;
-  return {
-    updateOtherModifiers: (newOtherModifiers) =>
-      dispatch({
-        type: UPDATE_NPC_STATUS,
-        woundPenalties,
-        stun,
-        status,
-        otherModifiers: newOtherModifiers,
-        index: ownProps.index,
-      }),
-    removeStun: () =>
-      dispatch({
-        type: UPDATE_NPC_STATUS,
-        woundPenalties,
-        stun: stun - 1,
-        status,
-        otherModifiers,
-        index: ownProps.index,
-      }),
-  };
-};
 
 class DerivedStats extends PureComponent {
   constructor(props) {
@@ -35,6 +9,15 @@ class DerivedStats extends PureComponent {
       note: props.stats.note,
     };
   }
+
+  updateOtherModifiers = (event) => {
+    const newOtherModifiers = +event.target.value;
+    this.props.updateStatus(undefined, newOtherModifiers);
+  };
+
+  removeStun = () => {
+    this.props.updateStatus(undefined, undefined, undefined, this.props.stats.stun - 1);
+  };
 
   render() {
     return (
@@ -49,15 +32,11 @@ class DerivedStats extends PureComponent {
         <span>{`Wound penalties: ${this.props.stats.woundPenalties}`}</span>
         <span>Other modifier:</span>
         {this.props.stats.otherModifiers > -1 && <span>+</span>}
-        <input
-          type="number"
-          value={this.props.stats.otherModifiers}
-          onChange={(event) => this.props.updateOtherModifiers(+event.target.value)}
-        />
+        <input type="number" value={this.props.stats.otherModifiers} onChange={this.updateOtherModifiers} />
 
         <span>{`Status: ${this.props.stats.status}`}</span>
         {this.props.stats.status === 'Stunned' && (
-          <button type="button" className="stun-button" onClick={this.props.removeStun}>
+          <button type="button" className="stun-button" onClick={this.removeStun}>
             {`x${this.props.stats.stun}`}
           </button>
         )}
@@ -79,8 +58,7 @@ DerivedStats.propTypes = {
     stun: PropTypes.number,
     note: PropTypes.string,
   }).isRequired,
-  updateOtherModifiers: PropTypes.func.isRequired,
-  removeStun: PropTypes.func.isRequired,
+  updateStatus: PropTypes.func.isRequired,
 };
 
-export default connect(undefined, mapDispatchToProps)(DerivedStats);
+export default DerivedStats;
