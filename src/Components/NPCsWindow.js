@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { LOAD_NPC } from '../Redux/ACTIONS';
+// import { LOAD_NPC } from '../Redux/ACTIONS';
+import { loadNPC } from '../Redux/slice';
 
 import NPCcard from './NPCcard';
 
@@ -68,7 +69,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadNPC: (listIndex, npcIndex) => dispatch({ type: LOAD_NPC, listIndex, npcIndex }),
+    loadNPC: (listIndex, npcIndex) => dispatch(loadNPC({ listIndex, npcIndex })),
   };
 };
 
