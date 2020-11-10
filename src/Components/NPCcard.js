@@ -19,7 +19,6 @@ class NPCcard extends PureComponent {
     this.state = {
       display: 'stats',
       collapsed: false,
-      magicAttack: false,
       wounds: {
         head: 0,
         leftArm: 0,
@@ -35,12 +34,6 @@ class NPCcard extends PureComponent {
   get globalModifiers() {
     return -this.props.stats.woundPenalties + this.props.stats.otherModifiers;
   }
-
-  handleMagicAttack = () => {
-    this.setState(({ magicAttack }) => {
-      return { magicAttack: !magicAttack };
-    });
-  };
 
   onUpdateWind = (wind) => {
     this.updateStatus(undefined, undefined, wind);
@@ -69,9 +62,9 @@ class NPCcard extends PureComponent {
     }
   };
 
-  addWounds(location, woundsToAdd) {
-    const canBeWinded = !(this.props.stats.cannotBeWinded || (this.props.stats.undead && !this.state.magicAttack));
-    const canBeStunned = !(this.props.stats.cannotBeStunned || (this.props.stats.undead && !this.state.magicAttack));
+  addWounds(location, woundsToAdd, isMagicDamage) {
+    const canBeWinded = !(this.props.stats.cannotBeWinded || (this.props.stats.undead && !isMagicDamage));
+    const canBeStunned = !(this.props.stats.cannotBeStunned || (this.props.stats.undead && !isMagicDamage));
 
     let newWind = this.state.wind;
     let newStun = this.props.stats.stun;
@@ -268,7 +261,7 @@ class NPCcard extends PureComponent {
         <span style={{ fontWeight: 'bold' }}>Sleeve</span>
         <input type="checkbox" />
         {this.renderDisplay()}
-        <DerivedStats stats={this.props.stats} index={this.props.index} />
+        <DerivedStats stats={this.props.stats} index={this.props.index} updateStatus={this.updateStatus} />
       </div>
     );
   }

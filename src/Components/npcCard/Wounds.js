@@ -8,6 +8,7 @@ class Wounds extends PureComponent {
 
     this.state = {
       woundsToAdd: 0,
+      isMagicDamage: false,
     };
   }
 
@@ -15,12 +16,14 @@ class Wounds extends PureComponent {
     this.props.onUpdateWind(+event.target.value);
   };
 
+  onToggleMagic = () => this.setState((prevState) => ({ isMagicDamage: !prevState.isMagicDamage }));
+
   onWoundsToAddChange = (event) => {
     this.setState({ woundsToAdd: +event.target.value });
   };
 
   onAddWound = (locationKey) => {
-    this.props.onAddWound(locationKey, this.state.woundsToAdd);
+    this.props.onAddWound(locationKey, this.state.woundsToAdd, this.state.isMagicDamage);
     this.setState({ woundsToAdd: 0 });
   };
 
@@ -38,6 +41,9 @@ class Wounds extends PureComponent {
       <div>
         <span>Add Wounds:</span>
         <input type="number" onChange={this.onWoundsToAddChange} value={this.state.woundsToAdd} />
+
+        <span style={{ fontWeight: 'bold' }}>Magic</span>
+        <input type="checkbox" value={this.state.isMagicDamage} onChange={this.onToggleMagic} />
       </div>
     );
   }
