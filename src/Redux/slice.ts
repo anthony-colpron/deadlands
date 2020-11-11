@@ -1,12 +1,13 @@
 /* eslint-disable no-param-reassign */
 
+import _cloneDeep from 'lodash.clonedeep';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { shuffleDeck, copyObject } from '../Tools/functions';
+import { shuffleDeck } from '../Tools/functions';
 import deck from '../Tools/deck';
 import NPCs from '../DATA/NPCs';
 import NPC from '../models/NPC';
 
-import { MainState, UpdateNpcStatusAction, LoadNpcAction } from './types';
+import { MainState, UpdateNpcStatusAction, LoadNpcAction, AddWoundAction } from './types';
 import { NPCStatuses } from '../models/enums';
 
 const initialDeck = shuffleDeck(deck);
@@ -36,7 +37,7 @@ const mainSlice = createSlice({
     updateNPCStatus(state, action: PayloadAction<UpdateNpcStatusAction>): void {
       const { woundPenalties, otherModifiers, stun, status, index } = action.payload;
 
-      const mutatedLoadedNPC = copyObject(state.loadedNPCs[index]);
+      const mutatedLoadedNPC = _cloneDeep(state.loadedNPCs[index]);
 
       mutatedLoadedNPC.woundPenalties = woundPenalties;
       mutatedLoadedNPC.otherModifiers = otherModifiers;
@@ -49,7 +50,7 @@ const mainSlice = createSlice({
       state.loadedNPCs = state.loadedNPCs.filter((_value, index) => index !== action.payload);
     },
     resolveStun(state, action: PayloadAction<number>): void {
-      const mutatedLoadedNPC = copyObject(state.loadedNPCs[action.payload]);
+      const mutatedLoadedNPC = _cloneDeep(state.loadedNPCs[action.payload]);
 
       mutatedLoadedNPC.stun -= 1;
       if (mutatedLoadedNPC.stun === 0) {
@@ -58,9 +59,25 @@ const mainSlice = createSlice({
 
       state.loadedNPCs[action.payload] = mutatedLoadedNPC;
     },
+    addWounds(state, action: PayloadAction<AddWoundAction>): void {
+      const { index, wounds, location, isMagicDamage } = action.payload;
+
+      const mutatedLoadedNPC = _cloneDeep(state.loadedNPCs[index]);
+      mutatedLoadedNPC.addWounds(location, wounds, isMagicDamage);
+
+      state.loadedNPCs[index] = mutatedLoadedNPC;
+    },
   },
 });
 
-export const { loadNPC, shuffleActionDeck, dealAction, updateNPCStatus, removeNPC, resolveStun } = mainSlice.actions;
+export const {
+  loadNPC,
+  shuffleActionDeck,
+  dealAction,
+  updateNPCStatus,
+  removeNPC,
+  resolveStun,
+  addWounds,
+} = mainSlice.actions;
 
 export default mainSlice.reducer;

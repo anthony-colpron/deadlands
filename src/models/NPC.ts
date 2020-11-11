@@ -1,4 +1,5 @@
-import { copyObject, getTnForWounds, rollDices, rollSkillCheck } from '../Tools/functions';
+import _cloneDeep from 'lodash.clonedeep';
+import { getTnForWounds, rollDices, rollSkillCheck } from '../Tools/functions';
 import { NPCStatuses, WoundLocationKeys } from './enums';
 import { defaultTraits, Aptitudes } from './interfaces';
 
@@ -62,15 +63,15 @@ class NPC {
         this.undead = data.undead;
         this.killLocations = [WoundLocationKeys.Head];
       }
-      if (data.killLocations !== undefined) this.killLocations = copyObject(data.killLocations);
+      if (data.killLocations !== undefined) this.killLocations = _cloneDeep(data.killLocations);
       if (data.cannotBeWinded !== undefined) this.cannotBeWinded = data.cannotBeWinded;
       if (data.cannotBeStunned !== undefined) this.cannotBeStunned = data.cannotBeStunned;
       if (data.thickSkinned !== undefined) this.thickSkinned = data.thickSkinned;
       if (data.sand !== undefined) this.sand = data.sand;
       if (data.woundsToKill !== undefined) this.woundsToKill = data.woundsToKill;
-      if (data.traits !== undefined) this.traits = copyObject(data.traits);
-      if (data.aptitudes !== undefined) this.aptitudes = copyObject(data.aptitudes);
-      if (data.attacks !== undefined) this.attacks = copyObject(data.attacks);
+      if (data.traits !== undefined) this.traits = _cloneDeep(data.traits);
+      if (data.aptitudes !== undefined) this.aptitudes = _cloneDeep(data.aptitudes);
+      if (data.attacks !== undefined) this.attacks = _cloneDeep(data.attacks);
     }
   }
 
