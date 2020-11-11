@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { DEAL_ACTION, RESOLVE_STUN } from '../Redux/ACTIONS';
 
 import { quickSortActions, rollSkillCheck } from '../Tools/functions';
 
 import Action from './Action';
+import { dealAction, resolveStun } from '../Redux/slice';
 
 class RoundActions extends PureComponent {
   constructor() {
@@ -119,8 +119,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dealAction: (number) => dispatch({ type: DEAL_ACTION, number }),
-    resolveStun: (index) => dispatch({ type: RESOLVE_STUN, index }),
+    dealAction: (number) => dispatch(dealAction(number)),
+    resolveStun: (index) => dispatch(resolveStun(index)),
   };
 };
 

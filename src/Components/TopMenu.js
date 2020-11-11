@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { SHUFFLE } from '../Redux/ACTIONS';
+import { shuffleActionDeck } from '../Redux/slice';
 
 class TopMenu extends PureComponent {
   render() {
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { shuffleDeck: () => dispatch({ type: SHUFFLE }) };
+  return { shuffleDeck: () => dispatch(shuffleActionDeck()) };
 };
 
 const ConnectedTopMenu = connect(mapStateToProps, mapDispatchToProps)(TopMenu);

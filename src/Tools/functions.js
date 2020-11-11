@@ -107,4 +107,6 @@ function rollSkillCheck(level, diceType, target = 5, dicePlus = 0, totalPlus = 0
   return { result, raises, note, success, botch, diceRolls: results };
 }
 
-export { shuffleDeck, quickSortActions, rollSkillCheck };
+const copyObject = (object) => JSON.parse(JSON.stringify(object));
+
+export { shuffleDeck, quickSortActions, rollSkillCheck, copyObject };

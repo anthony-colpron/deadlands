@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { rollSkillCheck } from '../Tools/functions';
-import { UPDATE_NPC_STATUS, REMOVE_NPC } from '../Redux/ACTIONS';
+import { removeNPC, updateNPCStatus } from '../Redux/slice';
 
 import Wounds from './npcCard/Wounds';
 import TraitsAndAptitudes from './npcCard/TraitsAndAptitudes';
@@ -311,15 +311,16 @@ NPCcard.propTypes = {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateNPCStatus: (woundPenalties, otherModifiers, status, stun, index) =>
-      dispatch({
-        type: UPDATE_NPC_STATUS,
-        woundPenalties,
-        otherModifiers,
-        status,
-        stun,
-        index,
-      }),
-    removeSelf: (index) => dispatch({ type: REMOVE_NPC, index }),
+      dispatch(
+        updateNPCStatus({
+          woundPenalties,
+          otherModifiers,
+          status,
+          stun,
+          index,
+        }),
+      ),
+    removeSelf: (index) => dispatch(removeNPC(index)),
   };
 };
 
