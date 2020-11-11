@@ -7,7 +7,7 @@ import deck from '../Tools/deck';
 import NPCs from '../DATA/NPCs';
 import NPC from '../models/NPC';
 
-import { MainState, UpdateNpcStatusAction, LoadNpcAction, AddWoundAction, UpdateNumericValueAction } from './types';
+import { MainState, LoadNpcAction, AddWoundAction, UpdateNumericValueAction } from './types';
 
 const initialDeck = shuffleDeck(deck);
 
@@ -32,18 +32,6 @@ const mainSlice = createSlice({
       const npcToLoad = state.NPCs[listIndex].list[npcIndex];
 
       state.loadedNPCs.push(new NPC(npcToLoad));
-    },
-    updateNPCStatus(state, action: PayloadAction<UpdateNpcStatusAction>): void {
-      const { woundPenalties, otherModifiers, stun, status, index } = action.payload;
-
-      const mutatedLoadedNPC = _cloneDeep(state.loadedNPCs[index]);
-
-      mutatedLoadedNPC.woundPenalties = woundPenalties;
-      mutatedLoadedNPC.otherModifiers = otherModifiers;
-      mutatedLoadedNPC.stun = stun;
-      mutatedLoadedNPC.status = status;
-
-      state.loadedNPCs[index] = mutatedLoadedNPC;
     },
     removeNPC(state, action: PayloadAction<number>): void {
       state.loadedNPCs = state.loadedNPCs.filter((_value, index) => index !== action.payload);
@@ -86,7 +74,6 @@ export const {
   loadNPC,
   shuffleActionDeck,
   dealAction,
-  updateNPCStatus,
   removeNPC,
   resolveStun,
   addWounds,

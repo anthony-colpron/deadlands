@@ -1,4 +1,4 @@
-import { NPCStatuses, WoundLocationKeys } from '../models/enums';
+import { WoundLocationKeys } from '../models/enums';
 import NPC from '../models/NPC';
 
 type Deck = { order: number; text: string }[];
@@ -10,14 +10,6 @@ export type MainState = {
 };
 
 export type LoadNpcAction = { listIndex: number; npcIndex: number };
-
-export type UpdateNpcStatusAction = {
-  woundPenalties: number;
-  otherModifiers: number;
-  stun: number;
-  status: NPCStatuses;
-  index: number;
-};
 
 export type AddWoundAction = {
   wounds: number;
