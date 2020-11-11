@@ -70,41 +70,41 @@ describe('status', () => {
   it('checks if dead', () => {
     // normal NPC
     const npc = new NPC();
-    npc.wounds.head = 5;
+    npc.wounds.head = npc.woundsToKill;
     expect(npc.status).toBe(NPCStatuses.Dead);
 
     npc.wounds.head = 0;
-    npc.wounds.guts = 5;
+    npc.wounds.guts = npc.woundsToKill;
     expect(npc.status).toBe(NPCStatuses.Dead);
 
-    npc.wounds.guts = 4;
+    npc.wounds.guts = npc.woundsToKill - 1;
     expect(npc.status).toBe(NPCStatuses.Ok);
 
     // undead
     const undeadNpc = new NPC({ undead: true });
 
-    undeadNpc.wounds.guts = 5;
+    undeadNpc.wounds.guts = undeadNpc.woundsToKill;
     expect(undeadNpc.status).toBe(NPCStatuses.Ok);
 
-    undeadNpc.wounds.head = 5;
+    undeadNpc.wounds.head = undeadNpc.woundsToKill;
     expect(undeadNpc.status).toBe(NPCStatuses.Dead);
 
-    undeadNpc.wounds.head = 4;
+    undeadNpc.wounds.head = undeadNpc.woundsToKill - 1;
     expect(undeadNpc.status).toBe(NPCStatuses.Ok);
 
     // left leg focus
     const npcWithLegFocus = new NPC({ killLocations: [WoundLocationKeys.LeftLeg] });
 
-    npcWithLegFocus.wounds.guts = 5;
+    npcWithLegFocus.wounds.guts = npcWithLegFocus.woundsToKill;
     expect(npcWithLegFocus.status).toBe(NPCStatuses.Ok);
 
-    npcWithLegFocus.wounds.head = 5;
+    npcWithLegFocus.wounds.head = npcWithLegFocus.woundsToKill;
     expect(npcWithLegFocus.status).toBe(NPCStatuses.Ok);
 
-    npcWithLegFocus.wounds.leftLeg = 5;
+    npcWithLegFocus.wounds.leftLeg = npcWithLegFocus.woundsToKill;
     expect(npcWithLegFocus.status).toBe(NPCStatuses.Dead);
 
-    npcWithLegFocus.wounds.leftLeg = 4;
+    npcWithLegFocus.wounds.leftLeg = npcWithLegFocus.woundsToKill - 1;
     expect(npcWithLegFocus.status).toBe(NPCStatuses.Ok);
   });
 
@@ -134,7 +134,7 @@ describe('status', () => {
 
   it('checks status priority', () => {
     const npc = new NPC();
-    npc.wounds.head = 5;
+    npc.wounds.head = npc.woundsToKill;
     npc.currentWind = 0;
     npc.stun = 1;
     expect(npc.status).toBe(NPCStatuses.Dead);

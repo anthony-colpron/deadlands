@@ -94,7 +94,7 @@ class NPC {
   }
 
   get status(): NPCStatuses {
-    const isDead = this.killLocations.some((woundLocationKey) => this.wounds[woundLocationKey] >= 5);
+    const isDead = this.killLocations.some((woundLocationKey) => this.wounds[woundLocationKey] >= this.woundsToKill);
     if (isDead) return NPCStatuses.Dead;
 
     if (this.currentWind <= 0) return NPCStatuses.Winded;
