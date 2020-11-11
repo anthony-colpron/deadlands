@@ -8,7 +8,6 @@ import NPCs from '../DATA/NPCs';
 import NPC from '../models/NPC';
 
 import { MainState, UpdateNpcStatusAction, LoadNpcAction, AddWoundAction, UpdateWindAction } from './types';
-import { NPCStatuses } from '../models/enums';
 
 const initialDeck = shuffleDeck(deck);
 
@@ -53,9 +52,6 @@ const mainSlice = createSlice({
       const mutatedLoadedNPC = _cloneDeep(state.loadedNPCs[action.payload]);
 
       mutatedLoadedNPC.stun -= 1;
-      if (mutatedLoadedNPC.stun === 0) {
-        mutatedLoadedNPC.status = NPCStatuses.Ok;
-      }
 
       state.loadedNPCs[action.payload] = mutatedLoadedNPC;
     },

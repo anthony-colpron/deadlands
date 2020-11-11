@@ -164,7 +164,7 @@ class NPCcard extends PureComponent {
         <span style={{ fontWeight: 'bold' }}>Sleeve</span>
         <input type="checkbox" />
         {this.renderDisplay()}
-        <DerivedStats stats={this.props.stats} index={this.props.index} updateStatus={this.updateStatus} />
+        <DerivedStats npc={this.props.stats} index={this.props.index} updateStatus={this.updateStatus} />
       </div>
     );
   }
