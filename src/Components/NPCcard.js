@@ -19,10 +19,6 @@ class NPCcard extends PureComponent {
     };
   }
 
-  get globalModifiers() {
-    return -this.props.stats.woundPenalties + this.props.stats.otherModifiers;
-  }
-
   removeSelf = () => {
     if (window.confirm('Are you sure you want to remove this NPC?')) {
       this.props.removeSelf(this.props.index);
@@ -77,11 +73,7 @@ class NPCcard extends PureComponent {
 
     return (
       <div className="traits">
-        <TraitsAndAptitudes
-          traits={this.props.stats.traits}
-          aptitudes={this.props.stats.aptitudes}
-          globalModifiers={this.globalModifiers}
-        />
+        <TraitsAndAptitudes npc={this.props.stats} />
         <span>Damage:</span>
         <select>
           {this.props.stats.attacks.map((item) => (

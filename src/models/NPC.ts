@@ -105,6 +105,10 @@ class NPC {
     return NPCStatuses.Ok;
   }
 
+  get allModifiers(): number {
+    return -this.woundPenalties + this.otherModifiers;
+  }
+
   addWounds(location: WoundLocationKeys, woundsToAdd: number, isMagicDamage?: boolean): void {
     const newWoundsToLocation = this.wounds[location] + woundsToAdd;
     // for removing wounds
@@ -127,7 +131,7 @@ class NPC {
     const target = getTnForWounds(wounds);
 
     const { level, diceType, dicePlus = 0 } = this.traits.vigor;
-    const modifiers = -this.woundPenalties + this.otherModifiers + this.sand;
+    const modifiers = this.allModifiers + this.sand;
     const vigorRoll = rollSkillCheck(level, diceType, target, dicePlus, modifiers);
 
     if (!vigorRoll.success && this.stun < 2) this.stun += 1;
