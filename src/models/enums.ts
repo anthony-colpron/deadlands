@@ -1,3 +1,5 @@
+import WoundLocation from '../Components/npcCard/WoundLocation';
+
 /* eslint-disable no-shadow */
 export enum NPCStatuses {
   Ok = 'Ok',
@@ -18,4 +20,13 @@ export enum TraitsEnum {
   Mien = 'mien',
   Spirit = 'spirit',
   Special = 'special',
+}
+
+export enum WoundLocationKeys {
+  Head = 'head',
+  LeftArm = 'leftArm',
+  RightArm = 'rightArm',
+  Guts = 'guts',
+  LeftLeg = 'leftLeg',
+  RightLeg = 'rightLeg',
 }
