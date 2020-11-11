@@ -16,7 +16,7 @@ class Wounds extends PureComponent {
   }
 
   onUpdateWind = (event) => {
-    this.props.dispatch(updateWind({ wind: +event.target.value, index: this.props.index }));
+    this.props.dispatch(updateWind({ value: +event.target.value, index: this.props.index }));
   };
 
   onToggleMagic = () => this.setState((prevState) => ({ isMagicDamage: !prevState.isMagicDamage }));

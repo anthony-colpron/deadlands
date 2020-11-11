@@ -26,4 +26,4 @@ export type AddWoundAction = {
   index: number;
 };
 
-export type UpdateWindAction = { index: number; wind: number };
+export type UpdateNumericValueAction = { index: number; value: number };

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NPC from '../../models/NPC';
-import { resolveStun } from '../../Redux/slice';
+import { resolveStun, updateOtherModifiers } from '../../Redux/slice';
 
 class DerivedStats extends PureComponent {
   constructor(props) {
@@ -14,8 +14,7 @@ class DerivedStats extends PureComponent {
   }
 
   updateOtherModifiers = (event) => {
-    const newOtherModifiers = +event.target.value;
-    this.props.updateStatus(undefined, newOtherModifiers);
+    this.props.dispatch(updateOtherModifiers({ value: +event.target.value, index: this.props.index }));
   };
 
   removeStun = () => {
@@ -53,7 +52,6 @@ class DerivedStats extends PureComponent {
 
 DerivedStats.propTypes = {
   npc: PropTypes.instanceOf(NPC).isRequired,
-  updateStatus: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };
