@@ -7,7 +7,7 @@ import deck from '../Tools/deck';
 import NPCs from '../DATA/NPCs';
 import NPC from '../models/NPC';
 
-import { MainState, UpdateNpcStatusAction, LoadNpcAction, AddWoundAction } from './types';
+import { MainState, UpdateNpcStatusAction, LoadNpcAction, AddWoundAction, UpdateWindAction } from './types';
 import { NPCStatuses } from '../models/enums';
 
 const initialDeck = shuffleDeck(deck);
@@ -67,6 +67,14 @@ const mainSlice = createSlice({
 
       state.loadedNPCs[index] = mutatedLoadedNPC;
     },
+    updateWind(state, action: PayloadAction<UpdateWindAction>): void {
+      const { index, wind } = action.payload;
+
+      const mutatedLoadedNPC = _cloneDeep(state.loadedNPCs[index]);
+      mutatedLoadedNPC.currentWind = wind;
+
+      state.loadedNPCs[index] = mutatedLoadedNPC;
+    },
   },
 });
 
@@ -78,6 +86,7 @@ export const {
   removeNPC,
   resolveStun,
   addWounds,
+  updateWind,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

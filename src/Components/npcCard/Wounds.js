@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WoundLocation from './WoundLocation';
+import NPC from '../../models/NPC';
+import { addWounds, updateWind } from '../../Redux/slice';
 
 class Wounds extends PureComponent {
   constructor(props) {
@@ -14,7 +16,7 @@ class Wounds extends PureComponent {
   }
 
   onUpdateWind = (event) => {
-    this.props.onUpdateWind(+event.target.value);
+    this.props.dispatch(updateWind({ wind: +event.target.value, index: this.props.index }));
   };
 
   onToggleMagic = () => this.setState((prevState) => ({ isMagicDamage: !prevState.isMagicDamage }));
@@ -24,7 +26,14 @@ class Wounds extends PureComponent {
   };
 
   onAddWound = (locationKey) => {
-    this.props.onAddWound(locationKey, this.state.woundsToAdd, this.state.isMagicDamage);
+    this.props.dispatch(
+      addWounds({
+        location: locationKey,
+        wounds: this.state.woundsToAdd,
+        isMagicDamage: this.state.isMagicDamage,
+        index: this.props.index,
+      }),
+    );
     this.setState({ woundsToAdd: 0 });
   };
 
@@ -32,7 +41,7 @@ class Wounds extends PureComponent {
     return (
       <div>
         <span>Wind:</span>
-        <input type="number" onChange={this.onUpdateWind} value={this.props.wind} />
+        <input type="number" onChange={this.onUpdateWind} value={this.props.npc.currentWind} />
       </div>
     );
   }
@@ -52,12 +61,12 @@ class Wounds extends PureComponent {
   renderWoundLocations() {
     return (
       <div>
-        {Object.keys(this.props.wounds).map((key) => {
+        {Object.keys(this.props.npc.wounds).map((key) => {
           return (
             <WoundLocation
               key={key}
               locationKey={key}
-              woundLevel={this.props.wounds[key]}
+              woundLevel={this.props.npc.wounds[key]}
               onAddWound={this.onAddWound}
             />
           );
@@ -79,10 +88,9 @@ class Wounds extends PureComponent {
 }
 
 Wounds.propTypes = {
-  wounds: PropTypes.shape({}).isRequired,
-  onAddWound: PropTypes.func.isRequired,
-  wind: PropTypes.number.isRequired,
-  onUpdateWind: PropTypes.func.isRequired,
+  npc: PropTypes.instanceOf(NPC).isRequired,
+  index: PropTypes.number.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(Wounds);

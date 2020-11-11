@@ -25,3 +25,5 @@ export type AddWoundAction = {
   isMagicDamage?: boolean;
   index: number;
 };
+
+export type UpdateWindAction = { index: number; wind: number };

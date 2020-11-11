@@ -2,42 +2,28 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { addWounds, removeNPC, updateNPCStatus } from '../Redux/slice';
+import { removeNPC, updateNPCStatus } from '../Redux/slice';
 
 import Wounds from './npcCard/Wounds';
 import TraitsAndAptitudes from './npcCard/TraitsAndAptitudes';
 import DerivedStats from './npcCard/DerivedStats';
+import NPC from '../models/NPC';
 
 class NPCcard extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.addWounds = this.addWounds.bind(this);
     this.updateStatus = this.updateStatus.bind(this);
 
     this.state = {
       display: 'stats',
       collapsed: false,
-      wounds: {
-        head: 0,
-        leftArm: 0,
-        rightArm: 0,
-        guts: 0,
-        leftLeg: 0,
-        rightLeg: 0,
-      },
-      wind: this.props.stats.wind,
     };
   }
 
   get globalModifiers() {
     return -this.props.stats.woundPenalties + this.props.stats.otherModifiers;
   }
-
-  onUpdateWind = (wind) => {
-    this.updateStatus(undefined, undefined, wind);
-    this.setState({ wind });
-  };
 
   removeSelf = () => {
     if (window.confirm('Are you sure you want to remove this NPC?')) {
@@ -60,67 +46,6 @@ class NPCcard extends PureComponent {
       this.setState({ display: 'wounds' });
     }
   };
-
-  addWounds(location, woundsToAdd, isMagicDamage) {
-    this.props.addWounds(location, woundsToAdd, isMagicDamage, this.props.index);
-    // const canBeWinded = !(this.props.stats.cannotBeWinded || (this.props.stats.undead && !isMagicDamage));
-    // const canBeStunned = !(this.props.stats.cannotBeStunned || (this.props.stats.undead && !isMagicDamage));
-    // let newWind = this.state.wind;
-    // let newStun = this.props.stats.stun;
-    // const newWounds = JSON.parse(JSON.stringify(this.state.wounds));
-    // newWounds[location] += woundsToAdd;
-    // if (newWounds[location] < 0) {
-    //   newWounds[location] = 0;
-    // }
-    // if (canBeWinded && woundsToAdd > -1) {
-    //   if (woundsToAdd === 0) {
-    //     newWind -= Math.ceil(Math.random() * 3);
-    //   } else {
-    //     for (let i = 0; i < woundsToAdd; i += 1) {
-    //       newWind -= Math.ceil(Math.random() * 6);
-    //     }
-    //   }
-    //   alert(`Wind lost :${this.state.wind - newWind}`);
-    // }
-    // if (canBeStunned && woundsToAdd > -1) {
-    //   let target;
-    //   switch (woundsToAdd) {
-    //     case 0:
-    //       target = 3;
-    //       break;
-    //     case 1:
-    //       target = 5;
-    //       break;
-    //     case 2:
-    //       target = 7;
-    //       break;
-    //     case 3:
-    //       target = 9;
-    //       break;
-    //     case 4:
-    //       target = 11;
-    //       break;
-    //     case 5:
-    //       target = 13;
-    //       break;
-    //     default:
-    //       target = 5;
-    //       break;
-    //   }
-    //   const { level, diceType, dicePlus = 0 } = this.props.stats.traits.vigor;
-    //   const sandTraitBonus = this.props.stats.sand ? this.props.stats.sand : 0;
-    //   const modifiers = -this.props.stats.woundPenalties + this.props.stats.otherModifiers + sandTraitBonus;
-    //   const vigorRoll = rollSkillCheck(level, diceType, target, dicePlus, modifiers);
-    //   if (!vigorRoll.success && newStun < 2) {
-    //     newStun += 1;
-    //   }
-    //   alert(
-    //     `Stun roll:\n${vigorRoll.note}! Target: ${target}\nResult: ${vigorRoll.result} (Modifiers: ${modifiers})\nDices: ${vigorRoll.diceRolls}`,
-    //   );
-    // }
-    // this.updateStatus(newWounds, undefined, newWind, newStun);
-    // this.setState(() => ({ wounds: newWounds, wind: newWind }));
-  }
 
   updateStatus(
     wounds,
@@ -209,14 +134,7 @@ class NPCcard extends PureComponent {
 
   renderDisplay() {
     if (this.state.display === 'wounds') {
-      return (
-        <Wounds
-          wounds={this.state.wounds}
-          onAddWound={this.addWounds}
-          wind={this.state.wind}
-          onUpdateWind={this.onUpdateWind}
-        />
-      );
+      return <Wounds npc={this.props.stats} index={this.props.index} />;
     }
 
     return (
@@ -262,35 +180,9 @@ class NPCcard extends PureComponent {
 }
 
 NPCcard.propTypes = {
-  stats: PropTypes.shape({
-    name: PropTypes.string,
-    size: PropTypes.number,
-    pace: PropTypes.number,
-    woundPenalties: PropTypes.number,
-    otherModifiers: PropTypes.number,
-    status: PropTypes.string,
-    stun: PropTypes.number,
-    note: PropTypes.string,
-    wind: PropTypes.number,
-    undead: PropTypes.bool,
-    cannotBeWinded: PropTypes.bool,
-    cannotBeStunned: PropTypes.bool,
-    thickSkinned: PropTypes.bool,
-    traits: PropTypes.shape({
-      vigor: PropTypes.shape({
-        level: PropTypes.number,
-        diceType: PropTypes.number,
-        dicePlus: PropTypes.number,
-      }),
-    }),
-    aptitudes: PropTypes.shape({}),
-    attacks: PropTypes.arrayOf({}),
-    sand: PropTypes.number,
-    woundsToKill: PropTypes.number,
-  }).isRequired,
+  stats: PropTypes.instanceOf(NPC).isRequired,
   removeSelf: PropTypes.func.isRequired,
   updateNPCStatus: PropTypes.func.isRequired,
-  addWounds: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };
 
@@ -307,8 +199,6 @@ const mapDispatchToProps = (dispatch) => {
         }),
       ),
     removeSelf: (index) => dispatch(removeNPC(index)),
-    addWounds: (location, wounds, isMagicDamage, index) =>
-      dispatch(addWounds({ location, wounds, isMagicDamage, index })),
   };
 };
 
