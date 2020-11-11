@@ -1,4 +1,4 @@
-import { copyObject } from '../Tools/functions';
+import { copyObject, getTnForWounds, rollDices, rollSkillCheck } from '../Tools/functions';
 import { NPCStatuses, WoundLocationKeys } from './enums';
 import { defaultTraits, Aptitudes } from './interfaces';
 
@@ -102,6 +102,36 @@ class NPC {
     if (this.stun > 0) return NPCStatuses.Stunned;
 
     return NPCStatuses.Ok;
+  }
+
+  addWounds(location: WoundLocationKeys, woundsToAdd: number, isMagicDamage?: boolean): void {
+    const newWoundsToLocation = this.wounds[location] + woundsToAdd;
+    // for removing wounds
+    this.wounds[location] = newWoundsToLocation < 0 ? 0 : newWoundsToLocation;
+
+    const canTakeWind = !(this.cannotBeWinded || (this.undead && !isMagicDamage));
+    const canTakeStun = !(this.cannotBeStunned || (this.undead && !isMagicDamage));
+
+    if (canTakeWind && woundsToAdd >= 0) this.takeWindFromWounds(woundsToAdd);
+    if (canTakeStun && woundsToAdd >= 0) this.takeStunFromWounds(woundsToAdd);
+  }
+
+  takeWindFromWounds(wounds: number): number {
+    const windLost = rollDices(wounds, 6, undefined, false).sum;
+    this.currentWind -= windLost;
+    return windLost;
+  }
+
+  takeStunFromWounds(wounds: number): any {
+    const target = getTnForWounds(wounds);
+
+    const { level, diceType, dicePlus = 0 } = this.traits.vigor;
+    const modifiers = -this.woundPenalties + this.otherModifiers + this.sand;
+    const vigorRoll = rollSkillCheck(level, diceType, target, dicePlus, modifiers);
+
+    if (!vigorRoll.success && this.stun < 2) this.stun += 1;
+
+    return { vigorRoll, target, modifiers };
   }
 }
 

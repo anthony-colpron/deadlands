@@ -1,5 +1,3 @@
-import WoundLocation from '../Components/npcCard/WoundLocation';
-
 /* eslint-disable no-shadow */
 export enum NPCStatuses {
   Ok = 'Ok',

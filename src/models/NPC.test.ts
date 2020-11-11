@@ -148,4 +148,43 @@ describe('status', () => {
     npc.stun = 0;
     expect(npc.status).toBe(NPCStatuses.Ok);
   });
+
+  it('takes wounds', () => {
+    const npc = new NPC();
+
+    npc.addWounds(WoundLocationKeys.LeftLeg, 3);
+    expect(npc.wounds.leftLeg).toBe(3);
+
+    npc.addWounds(WoundLocationKeys.Head, 5);
+    expect(npc.wounds.head).toBe(5);
+    expect(npc.status).toBe(NPCStatuses.Dead);
+  });
+
+  it('takes wind from wounds', () => {
+    const npc = new NPC();
+
+    npc.addWounds(WoundLocationKeys.LeftLeg, 2);
+    expect(npc.currentWind <= npc.wind - 2 && npc.currentWind >= npc.wind - 12).toBe(true);
+  });
+
+  it('takes stun from wounds', () => {
+    const npc = new NPC();
+
+    npc.otherModifiers = Infinity;
+    npc.addWounds(WoundLocationKeys.LeftLeg, 5);
+    expect(npc.stun).toBe(0);
+
+    npc.otherModifiers = -Infinity;
+    npc.addWounds(WoundLocationKeys.RightLeg, 5);
+    expect(npc.stun).toBe(1);
+
+    npc.otherModifiers = -Infinity;
+    npc.addWounds(WoundLocationKeys.RightArm, 5);
+    expect(npc.stun).toBe(2);
+
+    // max stun is 2
+    npc.otherModifiers = -Infinity;
+    npc.addWounds(WoundLocationKeys.LeftArm, 5);
+    expect(npc.stun).toBe(2);
+  });
 });

@@ -39,25 +39,21 @@ function quickSortActions(arr) {
   return [].concat(quickSortActions(left), pivot, quickSortActions(right));
 }
 
-function rollSkillCheck(level, diceType, target = 5, dicePlus = 0, totalPlus = 0) {
+function rollOneDice(diceType, dicePlus = 0, allowAces = true) {
+  const result = Math.ceil(Math.random() * diceType);
+
+  if (result === diceType && allowAces) {
+    return result + dicePlus + rollOneDice(diceType, dicePlus);
+  }
+  return result + dicePlus;
+}
+
+function rollDices(numberOfDices, diceType, dicePlus = 0, allowAces = true) {
   const results = [];
   let highest;
-  let note = '';
-  let raises = 0;
-  let botch = false;
-  let success;
 
-  function rollOneDice() {
-    const result = Math.ceil(Math.random() * diceType);
-
-    if (result === diceType) {
-      return result + dicePlus + rollOneDice(diceType);
-    }
-    return result + dicePlus;
-  }
-
-  for (let i = 0; i < level; i += 1) {
-    const roll = rollOneDice(diceType);
+  for (let i = 0; i < numberOfDices; i += 1) {
+    const roll = rollOneDice(diceType, dicePlus, allowAces);
 
     if (roll > highest || i === 0) {
       highest = roll;
@@ -65,6 +61,19 @@ function rollSkillCheck(level, diceType, target = 5, dicePlus = 0, totalPlus = 0
 
     results[i] = roll;
   }
+
+  const sum = results.reduce((acc, value) => acc + value, 0);
+
+  return { results, sum, highest };
+}
+
+function rollSkillCheck(level, diceType, target = 5, dicePlus = 0, totalPlus = 0) {
+  let note = '';
+  let raises = 0;
+  let botch = false;
+  let success;
+
+  const { results, highest } = rollDices(level, diceType, dicePlus);
 
   const result = highest + totalPlus;
 
@@ -102,11 +111,21 @@ function rollSkillCheck(level, diceType, target = 5, dicePlus = 0, totalPlus = 0
     success = false;
   }
 
-  console.log({ result, raises, note, success, botch, diceRolls: results });
+  // console.log({ result, raises, note, success, botch, diceRolls: results });
 
   return { result, raises, note, success, botch, diceRolls: results };
 }
 
 const copyObject = (object) => JSON.parse(JSON.stringify(object));
 
-export { shuffleDeck, quickSortActions, rollSkillCheck, copyObject };
+const getTnForWounds = (wounds) => {
+  if (wounds >= 5) return 13;
+  if (wounds === 4) return 11;
+  if (wounds === 3) return 9;
+  if (wounds === 2) return 7;
+  if (wounds === 1) return 5;
+
+  return 3;
+};
+
+export { shuffleDeck, quickSortActions, rollSkillCheck, copyObject, getTnForWounds, rollDices };
