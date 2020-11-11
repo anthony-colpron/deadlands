@@ -116,8 +116,6 @@ function rollSkillCheck(level, diceType, target = 5, dicePlus = 0, totalPlus = 0
   return { result, raises, note, success, botch, diceRolls: results };
 }
 
-const copyObject = (object) => JSON.parse(JSON.stringify(object));
-
 const getTnForWounds = (wounds) => {
   if (wounds >= 5) return 13;
   if (wounds === 4) return 11;
@@ -128,4 +126,4 @@ const getTnForWounds = (wounds) => {
   return 3;
 };
 
-export { shuffleDeck, quickSortActions, rollSkillCheck, copyObject, getTnForWounds, rollDices };
+export { shuffleDeck, quickSortActions, rollSkillCheck, getTnForWounds, rollDices };

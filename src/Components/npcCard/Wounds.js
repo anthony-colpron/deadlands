@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WoundLocation from './WoundLocation';
 
@@ -84,4 +85,4 @@ Wounds.propTypes = {
   onUpdateWind: PropTypes.func.isRequired,
 };
 
-export default Wounds;
+export default connect()(Wounds);
