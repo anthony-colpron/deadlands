@@ -1,5 +1,11 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import reducer from './slice';
+import { configureStore, getDefaultMiddleware, combineReducers } from '@reduxjs/toolkit';
+import mainReducer from './slice';
+import logReducer from './log/logReducer';
+
+const reducer = combineReducers({
+  main: mainReducer,
+  logs: logReducer,
+});
 
 const store = configureStore({
   reducer,

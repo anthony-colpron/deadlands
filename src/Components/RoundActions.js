@@ -115,7 +115,7 @@ RoundActions.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return { deck: state.deck, loadedNPCs: state.loadedNPCs };
+  return { deck: state.main.deck, loadedNPCs: state.main.loadedNPCs };
 };
 
 const mapDispatchToProps = (dispatch) => {

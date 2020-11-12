@@ -47,7 +47,7 @@ Action.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return { loadedNPCs: state.loadedNPCs };
+  return { loadedNPCs: state.main.loadedNPCs };
 };
 
 const ConnectedAction = connect(mapStateToProps)(Action);

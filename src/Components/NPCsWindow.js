@@ -63,7 +63,7 @@ NPCsWindow.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return { NPCs: state.NPCs, loadedNPCs: state.loadedNPCs };
+  return { NPCs: state.main.NPCs, loadedNPCs: state.main.loadedNPCs };
 };
 
 const mapDispatchToProps = (dispatch) => {

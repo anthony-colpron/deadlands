@@ -1,11 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { rollSkillCheck } from '../../Tools/gameUtils';
+import { addLog } from '../../Redux/log/logReducer';
 
 const RollButton = ({ label, level, diceType, dicePlus, modifiers, onRolled }) => {
+  const dispatch = useDispatch();
+
   const rollDice = () => {
     const roll = rollSkillCheck(level, diceType, undefined, dicePlus, modifiers);
-    alert(`Result: ${roll.result} (Modifiers: ${modifiers})\nDices: ${roll.diceRolls} ${roll.botch ? roll.note : ''}`);
+    const { result, diceRolls, botch, note } = roll;
+    dispatch(
+      addLog(
+        `${label.toUpperCase()}\nResult: ${result} (Modifiers: ${modifiers})\nDices: ${diceRolls} ${botch ? note : ''}`,
+      ),
+    );
     onRolled();
   };
 

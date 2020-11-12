@@ -22,7 +22,7 @@ TopMenu.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return { deck: state.deck };
+  return { deck: state.main.deck };
 };
 
 const mapDispatchToProps = (dispatch) => {

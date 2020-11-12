@@ -32,7 +32,6 @@ class Wounds extends PureComponent {
         location: locationKey,
         wounds: this.state.woundsToAdd,
         isMagicDamage: this.state.isMagicDamage,
-        // index: this.props.index,
       }),
     );
     this.setState({ woundsToAdd: 0 });
