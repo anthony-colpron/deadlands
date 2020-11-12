@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import _cloneDeep from 'lodash.clonedeep';
 import { getTnForWounds, rollDices, rollSkillCheck } from '../Tools/gameUtils';
 import { NPCStatuses, WoundLocationKeys } from './enums';
-import { defaultTraits, Aptitudes, StunRollResult } from './interfaces';
+import { defaultTraits, Aptitudes, StunRollResult, Attack } from './interfaces';
 
 class NPC {
   id: string;
@@ -50,7 +50,7 @@ class NPC {
 
   aptitudes: Aptitudes = { corporeal: {}, mental: {} };
 
-  attacks = ['No weapon'];
+  attacks: string[] | Attack[] = ['No weapon'];
 
   constructor(data?: Partial<NPC>) {
     this.id = uuidv4();

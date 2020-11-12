@@ -39,6 +39,15 @@ export type StunRollResult = {
   modifiers: number;
 };
 
+export type Attack = {
+  name: string;
+  stats?: {
+    numberOfDices: number;
+    diceType: number;
+    addStrength?: boolean;
+  };
+};
+
 export const defaultTrait: Trait = {
   level: 2,
   diceType: 6,

@@ -63,7 +63,11 @@ const typicalNPCs = {
           },
         },
       },
-      attacks: ['No weapon', 'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8'],
+      attacks: [
+        { name: 'Pistol', stats: { numberOfDices: 3, diceType: 6 } },
+        { name: 'Rifle', stats: { numberOfDices: 4, diceType: 8 } },
+        { name: 'Bowie knife', stats: { numberOfDices: 1, diceType: 6, addStrength: true } },
+      ],
     },
     {
       name: 'Typical Soldier',

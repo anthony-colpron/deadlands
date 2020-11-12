@@ -8,6 +8,7 @@ import Wounds from './npcCard/Wounds';
 import TraitsAndAptitudes from './npcCard/TraitsAndAptitudes';
 import DerivedStats from './npcCard/DerivedStats';
 import NPC from '../models/NPC';
+import Attacks from './npcCard/Attacks';
 
 class NPCcard extends PureComponent {
   constructor(props) {
@@ -74,12 +75,13 @@ class NPCcard extends PureComponent {
     return (
       <div className="traits">
         <TraitsAndAptitudes npc={this.props.stats} />
-        <span>Damage:</span>
+        <Attacks npc={this.props.stats} />
+        {/* <span>Damage:</span>
         <select>
           {this.props.stats.attacks.map((item) => (
             <option value={item}>{item}</option>
           ))}
-        </select>
+        </select> */}
       </div>
     );
   }
