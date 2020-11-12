@@ -15,6 +15,7 @@ const initialState: MainState = {
   NPCs,
   loadedNPCs: [],
   deck: initialDeck,
+  log: [],
 };
 
 const mainSlice = createSlice({

@@ -1,3 +1,5 @@
+import { SkillCheckRoll } from '../Tools/gameUtils';
+
 export interface Trait {
   level: number;
   diceType: number;
@@ -30,6 +32,12 @@ export interface Aptitudes {
     [key: string]: Aptitude;
   };
 }
+
+export type StunRollResult = {
+  vigorRoll: SkillCheckRoll;
+  target: number;
+  modifiers: number;
+};
 
 export const defaultTrait: Trait = {
   level: 2,

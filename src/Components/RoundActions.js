@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { quickSortActions, rollSkillCheck } from '../Tools/functions';
+import { quickSortActions } from '../Tools/functions';
+import { rollSkillCheck } from '../Tools/gameUtils';
 
 import Action from './Action';
 import { dealAction, resolveStun } from '../Redux/slice';

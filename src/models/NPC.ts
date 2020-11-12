@@ -1,9 +1,12 @@
+import { v4 as uuidv4 } from 'uuid';
 import _cloneDeep from 'lodash.clonedeep';
-import { getTnForWounds, rollDices, rollSkillCheck } from '../Tools/functions';
+import { getTnForWounds, rollDices, rollSkillCheck } from '../Tools/gameUtils';
 import { NPCStatuses, WoundLocationKeys } from './enums';
-import { defaultTraits, Aptitudes } from './interfaces';
+import { defaultTraits, Aptitudes, StunRollResult } from './interfaces';
 
 class NPC {
+  id: string;
+
   name = 'No name';
 
   size = 6;
@@ -50,6 +53,7 @@ class NPC {
   attacks = ['No weapon'];
 
   constructor(data?: Partial<NPC>) {
+    this.id = uuidv4();
     if (data) {
       if (data.name !== undefined) this.name = data.name;
       if (data.size !== undefined) this.size = data.size;
@@ -109,7 +113,11 @@ class NPC {
     return -this.woundPenalties + this.otherModifiers;
   }
 
-  addWounds(location: WoundLocationKeys, woundsToAdd: number, isMagicDamage?: boolean): void {
+  addWounds(
+    location: WoundLocationKeys,
+    woundsToAdd: number,
+    isMagicDamage?: boolean,
+  ): { windResult?: number; stunResult?: StunRollResult } {
     const newWoundsToLocation = this.wounds[location] + woundsToAdd;
     // for removing wounds
     this.wounds[location] = newWoundsToLocation < 0 ? 0 : newWoundsToLocation;
@@ -117,8 +125,16 @@ class NPC {
     const canTakeWind = !(this.cannotBeWinded || (this.undead && !isMagicDamage));
     const canTakeStun = !(this.cannotBeStunned || (this.undead && !isMagicDamage));
 
-    if (canTakeWind && woundsToAdd >= 0) this.takeWindFromWounds(woundsToAdd);
-    if (canTakeStun && woundsToAdd >= 0) this.takeStunFromWounds(woundsToAdd);
+    let windResult: number | undefined;
+    let stunResult: StunRollResult | undefined;
+    if (canTakeWind && woundsToAdd >= 0) {
+      windResult = this.takeWindFromWounds(woundsToAdd);
+    }
+    if (canTakeStun && woundsToAdd >= 0) {
+      stunResult = this.takeStunFromWounds(woundsToAdd);
+    }
+
+    return { windResult, stunResult };
   }
 
   takeWindFromWounds(wounds: number): number {
@@ -127,7 +143,7 @@ class NPC {
     return windLost;
   }
 
-  takeStunFromWounds(wounds: number): any {
+  takeStunFromWounds(wounds: number): StunRollResult {
     const target = getTnForWounds(wounds);
 
     const { level, diceType, dicePlus = 0 } = this.traits.vigor;

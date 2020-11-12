@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { rollSkillCheck } from '../../Tools/functions';
+import { rollSkillCheck } from '../../Tools/gameUtils';
 
 const RollButton = ({ label, level, diceType, dicePlus, modifiers, onRolled }) => {
   const rollDice = () => {
