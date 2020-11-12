@@ -7,7 +7,9 @@ import deck from '../Tools/deck';
 import NPCs from '../DATA/NPCs';
 import NPC from '../models/NPC';
 
-import { MainState, LoadNpcAction, AddWoundAction, UpdateNumericValueAction } from './types';
+import { MainState, LoadNpcAction, UpdateNumericValueAction, AddWoundResult } from './types';
+import { getNPCIndex } from './utils';
+import { addWounds } from './wounds/woundsActions';
 
 const initialDeck = shuffleDeck(deck);
 
@@ -44,14 +46,6 @@ const mainSlice = createSlice({
 
       state.loadedNPCs[action.payload] = mutatedLoadedNPC;
     },
-    addWounds(state, action: PayloadAction<AddWoundAction>): void {
-      const { index, wounds, location, isMagicDamage } = action.payload;
-
-      const mutatedLoadedNPC = _cloneDeep(state.loadedNPCs[index]);
-      mutatedLoadedNPC.addWounds(location, wounds, isMagicDamage);
-
-      state.loadedNPCs[index] = mutatedLoadedNPC;
-    },
     updateWind(state, action: PayloadAction<UpdateNumericValueAction>): void {
       const { index, value } = action.payload;
 
@@ -69,6 +63,15 @@ const mainSlice = createSlice({
       state.loadedNPCs[index] = mutatedLoadedNPC;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(addWounds, (state, action: PayloadAction<AddWoundResult>) => {
+      const { woundedNPC } = action.payload;
+
+      const index = getNPCIndex(state.loadedNPCs, woundedNPC);
+
+      state.loadedNPCs[index] = woundedNPC;
+    });
+  },
 });
 
 export const {
@@ -77,7 +80,6 @@ export const {
   dealAction,
   removeNPC,
   resolveStun,
-  addWounds,
   updateWind,
   updateOtherModifiers,
 } = mainSlice.actions;

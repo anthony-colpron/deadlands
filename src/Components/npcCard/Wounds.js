@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WoundLocation from './WoundLocation';
 import NPC from '../../models/NPC';
-import { addWounds, updateWind } from '../../Redux/slice';
+import { updateWind } from '../../Redux/slice';
+import { addWounds } from '../../Redux/wounds/woundsActions';
 
 class Wounds extends PureComponent {
   constructor(props) {
@@ -27,11 +28,11 @@ class Wounds extends PureComponent {
 
   onAddWound = (locationKey) => {
     this.props.dispatch(
-      addWounds({
+      addWounds(this.props.npc, {
         location: locationKey,
         wounds: this.state.woundsToAdd,
         isMagicDamage: this.state.isMagicDamage,
-        index: this.props.index,
+        // index: this.props.index,
       }),
     );
     this.setState({ woundsToAdd: 0 });
