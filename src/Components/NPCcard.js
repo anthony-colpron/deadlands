@@ -10,6 +10,14 @@ import DerivedStats from './npcCard/DerivedStats';
 import NPC from '../models/NPC';
 import Attacks from './npcCard/Attacks';
 
+const styles = {
+  container: {
+    maxWidth: 400,
+    border: '1px solid black',
+    padding: 10,
+  },
+};
+
 class NPCcard extends PureComponent {
   constructor(props) {
     super(props);
@@ -73,15 +81,9 @@ class NPCcard extends PureComponent {
     }
 
     return (
-      <div className="traits">
+      <div>
         <TraitsAndAptitudes npc={this.props.stats} />
         <Attacks npc={this.props.stats} />
-        {/* <span>Damage:</span>
-        <select>
-          {this.props.stats.attacks.map((item) => (
-            <option value={item}>{item}</option>
-          ))}
-        </select> */}
       </div>
     );
   }
@@ -103,7 +105,7 @@ class NPCcard extends PureComponent {
 
   render() {
     return (
-      <div className="npc-card">
+      <div style={styles.container}>
         {this.renderTopBar()}
         {this.state.collapsed ? this.renderStatus() : this.renderFullInfo()}
       </div>

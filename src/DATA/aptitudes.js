@@ -1,239 +1,229 @@
-const DEFTNESS = `deftness`;
-const NIMBLENESS = `nimbleness`;
-// const STRENGTH = `strength`;
-const QUICKNESS = `quickness`;
-// const VIGOR = `vigor`;
-const COGNITION = `cognition`;
-const KNOWLEDGE = `knowledge`;
-const SMARTS = `smarts`;
-const MIEN = `mien`;
-const SPIRIT = `spirit`;
-const SPECIAL = `special`;
+import { TraitsEnum } from '../models/enums';
 
 const aptitudes = {
   academia: {
     name: `Academia`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   alchemy: {
     name: `Alchemy`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   animalWranglin: {
     name: `Animal Wranglin'`,
-    associatedTrait: MIEN,
+    associatedTrait: TraitsEnum.Mien,
   },
   areaKnowledge: {
     name: `Area Knowledge`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   artillery: {
     name: `Artillery`,
-    associatedTrait: COGNITION,
+    associatedTrait: TraitsEnum.Cognition,
   },
   arts: {
     name: `Arts`,
-    associatedTrait: COGNITION,
+    associatedTrait: TraitsEnum.Cognition,
   },
   bluff: {
     name: `Bluff`,
-    associatedTrait: SMARTS,
+    associatedTrait: TraitsEnum.Smarts,
   },
   bow: {
     name: `Bow`,
-    associatedTrait: DEFTNESS,
+    associatedTrait: TraitsEnum.Deftness,
   },
   chi: {
     name: `Ch'i`,
-    associatedTrait: SPIRIT,
+    associatedTrait: TraitsEnum.Spirit,
   },
   climbin: {
     name: `Climbin'`,
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   demolition: {
     name: `Demolition`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   disguise: {
     name: `Disguise`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   dodge: {
     name: `Dodge`,
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   drivin: {
     name: `Drivin'`,
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   faith: {
     name: `Faith`,
-    associatedTrait: SPIRIT,
+    associatedTrait: TraitsEnum.Spirit,
   },
   fightin: {
     name: `Fightin'`,
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   filchin: {
     name: `Filchin'`,
-    associatedTrait: DEFTNESS,
+    associatedTrait: TraitsEnum.Deftness,
   },
   gamblin: {
     name: `Gamblin'`,
-    associatedTrait: SMARTS,
+    associatedTrait: TraitsEnum.Smarts,
   },
   guts: {
     name: `Guts`,
-    associatedTrait: SPIRIT,
+    associatedTrait: TraitsEnum.Spirit,
   },
   hexslinginSpirit: {
     name: `Hex Spirit`,
-    associatedTrait: SPIRIT,
+    associatedTrait: TraitsEnum.Spirit,
   },
   hexslinginMien: {
     name: `Hex Mien`,
-    associatedTrait: MIEN,
+    associatedTrait: TraitsEnum.Mien,
   },
   hexslinginCognition: {
     name: `Hex Cog`,
-    associatedTrait: COGNITION,
+    associatedTrait: TraitsEnum.Cognition,
   },
   hexslinginSmarts: {
     name: `Hex Smarts`,
-    associatedTrait: SMARTS,
+    associatedTrait: TraitsEnum.Smarts,
   },
   hexslinginKnowledge: {
     name: `Hex Know`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   horseRidin: {
     name: `Horse Ridin'`,
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   languages: {
     name: `Languages`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   leadership: {
     name: `Leadership`,
-    associatedTrait: MIEN,
+    associatedTrait: TraitsEnum.Mien,
   },
   lockpickin: {
     name: `Lockpickin'`,
-    associatedTrait: DEFTNESS,
+    associatedTrait: TraitsEnum.Deftness,
   },
   madScience: {
     name: `Mad Science`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   medicine: {
     name: `Medicine`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   meditation: {
     name: `Meditation`,
-    associatedTrait: SPIRIT,
+    associatedTrait: TraitsEnum.Spirit,
   },
   overawe: {
     name: `Overawe`,
-    associatedTrait: MIEN,
+    associatedTrait: TraitsEnum.Mien,
   },
   performin: {
     name: `Performin'`,
-    associatedTrait: MIEN,
+    associatedTrait: TraitsEnum.Mien,
   },
   persuasion: {
     name: `Persuasion`,
-    associatedTrait: MIEN,
+    associatedTrait: TraitsEnum.Mien,
   },
   professional: {
     name: `Professional`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   quickDraw: {
     name: `Quick Draw`,
-    associatedTrait: QUICKNESS,
+    associatedTrait: TraitsEnum.Quickness,
   },
   ridicule: {
     name: `Ridicule`,
-    associatedTrait: SMARTS,
+    associatedTrait: TraitsEnum.Smarts,
   },
   ritual: {
     name: `Ritual`,
-    associatedTrait: SPECIAL,
+    associatedTrait: TraitsEnum.Spirit,
   },
   science: {
     name: `Science`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
   scrutinize: {
     name: `Scrutinize`,
-    associatedTrait: COGNITION,
+    associatedTrait: TraitsEnum.Cognition,
   },
   search: {
     name: `Search`,
-    associatedTrait: COGNITION,
+    associatedTrait: TraitsEnum.Cognition,
   },
   scroungin: {
     name: `Scroungin'`,
-    associatedTrait: SMARTS,
+    associatedTrait: TraitsEnum.Smarts,
   },
   shootin: {
     name: `Shootin'`,
-    associatedTrait: DEFTNESS,
+    associatedTrait: TraitsEnum.Deftness,
   },
   sleightOfHand: {
     name: `Sleight of Hand`,
-    associatedTrait: DEFTNESS,
+    associatedTrait: TraitsEnum.Deftness,
   },
   sneak: {
     name: `Sneak`,
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   speedLoad: {
     name: `Speed-Load`,
-    associatedTrait: DEFTNESS,
+    associatedTrait: TraitsEnum.Deftness,
   },
   streetwise: {
     name: `Streetwise`,
-    associatedTrait: SMARTS,
+    associatedTrait: TraitsEnum.Smarts,
   },
   survival: {
     name: `Survival`,
-    associatedTrait: SMARTS,
+    associatedTrait: TraitsEnum.Smarts,
   },
   swimmin: {
     name: `Swimmin'`,
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   swing: {
     name: 'Swing',
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   taleTellin: {
     name: `Tale-Tellin'`,
-    associatedTrait: MIEN,
+    associatedTrait: TraitsEnum.Mien,
   },
   teamster: {
     name: `Teamster`,
-    associatedTrait: NIMBLENESS,
+    associatedTrait: TraitsEnum.Nimbleness,
   },
   throwin: {
     name: `Throwin'`,
-    associatedTrait: DEFTNESS,
+    associatedTrait: TraitsEnum.Deftness,
   },
   tinkerin: {
     name: `Tinkerin'`,
-    associatedTrait: SMARTS,
+    associatedTrait: TraitsEnum.Smarts,
   },
   trackin: {
     name: `Trackin'`,
-    associatedTrait: COGNITION,
+    associatedTrait: TraitsEnum.Cognition,
   },
   trade: {
     name: `Trade`,
-    associatedTrait: KNOWLEDGE,
+    associatedTrait: TraitsEnum.Knowledge,
   },
 };
 

@@ -1,133 +1,75 @@
 .app {
+  .round-actions {
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 50px;
+    height: 100%;
+    width: 200px;
+    padding: 0.5em;
+    border: 2px ridge #462a16;
 
+    overflow: auto;
 
-    .round-actions {
-        box-sizing: border-box;
-        position: fixed;
-        left: 0;
-        top: 50px;
-        height: 100%;
-        width: 200px;
-        padding: 0.5em;
-        border: 2px ridge #462A16;
+    font-family: 'Rye';
+    background-color: #8d7764;
 
-        overflow: auto;
-
-        font-family: "Rye";
-        background-color: #8D7764;
-
-        button {
-            font-family: "Rye";
-            background-color: rgb(92, 78, 67);
-            border: 2px ridge #462A16;
-            border-radius: 8px;
-        }
-
-        font-size: 12px;
-
-        button {
-            font-size: 12px;
-        }
-
-        ul {
-            padding: 0;
-            list-style-type: none;
-        }
-
-        strong.card {
-            font-size: 16px;
-        }
+    button {
+      font-family: 'Rye';
+      background-color: rgb(92, 78, 67);
+      border: 2px ridge #462a16;
+      border-radius: 8px;
     }
 
-    .top-menu {
-        box-sizing: border-box;
-        position: fixed;
-        left: 0;
-        top:0;
-        width: 100%;
-        height: 50px;
-        border: 2px ridge #462A16;
-        font-weight: bold;
-        padding: 0.5em;
+    font-size: 12px;
 
-        font-family: "Rye";
-        background-color: #8D7764;
-
-        button {
-            font-family: "Rye";
-            background-color: rgb(92, 78, 67);
-            border: 2px ridge #462A16;
-            border-radius: 8px;
-        }
+    button {
+      font-size: 12px;
     }
 
-    .npcs-window {
-        box-sizing: border-box;
-        margin-top: 50px;
-        margin-left: 200px;
-        padding: 1em 0 1em 0.5em;
+    ul {
+      padding: 0;
+      list-style-type: none;
     }
 
-    .npcs-container {
-        box-sizing: border-box;
-        display: flex;
-        flex-flow: row wrap;
-        align-items: flex-start;
-        
-
-        .npc-card {
-            box-sizing: border-box;
-            border: 1px solid black;
-            padding: 1em;
-            max-width: 32%;
-            margin: 0.4em;
-            
-            
-
-            .remove-npc-button {
-                float: right;
-            }
-
-            .wounds-location {
-        
-                button {
-                    font-size: 12px;
-                }
-            }
-
-            .traits {
-                button {
-                    font-size: 12px;
-                }
-
-            }
-            .aptitude {
-                display: inline-block;
-
-                font-size: 12px;
-        
-                
-            }
-
-            .numeric-input {
-                width: 2em;
-            }
-
-            .numeric-input-wind {
-                width: 25px;
-            }
-
-            .stun-button {
-                background-color: white;
-                font-weight: bold;
-                display: inline-block;
-                border: 1px solid black;
-                cursor: default;
-                padding: 1px;
-                margin-bottom: 1px;
-
-            }
-        }
+    strong.card {
+      font-size: 16px;
     }
+  }
 
+  .top-menu {
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    border: 2px ridge #462a16;
+    font-weight: bold;
+    padding: 0.5em;
+
+    font-family: 'Rye';
+    background-color: #8d7764;
+
+    button {
+      font-family: 'Rye';
+      background-color: rgb(92, 78, 67);
+      border: 2px ridge #462a16;
+      border-radius: 8px;
+    }
+  }
+
+  .npcs-window {
+    box-sizing: border-box;
+    margin-top: 50px;
+    margin-left: 200px;
+    padding: 1em 0 1em 0.5em;
+  }
+
+  .npcs-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+  }
 }
