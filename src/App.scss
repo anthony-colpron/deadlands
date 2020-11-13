@@ -1,4 +1,7 @@
 .app {
+  span {
+    font-family: 'Roboto';
+  }
   .round-actions {
     box-sizing: border-box;
     position: fixed;
@@ -64,6 +67,7 @@
     margin-top: 50px;
     margin-left: 200px;
     padding: 1em 0 1em 0.5em;
+    background-color: #f5f5f5;
   }
 
   .npcs-container {
@@ -71,5 +75,14 @@
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
+    margin-top: 20px;
+
+    .numeric-input {
+      width: 30px;
+    }
+
+    .numeric-input-large {
+      width: 35px;
+    }
   }
 }

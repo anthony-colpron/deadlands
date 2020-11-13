@@ -1,11 +1,24 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import WoundLocation from './WoundLocation';
 import NPC from '../../models/NPC';
 import { updateWind } from '../../Redux/slice';
 import { addWounds } from '../../Redux/wounds/woundsActions';
 
+const styles = {
+  woundLocations: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    alignSelf: 'center',
+    padding: 5,
+    backgroundColor: 'rgba(119,136,153,0.2)',
+    marginTop: 5,
+    marginBottom: 5,
+  },
+};
 class Wounds extends PureComponent {
   constructor(props) {
     super(props);
@@ -41,7 +54,12 @@ class Wounds extends PureComponent {
     return (
       <div>
         <span>Wind:</span>
-        <input type="number" onChange={this.onUpdateWind} value={this.props.npc.currentWind} />
+        <input
+          type="number"
+          className="numeric-input-large"
+          onChange={this.onUpdateWind}
+          value={this.props.npc.currentWind}
+        />
       </div>
     );
   }
@@ -50,7 +68,12 @@ class Wounds extends PureComponent {
     return (
       <div>
         <span>Add Wounds:</span>
-        <input type="number" onChange={this.onWoundsToAddChange} value={this.state.woundsToAdd} />
+        <input
+          type="number"
+          className="numeric-input"
+          onChange={this.onWoundsToAddChange}
+          value={this.state.woundsToAdd}
+        />
 
         <span style={{ fontWeight: 'bold' }}>Magic</span>
         <input type="checkbox" value={this.state.isMagicDamage} onChange={this.onToggleMagic} />
@@ -59,19 +82,30 @@ class Wounds extends PureComponent {
   }
 
   renderWoundLocations() {
+    const wounds = Object.keys(this.props.npc.wounds).map((key) => {
+      return (
+        <WoundLocation
+          key={key}
+          locationKey={key}
+          woundLevel={this.props.npc.wounds[key]}
+          onAddWound={this.onAddWound}
+        />
+      );
+    });
+
     return (
-      <div>
-        {Object.keys(this.props.npc.wounds).map((key) => {
-          return (
-            <WoundLocation
-              key={key}
-              locationKey={key}
-              woundLevel={this.props.npc.wounds[key]}
-              onAddWound={this.onAddWound}
-            />
-          );
-        })}
-      </div>
+      <Paper style={styles.woundLocations}>
+        {wounds[0]}
+        <div>
+          {wounds[1]}
+          {wounds[2]}
+        </div>
+        {wounds[3]}
+        <div>
+          {wounds[4]}
+          {wounds[5]}
+        </div>
+      </Paper>
     );
   }
 
@@ -79,7 +113,6 @@ class Wounds extends PureComponent {
     return (
       <div>
         {this.renderWind()}
-        <span>Wounds:</span>
         {this.renderWoundsToAdd()}
         {this.renderWoundLocations()}
       </div>

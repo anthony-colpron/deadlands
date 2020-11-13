@@ -40,16 +40,18 @@ class NPCsWindow extends PureComponent {
 
     return (
       <div className="npcs-window">
-        <select value={this.state.selectedNPCListIndex} onChange={this.handleNPCListChange}>
-          {mappedNPCListList}
-        </select>
-        &nbsp;
-        <select value={this.state.selectedNPCIndex} onChange={this.handleNPCChange}>
-          {mappedNPCList}
-        </select>
-        <button type="button" onClick={this.loadNPC}>
-          Add NPC
-        </button>
+        <div>
+          <select value={this.state.selectedNPCListIndex} onChange={this.handleNPCListChange}>
+            {mappedNPCListList}
+          </select>
+          &nbsp;
+          <select value={this.state.selectedNPCIndex} onChange={this.handleNPCChange}>
+            {mappedNPCList}
+          </select>
+          <button type="button" onClick={this.loadNPC}>
+            Add NPC
+          </button>
+        </div>
         <div className="npcs-container">{mappedNPCCards}</div>
       </div>
     );

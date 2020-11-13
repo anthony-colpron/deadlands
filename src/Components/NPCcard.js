@@ -1,6 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import MinimizeIcon from '@material-ui/icons/Minimize';
+import MaximizeIcon from '@material-ui/icons/Maximize';
 
 import { removeNPC } from '../Redux/slice';
 
@@ -9,12 +15,39 @@ import TraitsAndAptitudes from './npcCard/TraitsAndAptitudes';
 import DerivedStats from './npcCard/DerivedStats';
 import NPC from '../models/NPC';
 import Attacks from './npcCard/Attacks';
+import { NPCStatuses } from '../models/enums';
 
 const styles = {
   container: {
     maxWidth: 400,
-    border: '1px solid black',
     padding: 10,
+    marginRight: 20,
+    marginBottom: 20,
+  },
+  topBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  toggleButton: {
+    marginTop: 5,
+    marginRight: 5,
+    fontSize: 12,
+    minWidth: 0,
+    lineHeight: 1,
+  },
+  fullInfosTop: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  IconButton: {
+    backgroundColor: 'rgba(119,136,153,0.2)',
+  },
+  npcName: {
+    margin: '0 5px 0 5px',
+    fontWeight: 'bold',
   },
 };
 
@@ -52,25 +85,28 @@ class NPCcard extends PureComponent {
 
   renderTopBar() {
     return (
-      <div>
-        <button type="button" onClick={this.removeSelf} className="remove-npc-button">
-          X
-        </button>
-        {!this.state.collapsed && <span>{this.props.stats.name}</span>}
-        <span>{` ( ${+this.props.index + 1} ) `}</span>
-        <button type="button" onClick={this.toggleCollapsed}>
-          {this.state.collapsed ? '□' : '_'}
-        </button>
-        <br />
+      <div style={styles.topBar}>
+        <div>
+          <IconButton onClick={this.removeSelf} style={styles.IconButton} size="small">
+            <DeleteIcon />
+          </IconButton>
+          <span style={styles.npcName}>
+            {!this.state.collapsed && <span>{this.props.stats.name}</span>}
+            <span>{` ( ${+this.props.index + 1} )`}</span>
+          </span>
+        </div>
+        <IconButton size="small" style={styles.IconButton} onClick={this.toggleCollapsed}>
+          {this.state.collapsed ? <MaximizeIcon /> : <MinimizeIcon />}
+        </IconButton>
       </div>
     );
   }
 
   renderStatus() {
     return (
-      <span>
+      <span style={{ fontWeight: 'bold' }}>
         {this.props.stats.status}
-        {this.props.stats.status === 'Stunned' ? ` x${this.props.stats.stun}` : null}
+        {this.props.stats.status === NPCStatuses.Stunned ? ` x${this.props.stats.stun}` : null}
       </span>
     );
   }
@@ -91,12 +127,13 @@ class NPCcard extends PureComponent {
   renderFullInfo() {
     return (
       <div>
-        <button type="button" onClick={this.toggleView}>
-          {this.state.display === 'wounds' ? 'Display Stats' : 'Display Wounds'}
-        </button>
-        &nbsp;&nbsp;
-        <span style={{ fontWeight: 'bold' }}>Sleeve</span>
-        <input type="checkbox" />
+        <div style={styles.fullInfosTop}>
+          <Button style={styles.toggleButton} size="small" variant="contained" onClick={this.toggleView}>
+            {this.state.display === 'wounds' ? 'Display Stats' : 'Display Wounds'}
+          </Button>
+          <span style={{ fontWeight: 'bold' }}>Sleeve</span>
+          <input type="checkbox" />
+        </div>
         {this.renderDisplay()}
         <DerivedStats npc={this.props.stats} index={this.props.index} />
       </div>
@@ -105,10 +142,10 @@ class NPCcard extends PureComponent {
 
   render() {
     return (
-      <div style={styles.container}>
+      <Card style={styles.container} elevation={3}>
         {this.renderTopBar()}
         {this.state.collapsed ? this.renderStatus() : this.renderFullInfo()}
-      </div>
+      </Card>
     );
   }
 }

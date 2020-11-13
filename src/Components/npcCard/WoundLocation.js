@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+import { getStyleForWound } from './styles';
 
 const WoundLocationsEnum = {
   head: 'Head',
@@ -10,17 +12,26 @@ const WoundLocationsEnum = {
   rightLeg: 'Right Leg',
 };
 
+const styles = {
+  button: {
+    textTransform: 'none',
+    minWidth: 0,
+    lineHeight: 1.3,
+    marginRight: 6,
+    marginBottom: 5,
+    fontSize: 11,
+    fontWeight: 'bold',
+  },
+};
+
 const WoundLocation = (props) => {
   const label = WoundLocationsEnum[props.locationKey];
   const onAddWound = useCallback(() => props.onAddWound(props.locationKey));
-
+  const styleForWound = getStyleForWound(props.woundLevel);
   return (
-    <div>
-      <span>{`${label}: ${props.woundLevel}`}</span>
-      <button type="button" onClick={onAddWound}>
-        Add
-      </button>
-    </div>
+    <Button style={{ ...styles.button, ...styleForWound }} size="small" variant="outlined" onClick={onAddWound}>
+      {`${label}: ${props.woundLevel}`}
+    </Button>
   );
 };
 

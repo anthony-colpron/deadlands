@@ -31,7 +31,10 @@ const Attacks = (props) => {
 
   const onAttack = (attack) => {
     const { stats } = attack;
-    if (!stats) onCloseMenu();
+    if (!stats) {
+      onCloseMenu();
+      return;
+    }
 
     const hitLocation = rollDices(1, 20, undefined, false).sum;
     const { sum, results } = rollDices(stats.numberOfDices, stats.diceType, undefined, true);
@@ -50,7 +53,9 @@ const Attacks = (props) => {
 
   return (
     <div>
-      <Button onClick={onOpenMenu}>Attacks</Button>
+      <Button variant="outlined" color="primary" size="small" onClick={onOpenMenu}>
+        Attacks
+      </Button>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={onCloseMenu}>
         {props.npc.attacks.map((attack) => (
           <AttackItem attack={attack} onClick={onAttack} />

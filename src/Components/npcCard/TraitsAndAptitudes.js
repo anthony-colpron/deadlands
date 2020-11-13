@@ -37,7 +37,7 @@ const TraitsAndAptitudes = (props) => {
           const { level } = collection[key];
           const trait = isAptitude ? props.npc.traits[aptitudesList[key].associatedTrait] : collection[key];
           const { dicePlus, diceType } = trait;
-          const label = isAptitude ? aptitudesList[key].name : key.slice(0, 3).toUpperCase();
+          const label = isAptitude ? aptitudesList[key].name : key.slice(0, 6).toUpperCase();
           return (
             <RollButton
               isAptitude={isAptitude}
@@ -65,7 +65,12 @@ const TraitsAndAptitudes = (props) => {
       {mapRollCollection(props.npc.aptitudes.mental, undefined, true)}
       <span>Single roll modifier:</span>
       {singleRollModifier > -1 && <span>+</span>}
-      <input type="number" value={singleRollModifier} onChange={(event) => setSingleRollModifer(+event.target.value)} />
+      <input
+        type="number"
+        className="numeric-input"
+        value={singleRollModifier}
+        onChange={(event) => setSingleRollModifer(+event.target.value)}
+      />
     </div>
   );
 };
