@@ -18,6 +18,13 @@ const styles = {
     marginTop: 5,
     marginBottom: 5,
   },
+  text: {
+    marginRight: 5,
+  },
+  checkboxLabel: {
+    fontWeight: 'bold',
+    marginLeft: 5,
+  },
 };
 class Wounds extends PureComponent {
   constructor(props) {
@@ -53,7 +60,7 @@ class Wounds extends PureComponent {
   renderWind() {
     return (
       <div>
-        <span>Wind:</span>
+        <span style={styles.text}>Wind:</span>
         <input
           type="number"
           className="numeric-input-large"
@@ -67,7 +74,7 @@ class Wounds extends PureComponent {
   renderWoundsToAdd() {
     return (
       <div>
-        <span>Add Wounds:</span>
+        <span style={styles.text}>Add Wounds:</span>
         <input
           type="number"
           className="numeric-input"
@@ -75,7 +82,7 @@ class Wounds extends PureComponent {
           value={this.state.woundsToAdd}
         />
 
-        <span style={{ fontWeight: 'bold' }}>Magic</span>
+        <span style={styles.checkboxLabel}>Magic</span>
         <input type="checkbox" value={this.state.isMagicDamage} onChange={this.onToggleMagic} />
       </div>
     );

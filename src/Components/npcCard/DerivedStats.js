@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 import PropTypes from 'prop-types';
 import NPC from '../../models/NPC';
 import { resolveStun, updateOtherModifiers } from '../../Redux/slice';
@@ -32,6 +34,12 @@ const styles = {
     lineHeight: 1.3,
     padding: 1,
   },
+  note: {
+    marginTop: 5,
+  },
+  noteText: {
+    fontSize: 12,
+  },
 };
 
 class DerivedStats extends PureComponent {
@@ -55,7 +63,14 @@ class DerivedStats extends PureComponent {
     return (
       <div style={styles.container}>
         <div>
-          <span style={styles.text}>{`Size: ${this.props.npc.size} Pace: ${this.props.npc.pace}`}</span>
+          <span style={styles.text}>
+            Size:
+            <span style={styles.values}>{this.props.npc.size}</span>
+          </span>
+          <span style={styles.text}>
+            Pace:
+            <span style={styles.values}>{this.props.npc.pace}</span>
+          </span>
           <span style={styles.text}>Bullets:</span>
           <input type="number" className="numeric-input-large" />
           <span>/</span>
@@ -72,7 +87,6 @@ class DerivedStats extends PureComponent {
             </span>
           </span>
           <span style={styles.text}>Other modifier:</span>
-          {this.props.npc.otherModifiers > -1 && <span>+</span>}
           <input
             type="number"
             className="numeric-input"
@@ -92,9 +106,15 @@ class DerivedStats extends PureComponent {
             </Button>
           )}
         </div>
-
-        <span>Note:</span>
-        <input type="text" value={this.state.note} onChange={(event) => this.setState({ note: event.target.value })} />
+        <TextField
+          style={styles.note}
+          inputProps={{ style: styles.noteText }}
+          variant="outlined"
+          size="small"
+          label="Note"
+          value={this.state.note}
+          onChange={(event) => this.setState({ note: event.target.value })}
+        />
       </div>
     );
   }

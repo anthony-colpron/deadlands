@@ -19,7 +19,7 @@ import { NPCStatuses } from '../models/enums';
 
 const styles = {
   container: {
-    maxWidth: 400,
+    maxWidth: 420,
     padding: 10,
     marginRight: 20,
     marginBottom: 20,
@@ -48,6 +48,9 @@ const styles = {
   npcName: {
     margin: '0 5px 0 5px',
     fontWeight: 'bold',
+  },
+  display: {
+    margin: 10,
   },
 };
 
@@ -117,10 +120,10 @@ class NPCcard extends PureComponent {
     }
 
     return (
-      <div>
+      <>
         <TraitsAndAptitudes npc={this.props.stats} />
         <Attacks npc={this.props.stats} />
-      </div>
+      </>
     );
   }
 
@@ -134,7 +137,7 @@ class NPCcard extends PureComponent {
           <span style={{ fontWeight: 'bold' }}>Sleeve</span>
           <input type="checkbox" />
         </div>
-        {this.renderDisplay()}
+        <div style={styles.display}>{this.renderDisplay()}</div>
         <DerivedStats npc={this.props.stats} index={this.props.index} />
       </div>
     );

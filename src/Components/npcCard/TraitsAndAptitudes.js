@@ -14,6 +14,9 @@ const styles = {
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
+  text: {
+    marginRight: 5,
+  },
 };
 
 const corporealTraits = [
@@ -63,8 +66,7 @@ const TraitsAndAptitudes = (props) => {
       {mapRollCollection(props.npc.aptitudes.corporeal, undefined, true)}
       {mapRollCollection(props.npc.traits, mentalTraitsKeys)}
       {mapRollCollection(props.npc.aptitudes.mental, undefined, true)}
-      <span>Single roll modifier:</span>
-      {singleRollModifier > -1 && <span>+</span>}
+      <span style={styles.text}>Single roll modifier:</span>
       <input
         type="number"
         className="numeric-input"

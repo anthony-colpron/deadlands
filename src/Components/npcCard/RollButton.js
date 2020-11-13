@@ -27,9 +27,10 @@ const styles = {
   tooltip: {
     tooltip: {
       backgroundColor: 'black',
+      fontSize: 14,
     },
     tooltipPlacementTop: {
-      margin: '6px',
+      margin: '2px',
     },
   },
 };
@@ -47,11 +48,7 @@ const RollButton = ({ label, level, diceType, dicePlus, modifiers, onRolled, isA
   };
 
   return (
-    <StyledTooltip
-      title={`${level}d${diceType}${dicePlus > 0 ? `+${dicePlus}` : ''}`}
-      placement="top-end"
-      enterDelay={0}
-    >
+    <StyledTooltip title={`${level}d${diceType}${dicePlus > 0 ? `+${dicePlus}` : ''}`} placement="top" enterDelay={0}>
       <Button
         style={isAptitude ? styles.aptitudeButton : styles.traitButton}
         variant={isAptitude ? 'outlined' : 'contained'}
