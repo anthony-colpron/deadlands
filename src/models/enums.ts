@@ -17,7 +17,6 @@ export enum TraitsEnum {
   Smarts = 'smarts',
   Mien = 'mien',
   Spirit = 'spirit',
-  Special = 'special',
 }
 
 export enum WoundLocationKeys {

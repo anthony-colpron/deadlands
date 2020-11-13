@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import _cloneDeep from 'lodash.clonedeep';
-import { getTnForWounds, rollDices, rollSkillCheck } from '../Tools/gameUtils';
-import { NPCStatuses, WoundLocationKeys } from './enums';
+import { getTnForWounds, rollDices, rollSkillCheck, SkillCheckRoll } from '../Tools/gameUtils';
+import { NPCStatuses, TraitsEnum, WoundLocationKeys } from './enums';
 import { defaultTraits, Aptitudes, StunRollResult, Attack } from './interfaces';
 
 class NPC {
@@ -153,6 +153,13 @@ class NPC {
     if (!vigorRoll.success && this.stun < 2) this.stun += 1;
 
     return { vigorRoll, target, modifiers };
+  }
+
+  rollTrait(trait: TraitsEnum, singleRollModifier = 0): SkillCheckRoll {
+    const { level, diceType, dicePlus = 0 } = this.traits[trait];
+    const modifiers = this.allModifiers + singleRollModifier;
+
+    return rollSkillCheck(level, diceType, undefined, dicePlus, modifiers);
   }
 }
 

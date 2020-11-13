@@ -1,4 +1,5 @@
 import { SkillCheckRoll } from '../Tools/gameUtils';
+import { TraitsEnum } from './enums';
 
 export interface Trait {
   level: number;
@@ -7,16 +8,16 @@ export interface Trait {
 }
 
 export interface Traits {
-  deftness: Trait;
-  nimbleness: Trait;
-  strength: Trait;
-  quickness: Trait;
-  vigor: Trait;
-  cognition: Trait;
-  knowledge: Trait;
-  mien: Trait;
-  smarts: Trait;
-  spirit: Trait;
+  [TraitsEnum.Deftness]: Trait;
+  [TraitsEnum.Nimbleness]: Trait;
+  [TraitsEnum.Strength]: Trait;
+  [TraitsEnum.Quickness]: Trait;
+  [TraitsEnum.Vigor]: Trait;
+  [TraitsEnum.Cognition]: Trait;
+  [TraitsEnum.Knowledge]: Trait;
+  [TraitsEnum.Mien]: Trait;
+  [TraitsEnum.Smarts]: Trait;
+  [TraitsEnum.Spirit]: Trait;
 }
 
 export interface Aptitude {
@@ -54,14 +55,14 @@ export const defaultTrait: Trait = {
 };
 
 export const defaultTraits: Traits = {
-  deftness: { ...defaultTrait },
-  nimbleness: { ...defaultTrait },
-  strength: { ...defaultTrait },
-  quickness: { ...defaultTrait },
-  vigor: { ...defaultTrait },
-  cognition: { ...defaultTrait },
-  knowledge: { ...defaultTrait },
-  mien: { ...defaultTrait },
-  smarts: { ...defaultTrait },
-  spirit: { ...defaultTrait },
+  [TraitsEnum.Deftness]: { ...defaultTrait },
+  [TraitsEnum.Nimbleness]: { ...defaultTrait },
+  [TraitsEnum.Strength]: { ...defaultTrait },
+  [TraitsEnum.Quickness]: { ...defaultTrait },
+  [TraitsEnum.Vigor]: { ...defaultTrait },
+  [TraitsEnum.Cognition]: { ...defaultTrait },
+  [TraitsEnum.Knowledge]: { ...defaultTrait },
+  [TraitsEnum.Mien]: { ...defaultTrait },
+  [TraitsEnum.Smarts]: { ...defaultTrait },
+  [TraitsEnum.Spirit]: { ...defaultTrait },
 };

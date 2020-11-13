@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import NPC from '../../models/NPC';
 import { rollDices } from '../../Tools/gameUtils';
 import { addLog } from '../../Redux/log/logReducer';
+import { TraitsEnum } from '../../models/enums';
 
 const AttackItem = ({ attack, onClick }) => {
   return (
@@ -34,9 +35,16 @@ const Attacks = (props) => {
 
     const hitLocation = rollDices(1, 20, undefined, false).sum;
     const { sum, results } = rollDices(stats.numberOfDices, stats.diceType, undefined, true);
-    // const strDamage = stats.addStrength ? rollDices()
 
-    dispatch(addLog(`Hit Location: ${hitLocation}\nDamage: ${sum}\nDices: ${results}`));
+    const weaponDamage = `Weapon damage: ${sum} (${results})\n`;
+
+    let strDamage = '';
+    if (stats.addStrength) {
+      const { diceRolls, result } = props.npc.rollTrait(TraitsEnum.Strength);
+      strDamage = `Strength damage: ${result} (${diceRolls})\n`;
+    }
+
+    dispatch(addLog(`Hit Location: ${hitLocation}\n${weaponDamage}${strDamage}`));
     onCloseMenu();
   };
 
