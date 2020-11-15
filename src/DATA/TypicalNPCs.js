@@ -65,7 +65,7 @@ const typicalNPCs = {
       },
       attacks: [
         { name: 'Pistol', stats: { numberOfDices: 3, diceType: 6 } },
-        { name: 'Rifle', stats: { numberOfDices: 4, diceType: 8 } },
+        { name: 'Winchester 76', stats: { numberOfDices: 4, diceType: 8, plus: 2 } },
         { name: 'Bowie knife', stats: { numberOfDices: 1, diceType: 6, addStrength: true } },
       ],
     },

@@ -96,4 +96,25 @@ const getTnForWounds = (wounds: number): number => {
   return 3;
 };
 
-export { rollSkillCheck, getTnForWounds, rollDices };
+const applyArmor = (
+  armor: number,
+  numberOfDices: number,
+  diceType: number,
+  dicePlus = 0,
+): { numberOfDices: number; diceType: number; dicePlus: number } => {
+  const statsToMutate = { numberOfDices, diceType, dicePlus };
+
+  for (let i = armor; i > 0; i -= 1) {
+    if (statsToMutate.dicePlus > 0) {
+      statsToMutate.dicePlus -= 2;
+    } else if (statsToMutate.diceType > 4) {
+      statsToMutate.diceType -= 2;
+    } else if (statsToMutate.numberOfDices > 0) {
+      statsToMutate.numberOfDices -= 1;
+    }
+  }
+
+  return { ...statsToMutate };
+};
+
+export { rollSkillCheck, getTnForWounds, rollDices, applyArmor };

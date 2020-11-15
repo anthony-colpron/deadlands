@@ -1,4 +1,4 @@
-import { SkillCheckRoll } from '../Tools/gameUtils';
+import { DicesRoll, SkillCheckRoll } from '../Tools/gameUtils';
 import { TraitsEnum } from './enums';
 
 export interface Trait {
@@ -45,8 +45,19 @@ export type Attack = {
   stats?: {
     numberOfDices: number;
     diceType: number;
+    plus?: number;
     addStrength?: boolean;
   };
+};
+
+export interface DicesRollForWeaponDamage extends DicesRoll {
+  extraDices: number[];
+  plus?: number;
+}
+
+export type DamageRollResult = {
+  weaponDamage: DicesRollForWeaponDamage;
+  strengthDamage?: SkillCheckRoll;
 };
 
 export const defaultTrait: Trait = {

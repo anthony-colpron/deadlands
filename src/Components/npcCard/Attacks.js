@@ -7,17 +7,17 @@ import MenuItem from '@material-ui/core/MenuItem';
 import NPC from '../../models/NPC';
 import { rollDices } from '../../Tools/gameUtils';
 import { addLog } from '../../Redux/log/logReducer';
-import { TraitsEnum } from '../../models/enums';
 
-const AttackItem = ({ attack, onClick }) => {
+const AttackItem = ({ index, attack, onClick }) => {
   return (
-    <MenuItem onClick={() => onClick(attack)} value={attack}>
+    <MenuItem onClick={() => onClick(index)} value={attack}>
       {attack.name || attack}
     </MenuItem>
   );
 };
 
 AttackItem.propTypes = {
+  index: PropTypes.number.isRequired,
   attack: PropTypes.shape({ name: PropTypes.string }).isRequired,
   onClick: PropTypes.func.isRequired,
 };
@@ -25,25 +25,28 @@ AttackItem.propTypes = {
 const Attacks = (props) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [armor, setArmor] = useState(0);
 
+  const onChangeArmor = (event) => setArmor(+event.target.value);
   const onOpenMenu = (event) => setAnchorEl(event.currentTarget);
   const onCloseMenu = () => setAnchorEl(null);
 
-  const onAttack = (attack) => {
-    const { stats } = attack;
-    if (!stats) {
+  const onAttack = (attackIndex) => {
+    const damageRoll = props.npc.rollDamage(attackIndex, armor);
+    if (!damageRoll) {
       onCloseMenu();
       return;
     }
 
     const hitLocation = rollDices(1, 20, undefined, false).sum;
-    const { sum, results } = rollDices(stats.numberOfDices, stats.diceType, undefined, true);
+    const { sum, results, extraDices, plus } = damageRoll.weaponDamage;
+    const plusDamage = plus ? `+${plus}` : '';
 
-    const weaponDamage = `Weapon damage: ${sum} (${results})\n`;
+    const weaponDamage = `Weapon damage: ${sum} (${results})${plusDamage}\n  If extra damage: (${extraDices})\n`;
 
     let strDamage = '';
-    if (stats.addStrength) {
-      const { diceRolls, result } = props.npc.rollTrait(TraitsEnum.Strength);
+    if (damageRoll.strengthDamage) {
+      const { diceRolls, result } = damageRoll.strengthDamage;
       strDamage = `Strength damage: ${result} (${diceRolls})\n`;
     }
 
@@ -57,10 +60,12 @@ const Attacks = (props) => {
         Attacks
       </Button>
       <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={onCloseMenu}>
-        {props.npc.attacks.map((attack) => (
-          <AttackItem attack={attack} onClick={onAttack} />
+        {props.npc.attacks.map((attack, index) => (
+          <AttackItem key={attack.name || attack} attack={attack} index={index} onClick={onAttack} />
         ))}
       </Menu>
+      <span> VS Armor: </span>
+      <input type="number" className="numeric-input" value={armor} onChange={onChangeArmor} />
     </div>
   );
 };

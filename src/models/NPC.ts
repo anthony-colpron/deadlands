@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import _cloneDeep from 'lodash.clonedeep';
-import { getTnForWounds, rollDices, rollSkillCheck, SkillCheckRoll } from '../Tools/gameUtils';
+import { applyArmor, getTnForWounds, rollDices, rollSkillCheck, SkillCheckRoll } from '../Tools/gameUtils';
 import { NPCStatuses, TraitsEnum, WoundLocationKeys } from './enums';
-import { defaultTraits, Aptitudes, StunRollResult, Attack } from './interfaces';
+import { defaultTraits, Aptitudes, StunRollResult, Attack, DamageRollResult } from './interfaces';
 
 class NPC {
   id: string;
@@ -160,6 +160,44 @@ class NPC {
     const modifiers = this.allModifiers + singleRollModifier;
 
     return rollSkillCheck(level, diceType, undefined, dicePlus, modifiers);
+  }
+
+  rollDamage(attackIndex: number, armor?: number): DamageRollResult | null {
+    const { stats } = this.attacks[attackIndex] as Attack;
+    if (!stats) return null;
+
+    const dicesForWeaponDamage = armor
+      ? applyArmor(armor, stats.numberOfDices, stats.diceType)
+      : { numberOfDices: stats.numberOfDices, diceType: stats.diceType };
+    const preliminaryWeaponDamage = rollDices(
+      dicesForWeaponDamage.numberOfDices,
+      dicesForWeaponDamage.diceType,
+      undefined,
+      true,
+    );
+    const weaponDamage = {
+      ...preliminaryWeaponDamage,
+      extraDices: rollDices(2, dicesForWeaponDamage.diceType, undefined, true).results,
+      plus: stats.plus,
+    };
+    weaponDamage.sum += stats.plus || 0;
+
+    let strengthDamage;
+    if (stats.addStrength) {
+      const { level, diceType, dicePlus = 0 } = this.traits.strength;
+      const dicesForStrengthDamage = armor
+        ? applyArmor(armor, level, diceType, dicePlus)
+        : { numberOfDices: level, diceType, dicePlus };
+      strengthDamage = rollSkillCheck(
+        dicesForStrengthDamage.numberOfDices,
+        dicesForStrengthDamage.diceType,
+        undefined,
+        dicesForStrengthDamage.dicePlus,
+        this.allModifiers,
+      );
+    }
+
+    return { weaponDamage, strengthDamage };
   }
 }
 
