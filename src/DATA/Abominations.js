@@ -81,7 +81,12 @@ const abominations = {
           },
         },
       },
-      attacks: ['Bite: STR', 'Pistol: 3d6', 'Shotgun: *d6', 'Rifle: 4d8'],
+      attacks: [
+        { name: 'Bite', stats: { numberOfDices: 0, diceType: 4, addStrength: true } },
+        { name: 'Pistol', stats: { numberOfDices: 3, diceType: 6 } },
+        { name: 'Rifle', stats: { numberOfDices: 4, diceType: 8 } },
+        { name: 'Shotgun', stats: { numberOfDices: 6, diceType: 6 } },
+      ],
       note: 'Maim head to kill',
     },
     {

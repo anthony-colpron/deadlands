@@ -30,7 +30,7 @@ const animals = {
         },
         mental: {},
       },
-      attacks: ['Jaws: STR + 1d8'],
+      attacks: [{ name: 'Jaws: STR + 1d8', stats: { numberOfDices: 1, diceType: 8, addStrength: true } }],
       note: 'Armor: 1',
     },
     {
