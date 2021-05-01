@@ -6,7 +6,7 @@ import { quickSortActions } from '../Tools/functions';
 import { rollSkillCheck } from '../Tools/gameUtils';
 
 import Action from './Action';
-import { dealAction, resolveStun } from '../Redux/slice';
+import { dealAction, resolveStun, setCurrentNPCIndex } from '../Redux/slice';
 
 class RoundActions extends PureComponent {
   constructor() {
@@ -14,6 +14,16 @@ class RoundActions extends PureComponent {
     this.state = { actions: [] };
     this.rollInitiative = this.rollInitiative.bind(this);
     this.resolveAction = this.resolveAction.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.actions.length === 0) return;
+    const currentNPCIndex = this.state.actions[0].NPCindex;
+    const prevNPCIndex = prevState.actions[0] ? prevState.actions[0].NPCindex : null;
+
+    if (currentNPCIndex !== prevNPCIndex) {
+      this.props.setCurrentNPCIndex(currentNPCIndex);
+    }
   }
 
   rollInitiative() {
@@ -110,6 +120,7 @@ class RoundActions extends PureComponent {
 RoundActions.propTypes = {
   resolveStun: PropTypes.func.isRequired,
   dealAction: PropTypes.func.isRequired,
+  setCurrentNPCIndex: PropTypes.func.isRequired,
   deck: PropTypes.arrayOf({}).isRequired,
   loadedNPCs: PropTypes.arrayOf({}).isRequired,
 };
@@ -122,6 +133,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     dealAction: (number) => dispatch(dealAction(number)),
     resolveStun: (index) => dispatch(resolveStun(index)),
+    setCurrentNPCIndex: (number) => dispatch(setCurrentNPCIndex(number)),
   };
 };
 

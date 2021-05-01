@@ -24,6 +24,9 @@ const styles = {
     marginRight: 20,
     marginBottom: 20,
   },
+  selectedContainer: {
+    backgroundColor: 'rgba(170,108,57,0.3)',
+  },
   topBar: {
     display: 'flex',
     flexDirection: 'row',
@@ -144,8 +147,12 @@ class NPCcard extends PureComponent {
   }
 
   render() {
+    const containerStyle = this.props.isCurrent
+      ? { ...styles.container, ...styles.selectedContainer }
+      : styles.container;
+
     return (
-      <Card style={styles.container} elevation={3}>
+      <Card style={containerStyle} elevation={3}>
         {this.renderTopBar()}
         {this.state.collapsed ? this.renderStatus() : this.renderFullInfo()}
       </Card>
@@ -157,6 +164,13 @@ NPCcard.propTypes = {
   stats: PropTypes.instanceOf(NPC).isRequired,
   removeSelf: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
+  isCurrent: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state, props) => {
+  return {
+    isCurrent: state.main.currentNPCIndex === props.index,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -165,4 +179,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(undefined, mapDispatchToProps)(NPCcard);
+export default connect(mapStateToProps, mapDispatchToProps)(NPCcard);

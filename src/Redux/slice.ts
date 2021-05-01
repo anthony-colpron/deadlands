@@ -23,6 +23,9 @@ const mainSlice = createSlice({
   name: 'slice',
   initialState,
   reducers: {
+    setCurrentNPCIndex(state, action: PayloadAction<number>): void {
+      state.currentNPCIndex = action.payload;
+    },
     shuffleActionDeck(state): void {
       state.deck = shuffleDeck(deck);
     },
@@ -81,6 +84,7 @@ export const {
   resolveStun,
   updateWind,
   updateOtherModifiers,
+  setCurrentNPCIndex,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

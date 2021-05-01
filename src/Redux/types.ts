@@ -8,6 +8,7 @@ export type MainState = {
   NPCs: any;
   loadedNPCs: NPC[];
   deck: Deck;
+  currentNPCIndex?: number;
 };
 
 export type LoadNpcAction = { listIndex: number; npcIndex: number };
