@@ -22,5 +22,9 @@ export const getStyleForWound = (wound) => {
     default:
   }
 
+  if (wound > 5) {
+    backgroundColor = 'black';
+    textColor = 'white';
+  }
   return { color: textColor, backgroundColor };
 };
