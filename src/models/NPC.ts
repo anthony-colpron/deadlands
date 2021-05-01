@@ -127,10 +127,10 @@ class NPC {
 
     let windResult: number | undefined;
     let stunResult: StunRollResult | undefined;
-    if (canTakeWind && woundsToAdd >= 0) {
+    if (canTakeWind) {
       windResult = this.takeWindFromWounds(woundsToAdd);
     }
-    if (canTakeStun && woundsToAdd >= 0) {
+    if (canTakeStun) {
       stunResult = this.takeStunFromWounds(woundsToAdd);
     }
 
@@ -138,7 +138,9 @@ class NPC {
   }
 
   takeWindFromWounds(wounds: number): number {
-    const windLost = rollDices(wounds, 6, undefined, false).sum;
+    const numberOfDices = wounds > 0 ? wounds : 1;
+    const diceType = wounds > 0 ? 6 : 3;
+    const windLost = rollDices(numberOfDices, diceType, undefined, false).sum;
     this.currentWind -= windLost;
     return windLost;
   }
