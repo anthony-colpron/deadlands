@@ -383,7 +383,6 @@ const allies = {
       size: 6,
       wind: 22,
       undead: true,
-      woundsToKill: 'special',
       traits: {
         deftness: { level: 2, diceType: 6 },
         nimbleness: { level: 2, diceType: 8 },

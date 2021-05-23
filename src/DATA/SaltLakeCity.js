@@ -2,6 +2,76 @@ const saltLakeCity = {
   name: 'Salt Lake City',
   list: [
     {
+      name: 'Conan Asgard',
+      pace: 10,
+      size: 7,
+      wind: 16,
+      traits: {
+        deftness: { level: 3, diceType: 8 },
+        nimbleness: { level: 2, diceType: 10 },
+        strength: { level: 2, diceType: 12 },
+        quickness: { level: 3, diceType: 8 },
+        vigor: { level: 3, diceType: 10 },
+        cognition: { level: 4, diceType: 6 },
+        knowledge: { level: 2, diceType: 6 },
+        mien: { level: 3, diceType: 6 },
+        smarts: { level: 3, diceType: 8 },
+        spirit: { level: 3, diceType: 6 },
+      },
+      aptitudes: {
+        corporeal: {
+          climbin: {
+            level: 1,
+          },
+          fightin: {
+            level: 4,
+            concentrations: [`brawlin'`, 'axe'],
+          },
+          dodge: {
+            level: 2,
+          },
+          shootin: {
+            level: 2,
+            concentrations: ['pistol'],
+          },
+          sneak: {
+            level: 1,
+          },
+          throwin: {
+            level: 4,
+            concentrations: ['balanced'],
+          },
+        },
+        mental: {
+          bluff: {
+            level: 2,
+          },
+          guts: {
+            level: 4,
+          },
+          overawe: {
+            level: 3,
+          },
+          performin: {
+            level: 3,
+            concentrations: ['juggling'],
+          },
+          professional: {
+            level: 3,
+            concentrations: ['management'],
+          },
+          search: {
+            level: 1,
+          },
+          streetwise: {
+            level: 3,
+          },
+        },
+      },
+      attacks: [{ name: 'Viking Axe', stats: { numberOfDices: 2, diceType: 6, addStrength: true } }],
+      note: 'DB: 2 (Axe)',
+    },
+    {
       name: 'Bolton Trash',
       pace: 8,
       size: 6,
@@ -57,7 +127,7 @@ const saltLakeCity = {
         },
       },
       attacks: ['Piston Arm: Rel 18', 'Spear: STR + 2d6', 'Chest brace: Armor 3', 'Abdo armor: 2'],
-      notes: '',
+      note: '',
     },
     {
       name: 'Keith Trash',
@@ -115,7 +185,7 @@ const saltLakeCity = {
         },
       },
       attacks: ['No weapon', 'Buzzsaw: STR + 3d8 Rel 18'],
-      notes: '',
+      note: '',
     },
     {
       name: 'Zeppy Trash',
@@ -173,7 +243,7 @@ const saltLakeCity = {
         },
       },
       attacks: ['Piston Arm: Rel 18', 'Spiked club: STR + 2d6', 'Double motivatored Legs. Rel 17'],
-      notes: '',
+      note: '',
     },
     {
       name: 'Bounty Hunter Leader',
@@ -309,7 +379,7 @@ const saltLakeCity = {
         },
       },
       attacks: ['DA Peace Maker: 3d6'],
-      notes: '',
+      note: '',
     },
     {
       name: 'Slicer Muldoon',
@@ -378,7 +448,7 @@ const saltLakeCity = {
         },
       },
       attacks: ['Bowie knife: STR + 1d6', 'Saber: STR + 2d8', 'DA Peace Maker: 3d6'],
-      notes: '',
+      note: '',
     },
     {
       name: 'Killer Carl Bivens',
@@ -440,7 +510,7 @@ const saltLakeCity = {
         },
       },
       attacks: ['Bowie knife: STR + 1d6', 'DA Mormon pistol: 3d6'],
-      notes: '',
+      note: '',
     },
     {
       name: 'Lizzy The Pendulum Pitts',
@@ -502,7 +572,7 @@ const saltLakeCity = {
         },
       },
       attacks: ['Bowie knife: STR + 1d6', 'DA Mormon pistol: 3d6'],
-      notes: '',
+      note: '',
     },
     {
       name: 'Swinger Fan',
@@ -696,6 +766,139 @@ const saltLakeCity = {
         },
       },
       attacks: ['Claws: STR + 1d6 - x4', '1st Web: -4 Nimb, Quick, Deft, Pace.', '2nd Web: Book effect'],
+    },
+    {
+      name: 'Stark henchman',
+      pace: 8,
+      size: 6,
+      wind: 14,
+      traits: {
+        deftness: { level: 3, diceType: 8 },
+        nimbleness: { level: 3, diceType: 8 },
+        strength: { level: 2, diceType: 8 },
+        quickness: { level: 3, diceType: 6 },
+        vigor: { level: 3, diceType: 8 },
+        cognition: { level: 2, diceType: 8 },
+        knowledge: { level: 3, diceType: 6 },
+        mien: { level: 3, diceType: 6 },
+        smarts: { level: 2, diceType: 8 },
+        spirit: { level: 2, diceType: 6 },
+      },
+      aptitudes: {
+        corporeal: {
+          climbin: {
+            level: 2,
+          },
+          fightin: {
+            level: 3,
+            concentrations: [`brawlin'`],
+          },
+          dodge: {
+            level: 3,
+          },
+          drivin: {
+            level: 3,
+            concentrations: ['steamwagon'],
+          },
+          horseRidin: {
+            level: 3,
+          },
+          shootin: {
+            level: 4,
+            concentrations: ['rifle', 'pistol', 'net gun'],
+          },
+          sneak: {
+            level: 3,
+          },
+          throwin: {
+            level: 3,
+            concentrations: ['unbalanced'],
+          },
+        },
+        mental: {
+          bluff: {
+            level: 2,
+          },
+          guts: {
+            level: 4,
+          },
+          overawe: {
+            level: 3,
+          },
+          persuasion: {
+            level: 2,
+          },
+          search: {
+            level: 3,
+          },
+          streetwise: {
+            level: 3,
+          },
+        },
+      },
+      attacks: [{ name: 'Rifle', stats: { numberOfDices: 4, diceType: 8 } }, 'Net gun Or Electrostatic gun'],
+      note: 'Armor: 2 | Scaphandre',
+    },
+    {
+      name: 'Undead Catamount',
+      pace: 18,
+      size: 9,
+      wind: 18,
+      undead: true,
+      cannotBeStunned: true,
+      traits: {
+        deftness: { level: 2, diceType: 6 },
+        nimbleness: { level: 3, diceType: 12 },
+        strength: { level: 4, diceType: 12 },
+        quickness: { level: 2, diceType: 12, dicePlus: 2 },
+        vigor: { level: 2, diceType: 10 },
+        cognition: { level: 3, diceType: 10 },
+        knowledge: { level: 2, diceType: 6 },
+        mien: { level: 2, diceType: 10 },
+        smarts: { level: 3, diceType: 6 },
+        spirit: { level: 3, diceType: 8 },
+      },
+      aptitudes: {
+        corporeal: {
+          climbin: {
+            level: 5,
+          },
+          fightin: {
+            level: 4,
+            concentrations: [`brawlin'`],
+          },
+          sneak: {
+            level: 6,
+          },
+          swimmin: {
+            level: 1,
+          },
+        },
+        mental: {
+          bluff: {
+            level: 3,
+          },
+          guts: {
+            level: 3,
+          },
+          overawe: {
+            level: 4,
+          },
+          search: {
+            level: 4,
+          },
+          trackin: {
+            level: 3,
+          },
+        },
+      },
+      attacks: [
+        { name: 'Bite: STR + 1d4', stats: { numberOfDices: 1, diceType: 4, addStrength: true } },
+        { name: 'Claw: STR + 1d6', stats: { numberOfDices: 1, diceType: 6, addStrength: true } },
+        'Caterwaul',
+        'Leaping',
+      ],
+      note: '2 x claw attacks if hanging from tree',
     },
   ],
 };

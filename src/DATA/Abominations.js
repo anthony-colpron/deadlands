@@ -39,7 +39,6 @@ const abominations = {
       size: 6,
       wind: 12,
       undead: true,
-      woundsToKill: 'special',
       traits: {
         deftness: { level: 2, diceType: 6 },
         nimbleness: { level: 2, diceType: 8 },
@@ -95,7 +94,6 @@ const abominations = {
       size: 6,
       wind: 12,
       undead: true,
-      woundsToKill: 'special',
       traits: {
         deftness: { level: 2, diceType: 8 },
         nimbleness: { level: 2, diceType: 8 },
@@ -152,7 +150,6 @@ const abominations = {
       size: 6,
       wind: 12,
       undead: true,
-      woundsToKill: 'special',
       traits: {
         deftness: { level: 2, diceType: 6 },
         nimbleness: { level: 2, diceType: 8 },
@@ -503,7 +500,13 @@ const abominations = {
           },
         },
       },
-      attacks: ['Bite: STR + 1d4, Claw: STR + 1d6', 'Caterwaul', 'Leaping'],
+      attacks: [
+        { name: 'Bite: STR + 1d4', stats: { numberOfDices: 1, diceType: 4, addStrength: true } },
+        { name: 'Claw: STR + 1d6', stats: { numberOfDices: 1, diceType: 6, addStrength: true } },
+        'Caterwaul',
+        'Leaping',
+      ],
+      note: '2 x claw attacks if hanging from tree',
     },
     {
       name: 'Specter',
