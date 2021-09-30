@@ -11,6 +11,7 @@ import gomorra from './Gomorra';
 import huntingGrounds from './HuntingGrounds';
 import forbiddenGod from './ForbiddenGod';
 import saltLakeCity from './SaltLakeCity';
+import cirqueSoleil from './CirqueSoleil';
 
 const NPCs = [
   typicalNPCs,
@@ -26,6 +27,7 @@ const NPCs = [
   huntingGrounds,
   forbiddenGod,
   saltLakeCity,
+  cirqueSoleil,
 ];
 
 export default NPCs;
