@@ -227,4 +227,15 @@ const aptitudes = {
   },
 };
 
+export const attackAptitudes = [
+  aptitudes.fightin,
+  aptitudes.shootin,
+  aptitudes.hexslinginSpirit,
+  aptitudes.hexslinginCognition,
+  aptitudes.hexslinginKnowledge,
+  aptitudes.hexslinginSmarts,
+  aptitudes.hexslinginMien,
+  aptitudes.faith,
+];
+
 export default aptitudes;

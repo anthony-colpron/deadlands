@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import NPC from '../../models/NPC';
-import { rollDices } from '../../Tools/gameUtils';
 import { addLog } from '../../Redux/log/logReducer';
 
 const AttackItem = ({ index, attack, onClick }) => {
@@ -38,7 +37,6 @@ const Attacks = (props) => {
       return;
     }
 
-    const hitLocation = rollDices(1, 20, undefined, false).sum;
     const { sum, results, extraDices, plus } = damageRoll.weaponDamage;
     const plusDamage = plus ? `+${plus}` : '';
 
@@ -50,7 +48,7 @@ const Attacks = (props) => {
       strDamage = `Strength damage: ${result} (${diceRolls})\n`;
     }
 
-    dispatch(addLog(`Hit Location: ${hitLocation}\n${weaponDamage}${strDamage}`));
+    dispatch(addLog(`${weaponDamage}${strDamage}`));
     onCloseMenu();
   };
 

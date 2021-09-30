@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import RollButton from './RollButton';
-import aptitudesList from '../../DATA/aptitudes';
+import aptitudesList, { attackAptitudes } from '../../DATA/aptitudes';
 import NPC from '../../models/NPC';
 import { TraitsEnum } from '../../models/enums';
 
@@ -41,9 +41,11 @@ const TraitsAndAptitudes = (props) => {
           const trait = isAptitude ? props.npc.traits[aptitudesList[key].associatedTrait] : collection[key];
           const { dicePlus, diceType } = trait;
           const label = isAptitude ? aptitudesList[key].name : key.slice(0, 6).toUpperCase();
+          const isAttack = isAptitude && attackAptitudes.some((aptitude) => aptitudesList[key].name === aptitude.name);
           return (
             <RollButton
               isAptitude={isAptitude}
+              isAttack={isAttack}
               label={label}
               level={level}
               diceType={diceType}

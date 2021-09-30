@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
-import { rollSkillCheck } from '../../Tools/gameUtils';
+import { rollSkillCheck, rollDices } from '../../Tools/gameUtils';
 import { addLog } from '../../Redux/log/logReducer';
 
 const commonButtonStyles = {
@@ -37,13 +37,27 @@ const styles = {
 
 const StyledTooltip = withStyles(styles.tooltip)(Tooltip);
 
-const RollButton = ({ label, level, diceType, dicePlus, modifiers, onRolled, isAptitude }) => {
+const RollButton = ({ label, level, diceType, dicePlus, modifiers, onRolled, isAptitude, isAttack }) => {
   const dispatch = useDispatch();
+
+  const getHitLocationMessage = () => {
+    if (!isAttack) return '';
+    const hitLocation = rollDices(1, 20, undefined, false).sum;
+
+    return `\nHit Location: ${hitLocation}`;
+  };
 
   const rollDice = () => {
     const roll = rollSkillCheck(level, diceType, undefined, dicePlus, modifiers);
     const { result, diceRolls, botch, note } = roll;
-    dispatch(addLog(`${label}\nResult: ${result} (Modifiers: ${modifiers})\nDices: ${diceRolls} ${botch ? note : ''}`));
+
+    const noteToDisplay = botch ? note : '';
+
+    dispatch(
+      addLog(
+        `${label}\nResult: ${result} (Modifiers: ${modifiers})\nDices: ${diceRolls} ${noteToDisplay}${getHitLocationMessage()}`,
+      ),
+    );
     onRolled();
   };
 
@@ -68,6 +82,7 @@ RollButton.propTypes = {
   level: PropTypes.number.isRequired,
   diceType: PropTypes.number.isRequired,
   onRolled: PropTypes.func.isRequired,
+  isAttack: PropTypes.bool.isRequired,
   modifiers: PropTypes.number,
   dicePlus: PropTypes.number,
 };
