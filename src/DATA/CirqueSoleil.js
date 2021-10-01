@@ -53,14 +53,14 @@ const cirqueSoleil = {
       note: 'Armor: 1. If raise: Acidic Bite',
     },
     {
-      name: 'Scrap Glom',
+      name: 'Augmented Scrap Glom',
       pace: 6,
       size: 16,
       wind: 120,
       undead: true,
       traits: {
-        deftness: { level: 2, diceType: 6 },
-        nimbleness: { level: 2, diceType: 6 },
+        deftness: { level: 2, diceType: 10 },
+        nimbleness: { level: 2, diceType: 8 },
         strength: { level: 2, diceType: 12, dicePlus: 4 },
         quickness: { level: 3, diceType: 8 },
         vigor: { level: 2, diceType: 12, dicePlus: 4 },
@@ -97,7 +97,7 @@ const cirqueSoleil = {
         },
       },
       attacks: [
-        { name: 'Bodies slam', stats: { numberOfDices: 0, diceType: 4, addStrength: true } },
+        { name: 'Bodies slam', stats: { numberOfDices: 1, diceType: 6, addStrength: true } },
         { name: 'Gatling Gun x 2', stats: { numberOfDices: 3, diceType: 8 } },
         { name: 'Acid Spray', stats: { numberOfDices: 4, diceType: 8 } },
         { name: 'FlameThrower', stats: { numberOfDices: 4, diceType: 10 } },
