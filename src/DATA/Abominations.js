@@ -189,6 +189,59 @@ const abominations = {
       note: 'Maim head to kill',
     },
     {
+      name: 'Kid Walking Dead',
+      pace: 6,
+      size: 4,
+      wind: 12,
+      undead: true,
+      traits: {
+        deftness: { level: 2, diceType: 6 },
+        nimbleness: { level: 3, diceType: 6 },
+        strength: { level: 2, diceType: 8 },
+        quickness: { level: 2, diceType: 6 },
+        vigor: { level: 2, diceType: 8 },
+        cognition: { level: 2, diceType: 10 },
+        knowledge: { level: 1, diceType: 6 },
+        mien: { level: 1, diceType: 6 },
+        smarts: { level: 1, diceType: 6 },
+        spirit: { level: 1, diceType: 4 },
+      },
+      aptitudes: {
+        corporeal: {
+          climbin: {
+            level: 1,
+          },
+          dodge: {
+            level: 2,
+          },
+          fightin: {
+            level: 3,
+            concentrations: [`brawlin'`],
+          },
+          shootin: {
+            level: 2,
+            concentrations: ['pistol'],
+          },
+          sneak: {
+            level: 4,
+          },
+          swimmin: {
+            level: 1,
+          },
+        },
+        mental: {
+          overawe: {
+            level: 5,
+          },
+        },
+      },
+      attacks: [
+        { name: 'Bite', stats: { numberOfDices: 0, diceType: 4, addStrength: true } },
+        { name: 'Pistol', stats: { numberOfDices: 3, diceType: 6 } },
+      ],
+      note: 'Maim head to kill',
+    },
+    {
       name: 'Werewolf',
       pace: 24,
       size: 6,
